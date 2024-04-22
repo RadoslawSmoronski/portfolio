@@ -34,7 +34,24 @@ body {
     border-radius: 50%;
 }
 
-.palette-bg-dark {
+#portfolio {
+    background-color: black;
+}
+
+.project-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.projects-box {
+    padding-top: 5%;
+    padding-right: 15%;
+    padding-left: 15%;
+}
+
+/*.palette-bg-dark {
     background-color: #0F0F0F;
 }
 
@@ -48,4 +65,4 @@ body {
 
 .palette-bg-lgreen {
     background-color: #008170;
-}
+}*/
