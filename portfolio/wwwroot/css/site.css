@@ -18,5 +18,34 @@ html {
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 60px;
+    background-color: #0F0F0F;
+}
+
+#about {
+    height: 400px;
+    background-color: #232D3F;
+}
+
+.about-image {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.palette-bg-dark {
+    background-color: #0F0F0F;
+}
+
+.palette-bg-ldark {
+    background-color: #232D3F;
+}
+
+.palette-bg-green {
+    background-color: #005B41;
+}
+
+.palette-bg-lgreen {
+    background-color: #008170;
 }
