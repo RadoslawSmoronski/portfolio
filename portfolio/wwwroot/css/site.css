@@ -57,6 +57,24 @@ body {
     color: #adadad;
 }
 
+.socrates-img {
+    width: auto;
+    height: 95%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+@media (max-width: 575.98px) {
+    .header-socrates {
+        font-size: 22px;
+    }
+
+    .socrates-img {
+        height: 75%;
+    }
+}
+
 /*.palette-bg-dark {
     background-color: #0F0F0F;
 }
