@@ -2,12 +2,20 @@
     ViewData["Title"] = "Home Page";
 }
 
-<section id="about">
-    <div class="container d-flex align-items-center justify-content-center" style="min-height: 400px;">
-        <div class="text-center">
-            <img class="about-image mb-3" src="images/photo.jpg"></img>
-            <h1 class="text-white">Radosław Smoroński</h1>
-            <p class="text-white">Lorem Ipsum, fdfsdfsdfsdfsdfs f sfs fsd f sfsdf </p>
+<section id="welcome">
+        <div class="socrates">
+            <div class="container d-flex align-items-center justify-content-center" style="min-height: 500px;">
+                <div class="row">
+                    <div class="col-lg-3 col-md-2 col-sm-2">
+                    </div>
+                    <div class="col-lg-6 col-md-8 col-sm-4">
+                        <h2 class="text-white">Mądrość polega na tym, że wiemy, że nic nie wiemy.</h2>
+                        <p class="text-right" class="text-white">~ Sokrates</p>
+                    </div>
+                    <div class="col-lg-3 col-md-2 col-sm-2">
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
@@ -17,7 +25,7 @@
         PORTFOLIO
     </h1>
     <div class="container projects-box">
-        @for(int i = 0; i <=5; i++)
+        @for(int i = 0; i <=3; i++)
         {
         <div class="row mb-5 mt-5">
                 <div class="col-lg-6 @(i % 2 == 0 ? "order-lg-2" : "order-lg-1") col-md-12 text-center align-self-center">
@@ -34,6 +42,6 @@
     </div>
 </section>
 
-<section id="contact">
+<section id="about">
     
 </section>

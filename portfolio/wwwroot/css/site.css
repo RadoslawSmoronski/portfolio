@@ -22,16 +22,13 @@ body {
     background-color: #0F0F0F;
 }
 
-#about {
-    height: 400px;
-    background-color: #232D3F;
+#welcome {
+    background-position: center;
 }
 
-.about-image {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
-    border-radius: 50%;
+.socrates {
+    background-image: url("../images/background.jpg");
+    background-position: center;
 }
 
 #portfolio {
@@ -49,6 +46,18 @@ body {
     padding-top: 5%;
     padding-right: 15%;
     padding-left: 15%;
+}
+
+.navbar-solid {
+    background-color: #0F0F0F;
+}
+
+.nav-item .nav-link {
+    color: #fff;
+}
+
+.nav-item:hover .nav-link {
+    color: #adadad;
 }
 
 /*.palette-bg-dark {
