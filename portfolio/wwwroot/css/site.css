@@ -20,14 +20,11 @@ html {
 body {
     margin-bottom: 60px;
     background-color: #0F0F0F;
+    overflow-x: hidden;
 }
 
 #welcome {
-    background-position: center;
-}
-
-.socrates {
-    background-image: url("../images/background.jpg");
+    background-image: url("../images/background3.jpg");
     background-position: center;
 }
 
