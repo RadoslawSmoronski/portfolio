@@ -57,6 +57,11 @@ body {
     color: #adadad;
 }
 
+.logo-text {
+    border-right: 2px solid white;
+    padding-right: 38px;
+}
+
 .socrates-img {
     width: auto;
     height: 95%;
@@ -72,6 +77,11 @@ body {
 
     .socrates-img {
         height: 75%;
+    }
+
+    .logo-text {
+        border-right: 0px;
+        padding-right: 0px;
     }
 }
 
