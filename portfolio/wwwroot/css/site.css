@@ -120,6 +120,36 @@ body {
     padding-bottom: 10%;
 }
 
+#contact {
+    background-color: #151a1c;
+}
+
+.contact-box {
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+
+.contact-box ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.contact-box li {
+    color: white;
+    font-size: 20px;
+    margin-top: 25px;
+    transition: background-color 0.3s ease;
+}
+
+.contact-box li:hover {
+    background-color: #1E2427;
+}
+
+.contact-icon {
+    font-size: 40px;
+    margin-right: 20px;
+}
+
 @media (max-width: 575.98px) {
     .header-socrates {
         font-size: 22px;

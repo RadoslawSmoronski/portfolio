@@ -89,25 +89,40 @@
     </div>
 </section>
 
-
-@* <section id="portfolio">
-    <h1 class="portfolio-header text-white text-center m-4">
-        PORTFOLIO
-    </h1>
-    <div class="container projects-box">
-        @for(int i = 0; i <=3; i++)
-        {
-        <div class="row mb-5 mt-5">
-                <div class="col-lg-6 @(i % 2 == 0 ? "order-lg-2" : "order-lg-1") col-md-12 text-center align-self-center">
-                <img class="project-image" src="images/photo.jpg"></img>
+<section id="contact">
+    <div class="section-header" style="background-color: #1E2427;">
+        <h1 class="text-white">
+            Kontakt
+        </h1>
+    </div>
+    <div class="container contact-box">
+        <div class="row">
+            <div class="col-lg-6 order-lg-1 order-2 p-5">
+                <ul>
+                    @for(int i=0; i < 3; i++)
+                    {
+                        <li class="d-flex align-items-center justify-content-center">
+                             <i class="bi bi-envelope contact-icon"></i>
+                             email@rsmoronski.pl
+                            <div class="li-cover"></div>
+                        </li>
+                    }
+                </ul>
             </div>
-                <div class="col-lg-6 @(i % 2 == 0 ? "order-lg-1" : "order-lg-2") col-md-12 d-flex align-items-center justify-content-center">
-                <div>
-                    <h3 class="text-center text-white">Tytuł</h3>
-                    <p class="text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent euismod elit id libero faucibus euismod. Donec convallis urna nibh, sit amet tincidunt quam congue vel. Praesent aliquam erat nisi, sit amet congue mauris pharetra semper. Sed vestibulum eros vel gravida blandit. Mauris nec sagittis nunc.</p>
-                </div>
+            <div class="col-lg-6 order-lg-2 order-1 d-flex align-items-center justify-content-center">
+                <form class="m-lg-0 m-3" style="width: 100%">
+                    <div class="form-group mb-lg-3 mb-5">
+                        <label for="exampleFormControlInput1">Adres Email</label>
+                        <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                    </div>
+                    <div class="form-group mb-lg-3 mb-5">
+                        <label for="exampleFormControlTextarea1">Treść</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-dark">Wyślij Wiadomość</button>
+                </form>
             </div>
         </div>
-        }
     </div>
-</section> *@
+</section>
+
