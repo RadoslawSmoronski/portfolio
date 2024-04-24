@@ -39,10 +39,9 @@ body {
     border-radius: 50%;
 }
 
-.projects-box {
-    padding-top: 5%;
-    padding-right: 15%;
-    padding-left: 15%;
+.about-box {
+    padding-right: 20%;
+    padding-left: 20%;
 }
 
 .navbar-solid {
@@ -68,6 +67,13 @@ body {
     position: absolute;
     bottom: 0;
     right: 0;
+}
+
+.section-header {
+    width: 100%;
+    height: 100px;
+    padding: 30px;
+    background-color: #1E2427;
 }
 
 @media (max-width: 575.98px) {
