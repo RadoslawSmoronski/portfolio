@@ -111,6 +111,15 @@ body {
     padding: 30px;
 }
 
+#skills {
+    background-color: #151a1c;
+}
+
+.skills-box {
+    padding-top: 10%;
+    padding-bottom: 10%;
+}
+
 @media (max-width: 575.98px) {
     .header-socrates {
         font-size: 22px;
