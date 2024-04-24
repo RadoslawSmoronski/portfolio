@@ -20,7 +20,7 @@
 </section>
 
 <section id="about" style="min-height: 465px;">
-    <div class="section-header">
+    <div class="section-header" style="background-color: #1E2427;">
         <h1 class="text-white">
             O mnie
         </h1>
@@ -35,6 +35,36 @@
                     <h3 class="text-center text-white">Radosław Smoroński</h3>
                     <p class="text-center">Jestem studentem Wyższej Szkoły Ekonomii i Informatyki w Krakowie, gdzie studiuję informatykę stosowaną. Od zawsze pasjonuję się technologiami i programowaniem, dlatego też moim celem jest zostanie programistą .NET.</p>
                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="portfolio">
+    <div class="section-header" style="background-color: #1E2427;">
+        <h1 class="text-white">
+            Portfoltio
+        </h1>
+    </div>
+    <div class="portfolio-container">
+        <div class="container">
+            <div class="row">
+                @for (int i = 0; i <= 2; i++)
+                {
+                    <div class="col-lg-4 px-5 pb-5">
+                        <div class="project-box text-center">
+                            <img src="~/images/project-img.png" style="width: 100%; height: auto" />
+                            <div class="text-white pb-1 m-3" style="font-size: 25px;">CMDGameEngine</div>
+                            <div class="cover text-center">
+                                <div class="text-white pb-3 m-3" style="font-size: 25px;">CMDGameEngine</div>
+                                <p class="text-white m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.</p>
+                                <a class="btn btn-dark" href="git" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
+                                    <i class="bi bi-github text-white" style="font-size: 35px;"></i> <br> Repozytorium
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     </div>
