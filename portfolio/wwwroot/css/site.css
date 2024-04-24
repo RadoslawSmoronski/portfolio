@@ -32,6 +32,10 @@ body {
     background-color: black;
 }
 
+#about {
+    background-color: #151a1c;
+}
+
 .project-image {
     width: 250px;
     height: 250px;
