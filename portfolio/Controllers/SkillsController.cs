@@ -32,6 +32,7 @@ namespace portfolio.Controllers
                 obj.ImageUrl = "images/csharp.png";
                 _db.Skills.Add(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Umiejętność zostałą dodana!";
                 return RedirectToAction("Index");
             }
             return View();
@@ -62,13 +63,13 @@ namespace portfolio.Controllers
                 obj.ImageUrl = "images/csharp.png";
                 _db.Skills.Update(obj);
                 _db.SaveChanges();
+                TempData["success"] = "Umiejętność została edytowana!";
                 return RedirectToAction("Index");
             }
             return View();
         }
 
-        [HttpPost, ActionName("delete")]
-        public IActionResult DeletePOST(int? id)
+        public IActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -86,6 +87,7 @@ namespace portfolio.Controllers
             {
                 _db.Skills.Remove(skillFromDb);
                 _db.SaveChanges();
+                TempData["success"] = "Umiejętność została usunięta.";
                 return RedirectToAction("Index");
             }
             return View();

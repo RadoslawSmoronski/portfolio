@@ -26,7 +26,7 @@
                     <th scope="col">#</th>
                     <th scope="col">Umiejętność</th>
                     <th scope="col">Obrazek</th>
-                    <th scope="col"><a asp-controller="skills" asp-action="create" class="btn btn-dark" style="width: 50%; float:right;">Dodaj</a></th>
+                    <th scope="col"><a asp-controller="Skills" asp-action="Create" class="btn btn-dark" style="width: 50%; float:right;">Dodaj</a></th>
                 </tr>
             </thead>
             <tbody>
@@ -37,8 +37,8 @@
                         <td>@obj.Name</td>
                         <td><img height="30px" width="30px" src="@obj.ImageUrl"></img></td>
                         <td class="text-center">
-                            <a asp-controller="skills" asp-action="edit" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</a>
-                            <a asp-controller="skills" asp-action="delete" asp-route-id="@obj.Id" class="btn btn-danger" style="width: 30%;">Usuń</a>
+                            <a asp-controller="Skills" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</a>
+                            <a asp-controller="Skills" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger" style="width: 30%;">Usuń</a>
                         </td>
                     </tr>
                 }
