@@ -52,11 +52,11 @@
 
 /*Projects section CSS*/
 
-#portfolio {
+#portfolio{
     background-color: #151a1c;
 }
 
-.portfolio-container {
+.portfolio .container {
     padding-top: 10%;
     padding-bottom: 10%;
 }

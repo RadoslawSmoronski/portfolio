@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace portfolio.Migrations
+namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class AddSkillsTableToDb : Migration

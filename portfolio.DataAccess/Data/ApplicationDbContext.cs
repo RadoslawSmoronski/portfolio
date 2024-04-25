@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using portfolio.Models;
 
-namespace portfolio.Data
+namespace portfolio.DataAccess.Data
 {
     public class ApplicationDbContext : DbContext
     {

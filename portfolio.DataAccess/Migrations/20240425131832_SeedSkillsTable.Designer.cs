@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using portfolio.Data;
+using portfolio.DataAccess.Data;
 
 #nullable disable
 
-namespace portfolio.Migrations
+namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
     [Migration("20240425131832_SeedSkillsTable")]

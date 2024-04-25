@@ -4,7 +4,7 @@
 
 #pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
 
-namespace portfolio.Migrations
+namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
     public partial class SeedSkillsTable : Migration

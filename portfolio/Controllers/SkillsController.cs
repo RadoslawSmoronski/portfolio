@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using portfolio.Data;
+using portfolio.DataAccess.Data;
 using portfolio.Models;
 
-namespace portfolio.Controllers
+namespace portfolioASP.Controllers
 {
     public class SkillsController : Controller
     {

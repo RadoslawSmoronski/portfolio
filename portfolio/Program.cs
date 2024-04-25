@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using portfolio.Data;
+using portfolio.DataAccess.Data;
 
-namespace portfolio
+namespace portfolioASP
 {
     public class Program
     {
