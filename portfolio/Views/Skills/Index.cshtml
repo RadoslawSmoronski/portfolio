@@ -1,0 +1,46 @@
+﻿<style>
+    #box {
+        padding-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #box th {
+        background-color: #1E2427;
+        color: white;
+    }
+
+    #box td {
+        background-color: #151a1c;
+        color: white;
+        border-bottom: 1px solid #1E2427;
+    }
+</style>
+
+<section id="box">
+    <div class="container">
+        <table class="table bg-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Umiejętność</th>
+                    <th scope="col">Obrazek</th>
+                    <th scope="col"><button class="btn btn-dark" style="width: 50%; float:right;">Dodaj</button></th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < 12; i++)
+                {
+                    <tr>
+                        <td scope="row">1</td>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td class="text-center">
+                            <button class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</button>
+                            <button class="btn btn-danger" style="width: 30%;">Usuń</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
