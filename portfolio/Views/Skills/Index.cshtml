@@ -37,8 +37,8 @@
                         <td>@obj.Name</td>
                         <td><img height="30px" width="30px" src="@obj.ImageUrl"></img></td>
                         <td class="text-center">
-                            <button class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</button>
-                            <button class="btn btn-danger" style="width: 30%;">Usuń</button>
+                            <a asp-controller="skills" asp-action="edit" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</a>
+                            <a asp-controller="skills" asp-action="delete" asp-route-id="@obj.Id" class="btn btn-danger" style="width: 30%;">Usuń</a>
                         </td>
                     </tr>
                 }
