@@ -1,4 +1,6 @@
-﻿<style>
+﻿@model List<Skill>
+
+<style>
     #box {
         padding-top: 10%;
         margin-bottom: 10%;
@@ -28,12 +30,12 @@
                 </tr>
             </thead>
             <tbody>
-                @for (int i = 0; i < 12; i++)
+                @foreach(var obj in Model)
                 {
                     <tr>
-                        <td scope="row">1</td>
-                        <td>Mark</td>
-                        <td>Otto</td>
+                        <td>@obj.Id</td>
+                        <td>@obj.Name</td>
+                        <td><img height="30px" width="30px" src="@obj.ImageUrl"></img></td>
                         <td class="text-center">
                             <button class="btn btn-dark" style="width: 40%; margin-right: 15px;">Edytuj</button>
                             <button class="btn btn-danger" style="width: 30%;">Usuń</button>
