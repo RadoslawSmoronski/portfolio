@@ -36,7 +36,7 @@ namespace portfolioASP
 
             app.MapControllerRoute(
                 name: "default",
-                pattern: "{controller=Home}/{action=Index}/{id?}");
+                pattern: "{area=View}/{controller=Home}/{action=Index}/{id?}");
 
             app.Run();
         }

@@ -3,8 +3,9 @@ using portfolio.DataAccess.Data;
 using portfolio.Models;
 using System.Diagnostics;
 
-namespace portfolioASP.Controllers
+namespace portfolioASP.Areas.View.Controllers
 {
+    [Area("View")]
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;

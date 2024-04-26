@@ -3,8 +3,9 @@ using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 
-namespace portfolioASP.Controllers
+namespace portfolioASP.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class SkillsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -28,7 +29,7 @@ namespace portfolioASP.Controllers
         [HttpPost]
         public IActionResult Create(Skill obj)
         {
-            if(ModelState.IsValid)
+            if (ModelState.IsValid)
             {
                 obj.ImageUrl = "images/csharp.png";
                 _unitOfWork.SkillRepository.Add(obj);
@@ -41,14 +42,14 @@ namespace portfolioASP.Controllers
 
         public IActionResult Edit(int? id)
         {
-            if(id == null)
+            if (id == null)
             {
                 return NotFound();
             }
 
             Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
 
-            if(skillFromDb == null)
+            if (skillFromDb == null)
             {
                 return NotFound();
             }
