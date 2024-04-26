@@ -11,6 +11,7 @@ namespace portfolio.DataAccess.Repository
     public class UnitOfWork : IUnitOfWork
     {
         public ISkillRepository SkillRepository { get; private set; }
+        public IProjectRepository ProjectRepository { get; private set; }
 
         private ApplicationDbContext _db;
 
@@ -18,6 +19,7 @@ namespace portfolio.DataAccess.Repository
         {
             _db = db;
             SkillRepository = new SkillRepository(_db);
+            ProjectRepository = new ProjectRepository(_db);
         }
 
         public void Save()
