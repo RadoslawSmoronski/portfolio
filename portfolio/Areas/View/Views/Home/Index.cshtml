@@ -67,16 +67,16 @@
     <div class="portfolio container">
         <div class="container">
             <div class="row">
-                @for (int i = 0; i < 3; i++)
+                @foreach(var obj in Model.Projects)
                 {
                     <div class="col-lg-4 px-5 pb-5">
                         <div class="project-box text-center">
-                            <img src="~/images/project-img.png" style="width: 100%; height: auto" />
-                            <div class="text-white pb-1 m-3" style="font-size: 25px;">CMDGameEngine</div>
+                            <img src="~/@obj.ImageUrl" style="width: 100%; height: auto" />
+                            <div class="text-white pb-1 m-3" style="font-size: 25px;">@obj.Name</div>
                             <div class="cover text-center">
-                                <div class="text-white pb-3 m-3" style="font-size: 25px;">CMDGameEngine</div>
-                                <p class="text-white m-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.</p>
-                                <a class="btn btn-dark" href="git" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
+                                <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>
+                                <p class="text-white m-3">@obj.Description</p>
+                                <a class="btn btn-dark" href="@obj.GitRepositoryUrl" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
                                     <i class="bi bi-github text-white" style="font-size: 35px;"></i> <br> Repozytorium
                                 </a>
                             </div>
