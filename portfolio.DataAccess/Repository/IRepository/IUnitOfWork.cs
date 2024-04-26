@@ -9,6 +9,7 @@ namespace portfolio.DataAccess.Repository.IRepository
     public interface IUnitOfWork
     {
         ISkillRepository SkillRepository { get; }
+        IProjectRepository ProjectRepository { get; }
 
         void Save();
     }

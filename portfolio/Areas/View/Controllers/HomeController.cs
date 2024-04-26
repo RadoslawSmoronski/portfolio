@@ -24,7 +24,9 @@ namespace portfolioASP.Areas.View.Controllers
             HomePageViewModel model = new HomePageViewModel();
 
             model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
-          
+            model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
+
+
             return View(model);
         }
 
