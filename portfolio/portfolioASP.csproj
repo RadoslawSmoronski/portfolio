@@ -7,6 +7,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controllers\**" />
+    <Content Remove="Controllers\**" />
+    <EmbeddedResource Remove="Controllers\**" />
+    <None Remove="Controllers\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\css\home.css" />
   </ItemGroup>
 
@@ -23,10 +30,6 @@
   <ItemGroup>
     <ProjectReference Include="..\portfolio.DataAccess\portfolio.DataAccess.csproj" />
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controllers\" />
   </ItemGroup>
 
 </Project>
