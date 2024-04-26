@@ -1,5 +1,4 @@
-﻿using portfolio.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -7,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace portfolio.DataAccess.Repository.IRepository
 {
-    public interface ISkillRepository : IRepository<Skill> 
+    public interface IUnitOfWork
     {
-        void Update(Skill obj);
+        ISkillRepository SkillRepository { get; }
+
+        void Save();
     }
 }

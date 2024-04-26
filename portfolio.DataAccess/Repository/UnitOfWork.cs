@@ -1,27 +1,28 @@
 ﻿using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Repository.IRepository;
-using portfolio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace portfolio.DataAccess.Repository
 {
-    public class SkillRepository : Repository<Skill>, ISkillRepository
+    public class UnitOfWork : IUnitOfWork
     {
+        public ISkillRepository SkillRepository { get; private set; }
+
         private ApplicationDbContext _db;
 
-        public SkillRepository(ApplicationDbContext db) : base(db)
+        public UnitOfWork(ApplicationDbContext db)
         {
-            _db = db;    
+            _db = db;
+            SkillRepository = new SkillRepository(_db);
         }
 
-        public void Update(Skill obj)
+        public void Save()
         {
-            _db.Skills.Update(obj);
+            _db.SaveChanges();
         }
     }
 }
