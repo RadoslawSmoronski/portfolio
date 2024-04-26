@@ -9,10 +9,12 @@ namespace portfolioASP.Areas.Admin.Controllers
     public class SkillsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public SkillsController(IUnitOfWork unitOfWork)
+        public SkillsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
         {
             _unitOfWork = unitOfWork;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -21,54 +23,73 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(objSkillsList);
         }
 
-        public IActionResult Create()
+        public IActionResult Upsert(int? id)
         {
-            return View();
+
+            if(id == null || id == 0)
+            {
+                return View(new Skill());
+            }
+            else
+            {
+                Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+
+                if (skillFromDb == null)
+                {
+                    return NotFound();
+                }
+
+                return View(skillFromDb);
+            }
+            
         }
 
         [HttpPost]
-        public IActionResult Create(Skill obj)
+        public IActionResult Upsert(Skill skill, IFormFile? file)
         {
-            if (ModelState.IsValid)
+            if(ModelState.IsValid)
             {
-                obj.ImageUrl = "images/csharp.png";
-                _unitOfWork.SkillRepository.Add(obj);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if(file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\skills");
+
+                    if(string.IsNullOrEmpty(skill.ImageUrl) == false)
+                    {
+                        var oldImagePath = 
+                            Path.Combine(wwwRootPath,skill.ImageUrl.TrimStart('\\'));
+
+                        if(System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
+
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
+
+                    skill.ImageUrl = @"\images\skills\" + fileName;
+                }
+
+                if(skill.Id == 0)
+                {
+                    _unitOfWork.SkillRepository.Add(skill);
+                }
+                else
+                {
+                    _unitOfWork.SkillRepository.Update(skill);
+                }
+
                 _unitOfWork.Save();
-                TempData["success"] = "Umiejętność zostałą dodana!";
+                TempData["success"] = "Umiejętność zostałą utworzona";
                 return RedirectToAction("Index");
-            }
-            return View();
-        }
-
-        public IActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
+                
             }
 
-            Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
-
-            if (skillFromDb == null)
-            {
-                return NotFound();
-            }
-
-            return View(skillFromDb);
-        }
-
-        [HttpPost]
-        public IActionResult Edit(Skill obj)
-        {
-            if (ModelState.IsValid)
-            {
-                obj.ImageUrl = "images/csharp.png";
-                _unitOfWork.SkillRepository.Update(obj);
-                _unitOfWork.Save();
-                TempData["success"] = "Umiejętność została edytowana!";
-                return RedirectToAction("Index");
-            }
-            return View();
+            return View(skill);
         }
 
         public IActionResult Delete(int? id)

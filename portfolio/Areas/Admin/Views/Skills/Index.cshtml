@@ -27,7 +27,7 @@
                     <th scope="col">Umiejętność</th>
                     <th scope="col">Obrazek</th>
                     <th scope="col">
-                        <a asp-controller="Skills" asp-action="Create" class="btn btn-dark" style="width: 50%; float:right;">
+                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark" style="width: 50%; float:right;">
                             <i class="bi bi-plus-circle"></i>
                             Dodaj
                         </a>
@@ -42,7 +42,7 @@
                         <td>@obj.Name</td>
                         <td><img height="30px" width="30px" src="../@obj.ImageUrl"></img></td>
                         <td class="text-center">
-                            <a asp-controller="Skills" asp-action="Edit" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">
+                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">
                                 <i class="bi bi-pen"></i>
                                 Edytuj
                             </a>
