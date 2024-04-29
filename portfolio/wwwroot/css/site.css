@@ -18,9 +18,13 @@ html {
 }
 
 body {
-    margin-bottom: 60px;
     background-color: #0F0F0F;
     overflow-x: hidden;
+}
+
+footer {
+    height: 100px;
+    text-align: center;
 }
 
 
