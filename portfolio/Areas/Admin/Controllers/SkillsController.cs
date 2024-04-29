@@ -107,14 +107,18 @@ namespace portfolioASP.Areas.Admin.Controllers
                 return Json(new { success = false, message = "Nie znaleziono podanego id" });
             }
 
-            string wwwRootPath = _webHostEnvironment.WebRootPath;
-
-            var oldImagePath =
-                Path.Combine(wwwRootPath, skill.ImageUrl.TrimStart('\\'));
-
-            if (System.IO.File.Exists(oldImagePath))
+            if(skill.ImageUrl != null)
             {
-                System.IO.File.Delete(oldImagePath);
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+                var oldImagePath =
+                    Path.Combine(wwwRootPath, skill.ImageUrl.TrimStart('\\'));
+
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
             }
 
             _unitOfWork.SkillRepository.Remove(skill);
