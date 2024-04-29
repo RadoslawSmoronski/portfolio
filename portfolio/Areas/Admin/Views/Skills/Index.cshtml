@@ -40,16 +40,19 @@
                     <tr>
                         <td>@obj.Id</td>
                         <td>@obj.Name</td>
-                        <td><img height="30px" width="30px" src="../@obj.ImageUrl"></img></td>
+                        <td><img height="30px" width="30px" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img></td>
                         <td class="text-center">
                             <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">
                                 <i class="bi bi-pen"></i>
                                 Edytuj
                             </a>
-                            <a asp-controller="Skills" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger" style="width: 30%;">
+@*                             <a asp-controller="Skills" asp-action="Delete" asp-route-id="@obj.Id" class="btn btn-danger" style="width: 30%;">
                                 <i class="bi bi-trash"></i>
                                 Usuń
-                                </a>
+                                </a> *@
+                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </a>
                         </td>
                     </tr>
                 }
@@ -57,3 +60,5 @@
         </table>
     </div>
 </section>
+
+<script src="~/js/skill.js"></script>

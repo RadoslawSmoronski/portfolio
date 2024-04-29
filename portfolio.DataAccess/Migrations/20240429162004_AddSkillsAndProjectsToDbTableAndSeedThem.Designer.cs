@@ -11,8 +11,8 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240425131832_SeedSkillsTable")]
-    partial class SeedSkillsTable
+    [Migration("20240429162004_AddSkillsAndProjectsToDbTableAndSeedThem")]
+    partial class AddSkillsAndProjectsToDbTableAndSeedThem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,63 @@ namespace portfolio.DataAccess.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("portfolio.Models.Project", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("GitRepositoryUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ImageUrl")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Projects");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            GitRepositoryUrl = "git",
+                            ImageUrl = "images/project-img.png",
+                            Name = "Project"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            GitRepositoryUrl = "git",
+                            ImageUrl = "images/project-img.png",
+                            Name = "Project"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            GitRepositoryUrl = "git",
+                            ImageUrl = "images/project-img.png",
+                            Name = "Project"
+                        });
+                });
+
             modelBuilder.Entity("portfolio.Models.Skill", b =>
                 {
                     b.Property<int>("Id")
@@ -33,12 +90,12 @@ namespace portfolio.DataAccess.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
 
                     b.HasKey("Id");
 

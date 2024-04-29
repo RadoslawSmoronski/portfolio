@@ -92,28 +92,34 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(skill);
         }
 
+        [HttpDelete]
         public IActionResult Delete(int? id)
         {
             if (id == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Nie przyjeto id" });
             }
 
-            Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            Skill? skill = _unitOfWork.SkillRepository.Get(u => u.Id == id);
 
-            if (skillFromDb == null)
+            if (skill == null)
             {
-                return NotFound();
+                return Json(new { success = false, message = "Nie znaleziono podanego id" });
             }
 
-            if (ModelState.IsValid)
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            var oldImagePath =
+                Path.Combine(wwwRootPath, skill.ImageUrl.TrimStart('\\'));
+
+            if (System.IO.File.Exists(oldImagePath))
             {
-                _unitOfWork.SkillRepository.Remove(skillFromDb);
-                _unitOfWork.Save();
-                TempData["success"] = "Umiejętność została usunięta.";
-                return RedirectToAction("Index");
+                System.IO.File.Delete(oldImagePath);
             }
-            return View();
+
+            _unitOfWork.SkillRepository.Remove(skill);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Usunieto umiejetnosć" });
         }
     }
 }

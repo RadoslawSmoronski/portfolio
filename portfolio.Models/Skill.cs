@@ -11,6 +11,6 @@ namespace portfolio.Models
         [MaxLength(25)]
         public string Name { get; set; }
         [ValidateNever]
-        public string ImageUrl { get; set; }
+        public string? ImageUrl { get; set; }
     }
 }

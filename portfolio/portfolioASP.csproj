@@ -32,8 +32,4 @@
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="wwwroot\images\skills\" />
-  </ItemGroup>
-
 </Project>
