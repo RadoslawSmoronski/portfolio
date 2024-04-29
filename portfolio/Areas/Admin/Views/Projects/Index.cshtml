@@ -1,0 +1,67 @@
+﻿@model List<Project>
+
+<style>
+    #box {
+        padding-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #box th {
+        background-color: #1E2427;
+        color: white;
+    }
+
+    #box td {
+        background-color: #151a1c;
+        color: white;
+        border-bottom: 1px solid #1E2427;
+    }
+</style>
+
+<section id="box">
+    <div class="container">
+        <div class="header text-center mb-5">
+            <h1 class="text-white">Projekty</h1>
+        </div>
+        <table class="table bg-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Opis</th>
+                    <th scope="col">GitHub</th>
+                    <th scope="col">Obrazek</th>
+                    <th scope="col">
+                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark" style="width: 50%; float:right;">
+                            <i class="bi bi-plus-circle"></i>
+                            Dodaj
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>@obj.Name</td>
+                        <td>@obj.Description</td>
+                        <td>@obj.GitRepositoryUrl</td>
+                        <td><img height="30px" width="30px" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img></td>
+                        <td class="text-center">
+                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">
+                                <i class="bi bi-pen"></i>
+                                Edytuj
+                            </a>
+                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script src="~/js/skill.js"></script>
