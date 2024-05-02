@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - portfolioASP.</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/home.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/portfolioASP.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-md navbar-toggleable-md navbar-transparent box-shadow py-3 fixed-top">
+            <div class="container-fluid">
+                <div style="display:flex; align-items:center;">
+                    <a class="navbar-brand text-white" style="font-size: 10px; display:flex; align-items:center;" href="#">
+                        <img src="~/images/logo.png" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                        <div class="logo-text">
+                            Radosław <br /> Smoroński
+                        </div>
+                    </a>
+                </div>
+                <button class="navbar-toggler bg-white text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="right: 0;">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse show d-md-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="nav-link" href="#about">O mnie</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#skills">Umiejętności</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#portfolioASP">Projekty</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#contact">Kontakt</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="main-container">
+        <main role="main">
+            <partial name="_Notification" />
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer d-flex align-items-center justify-content-center">
+        <div>
+            2024 &copy; Radosław Smoroński
+        </div>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            $(window).on('scroll', function () {
+                var scrollTop = $(this).scrollTop();
+                var navbar = $('.navbar');
+
+                if (scrollTop > 150) {
+                    navbar.addClass('navbar-solid');
+                } else {
+                    navbar.removeClass('navbar-solid');
+                }
+            });
+        });
+    </script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+</html>
