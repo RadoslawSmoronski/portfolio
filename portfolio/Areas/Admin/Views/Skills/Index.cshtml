@@ -6,16 +6,17 @@
         margin-bottom: 10%;
     }
 
-    #box th {
-        background-color: #1E2427;
-        color: white;
-    }
+        #box th {
+            background-color: #1E2427;
+            color: #e3e3e3;
+        }
 
-    #box td {
-        background-color: #151a1c;
-        color: white;
-        border-bottom: 1px solid #1E2427;
-    }
+        #box td {
+            background-color: #151a1c;
+            color: #e3e3e3;
+            border-bottom: 1px solid #1E2427;
+        }
+
 
     .add-btn {
         width: 200px;
@@ -24,27 +25,43 @@
 
     .upsert-btn {
         width: 200px;
+        height: 50px;
         float: right;
     }
 
     .delete-btn {
         width: 200px;
+        height: 50px;
         float: right;
     }
 
+    .project-img {
+        width: 50px;
+        height: 50px;
+    }
+
+
     @@media (max-width: 768px) {
 
-        .add-btn{
+        .add-btn {
             width: 100px;
         }
 
         .upsert-btn {
             width: 100px;
+            height: 60px;
         }
 
         .delete-btn {
             width: 100px;
+            height: 60px;
         }
+
+        .project-img {
+            width: 120px;
+            height: 120px;
+        }
+
 </style>
 
 <section id="box">
@@ -56,7 +73,7 @@
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Umiejętność</th>
+                    <th scope="col">Nazwa</th>
                     <th scope="col">Obrazek</th>
                     <th scope="col">
                         <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
@@ -71,14 +88,19 @@
                 {
                     <tr>
                         <td>@obj.Id</td>
-                        <td>@obj.Name</td>
-                        <td><img height="30px" width="30px" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img></td>
+                        <td>
+                            @obj.Name
+                        </td>
+                        <td>
+                            <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
+                        </td>
                         <td class="text-center">
                             <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 Edytuj
                             </a>
-                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn"> <i class="bi bi-trash-fill"></i>
+                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
+                                <i class="bi bi-trash-fill"></i>
                                 Delete
                             </a>
                         </td>
