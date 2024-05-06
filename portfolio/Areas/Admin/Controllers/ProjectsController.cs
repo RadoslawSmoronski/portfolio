@@ -23,6 +23,26 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(objProjectsList);
         }
 
+        public IActionResult Details(int? id)
+        {
+            if(id != null || id != 0)
+            {
+                Project? projectFromDb = _unitOfWork.ProjectRepository.Get(u => u.Id == id);
+
+                if(projectFromDb == null)
+                {
+                    return NotFound();
+                }
+
+                return View(projectFromDb);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
         /*public IActionResult Upsert(int? id)
         {
 

@@ -91,7 +91,7 @@
                     <th scope="col">Nazwa</th>
                     <th scope="col">Obrazek</th>
                     <th scope="col">
-                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
+                        <a asp-controller="Projects" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             Dodaj
                         </a>
@@ -110,15 +110,15 @@
                             <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
                         </td>
                         <td class="text-center">
-                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
+                            <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 <span>Delete</span>
                             </a>
-                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                            <a asp-controller="Projects" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 <span>Edytuj</span>
                             </a>
-                            <a asp-controller="" asp-action="" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                            <a asp-controller="Projects" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
                                 <span>Podgląd</span>
                             </a>
