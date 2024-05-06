@@ -20,6 +20,8 @@
     .box {
         background-color: #151a1c;
     }
+
+
 </style>
 
 <section id="box">
@@ -40,15 +42,17 @@
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
                             <label asp-for="ImageUrl" class="ms-2"></label>
                         </div>
-                        @if(Model.Id != 0 )
-                        {
-                            <button type="submit" class="btn btn-dark mb-2">Edytuj</button>
-                        }
-                        else
-                        {
-                            <button type="submit" class="btn btn-dark mb-2">Dodaj</button>
-                        }
-                        <a asp-controller="skills" asp-action="index" class="btn btn-outline-dark mb-2">Wróc</a>
+                        <div class="row">
+                            @if(Model.Id != 0 )
+                            {
+                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Dodaj</button>
+                            }
+                            <a asp-controller="skills" asp-action="index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                        </div>
                     </form>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>

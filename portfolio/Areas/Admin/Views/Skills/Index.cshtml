@@ -95,13 +95,13 @@
                             <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
                         </td>
                         <td class="text-center">
-                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
-                                <i class="bi bi-pen"></i>
-                                Edytuj
-                            </a>
                             <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 Delete
+                            </a>
+                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                                <i class="bi bi-pen"></i>
+                                Edytuj
                             </a>
                         </td>
                     </tr>
