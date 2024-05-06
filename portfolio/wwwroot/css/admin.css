@@ -20,6 +20,7 @@ html {
 body {
     background-color: #0F0F0F;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 .row {
