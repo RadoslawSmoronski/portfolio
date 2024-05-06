@@ -16,6 +16,35 @@
         color: white;
         border-bottom: 1px solid #1E2427;
     }
+
+    .add-btn {
+        width: 200px;
+        float: right;
+    }
+
+    .upsert-btn {
+        width: 200px;
+        float: right;
+    }
+
+    .delete-btn {
+        width: 200px;
+        float: right;
+    }
+
+    @@media (max-width: 768px) {
+
+        .add-btn{
+            width: 100px;
+        }
+
+        .upsert-btn {
+            width: 100px;
+        }
+
+        .delete-btn {
+            width: 100px;
+        }
 </style>
 
 <section id="box">
@@ -30,7 +59,7 @@
                     <th scope="col">Umiejętność</th>
                     <th scope="col">Obrazek</th>
                     <th scope="col">
-                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark" style="width: 50%; float:right;">
+                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             Dodaj
                         </a>
@@ -45,11 +74,11 @@
                         <td>@obj.Name</td>
                         <td><img height="30px" width="30px" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img></td>
                         <td class="text-center">
-                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark" style="width: 40%; margin-right: 15px;">
+                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 Edytuj
                             </a>
-                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger mx-2"> <i class="bi bi-trash-fill"></i>
+                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn"> <i class="bi bi-trash-fill"></i>
                                 Delete
                             </a>
                         </td>
