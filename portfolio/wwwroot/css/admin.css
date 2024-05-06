@@ -22,6 +22,10 @@ body {
     overflow-x: hidden;
 }
 
+.row {
+    min-height: 100vh;
+}
+
 footer {
     height: 100px;
     text-align: center;
