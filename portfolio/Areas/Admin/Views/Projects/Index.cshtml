@@ -107,7 +107,7 @@
                             @obj.Name
                         </td>
                         <td>
-                            <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
+                            <img class="project-img" src="../../../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")"></img>
                         </td>
                         <td class="text-center">
                             <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">

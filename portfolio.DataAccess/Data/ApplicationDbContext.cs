@@ -16,19 +16,19 @@ namespace portfolio.DataAccess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>().HasData(
-                new Skill { Id = 1, Name="C#", ImageUrl="images/csharp.png"},
-                new Skill { Id = 2, Name = "C#2", ImageUrl = "images/csharp.png" },
-                new Skill { Id = 3, Name = "C#3", ImageUrl = "images/csharp.png" },
-                new Skill { Id = 4, Name = "C#4", ImageUrl = "images/csharp.png" },
-                new Skill { Id = 5, Name = "C#5", ImageUrl = "images/csharp.png" }
+                new Skill { Id = 1, Name="C#"},
+                new Skill { Id = 2, Name = "C#2"},
+                new Skill { Id = 3, Name = "C#3"},
+                new Skill { Id = 4, Name = "C#4"},
+                new Skill { Id = 5, Name = "C#5"}
                 );
 
             string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.";
 
             modelBuilder.Entity<Project>().HasData(
-                new Project { Id = 1, Name="Project", Description = description, GitRepositoryUrl="git", ImageUrl = "images/project-img.png"},
-                new Project { Id = 2, Name = "Project", Description = description, GitRepositoryUrl = "git", ImageUrl = "images/project-img.png" },
-                new Project { Id = 3, Name = "Project", Description = description, GitRepositoryUrl = "git", ImageUrl = "images/project-img.png" }
+                new Project { Id = 1, Name="Project#1", Description = description, GitRepositoryUrl="git"},
+                new Project { Id = 2, Name = "Project#2", Description = description, GitRepositoryUrl = "git" },
+                new Project { Id = 3, Name = "Project#3", Description = description, GitRepositoryUrl = "git" }
                 );
         }
 

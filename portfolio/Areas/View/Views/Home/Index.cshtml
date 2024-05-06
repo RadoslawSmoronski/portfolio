@@ -72,7 +72,7 @@
                 {
                     <div class="col-lg-4 px-5 pb-5">
                         <div class="project-box text-center">
-                            <img src="~/@obj.ImageUrl" style="width: 100%; height: auto" />
+                            <img src="@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")" style="width: 100%; height: 100%" />
                             <div class="text-white pb-1 m-3" style="font-size: 25px;">@obj.Name</div>
                             <div class="cover text-center">
                                 <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>

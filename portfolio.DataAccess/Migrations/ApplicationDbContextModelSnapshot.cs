@@ -39,7 +39,6 @@ namespace portfolio.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -57,24 +56,21 @@ namespace portfolio.DataAccess.Migrations
                             Id = 1,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
                             GitRepositoryUrl = "git",
-                            ImageUrl = "images/project-img.png",
-                            Name = "Project"
+                            Name = "Project#1"
                         },
                         new
                         {
                             Id = 2,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
                             GitRepositoryUrl = "git",
-                            ImageUrl = "images/project-img.png",
-                            Name = "Project"
+                            Name = "Project#2"
                         },
                         new
                         {
                             Id = 3,
                             Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
                             GitRepositoryUrl = "git",
-                            ImageUrl = "images/project-img.png",
-                            Name = "Project"
+                            Name = "Project#3"
                         });
                 });
 
@@ -102,31 +98,26 @@ namespace portfolio.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            ImageUrl = "images/csharp.png",
                             Name = "C#"
                         },
                         new
                         {
                             Id = 2,
-                            ImageUrl = "images/csharp.png",
                             Name = "C#2"
                         },
                         new
                         {
                             Id = 3,
-                            ImageUrl = "images/csharp.png",
                             Name = "C#3"
                         },
                         new
                         {
                             Id = 4,
-                            ImageUrl = "images/csharp.png",
                             Name = "C#4"
                         },
                         new
                         {
                             Id = 5,
-                            ImageUrl = "images/csharp.png",
                             Name = "C#5"
                         });
                 });
