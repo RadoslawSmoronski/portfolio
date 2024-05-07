@@ -13,6 +13,8 @@ namespace portfolio.DataAccess.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Project> Projects { get; set; }
 
+        public DbSet<Contact> Contacts { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>().HasData(
@@ -29,6 +31,12 @@ namespace portfolio.DataAccess.Data
                 new Project { Id = 1, Name="Project#1", Description = description, GitRepositoryUrl="git"},
                 new Project { Id = 2, Name = "Project#2", Description = description, GitRepositoryUrl = "git" },
                 new Project { Id = 3, Name = "Project#3", Description = description, GitRepositoryUrl = "git" }
+                );
+
+            modelBuilder.Entity<Contact>().HasData(
+                new Contact { Id = 1, Name = "Sample", Content = "email@sample.com", Icon = "bi bi-envelope" },
+                new Contact { Id = 2, Name = "Sample 2", Content = "email_2@sample.com", Icon = "bi bi-envelope" },
+                new Contact { Id = 3, Name = "Sample 3", Content = "email_3@sample.com", Icon = "bi bi-envelope" }
                 );
         }
 
