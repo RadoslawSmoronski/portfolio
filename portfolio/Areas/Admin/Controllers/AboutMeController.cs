@@ -23,26 +23,14 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(aboutMe);
         }
 
-        //public IActionResult Upsert(int? id)
-        //{
+        public IActionResult Edit()
+        {
+            string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue purus. Etiam imperdiet dui a dui ultricies, eget sagittis lacus porttitor.Etiam id eleifend sapien. Suspendisse tempus mauris maximus fringilla rhoncus. Mauris vel nisi mollis, varius ex in, maximus enim. Aenean iaculis lobortis sem sed hendrerit.";
 
-        //    if(id == null || id == 0)
-        //    {
-        //        return View(new Skill());
-        //    }
-        //    else
-        //    {
-        //        Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            AboutMe aboutMe = new AboutMe { Title = "Name and Surname", Description = description };
 
-        //        if (skillFromDb == null)
-        //        {
-        //            return NotFound();
-        //        }
-
-        //        return View(skillFromDb);
-        //    }
-
-        //}
+            return View(aboutMe);
+        }
 
         //[HttpPost]
         //public IActionResult Upsert(Skill skill, IFormFile? file)

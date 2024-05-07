@@ -1,4 +1,4 @@
-﻿@model Project
+﻿@model AboutMe
 
 <style>
     #box {
@@ -29,39 +29,26 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">@(Model.Id != 0 ? "Edytowanie" : "Dodawanie") projektu</h1>
+                <h1 class="text-white text-center mb-5">Edytowanie - O Mnie</h1>
                     <form method="post" enctype="multipart/form-data">
-                        <input asp-for="Id" hidden />
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Nazwa Projektu</label>
-                            <input asp-for="Name" class="form-control">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <label for="exampleFormControlInput1" class="text-white">Tytuł</label>
+                            <input asp-for="Title" class="form-control">
+                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
                             <label for="exampleFormControlInput1" class="text-white">Opis</label>
                             <textarea asp-for="Description" class="form-control"></textarea>
                             <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
-                        <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Repozytorium Git</label>
-                            <input asp-for="GitRepositoryUrl" class="form-control">
-                            <span asp-validation-for="GitRepositoryUrl" class="text-danger"></span>
-                        </div>
                         <div class="form-group mb-3">
+                            <label for="exampleFormControlInput1" class="text-white">Obrazek</label>
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
-                            <label asp-for="ImageUrl" class="ms-2"></label>
                         </div>
                         <div class="row">
-                            @if(Model.Id != 0 )
-                            {
-                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                            }
-                            else
-                            {
-                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Dodaj</button>
-                            }
-                            <a asp-controller="Projects" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                            <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
+                            <a asp-controller="AboutMe" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>
