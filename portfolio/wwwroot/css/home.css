@@ -111,21 +111,27 @@
     .contact-box ul {
         list-style-type: none;
         padding: 0;
+        color: #8f8f8f;
     }
 
-    .contact-box li {
-        color: white;
-        font-size: 20px;
-        margin-top: 25px;
+    .contact-box li a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 50px;
+        text-decoration: none;
+        color: #8f8f8f;
+        font-size: 25px;
+        padding-left: 10px;
         transition: background-color 0.3s ease;
     }
 
-        .contact-box li:hover {
+        .contact-box li a:hover {
             background-color: #1E2427;
         }
 
 .contact-icon {
-    font-size: 40px;
+    font-size: 30px;
     margin-right: 20px;
 }
 

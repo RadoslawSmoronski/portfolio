@@ -97,19 +97,22 @@
     </div>
     <div class="container contact-box">
         <div class="row">
-            <div class="col-lg-6 order-lg-1 order-2 p-5">
+            <div class="col-lg-4 order-lg-1 order-2 p-5">
                 <ul>
                     @foreach(var obj in Model.Contacts)
                     {
-                        <li class="d-flex align-items-center justify-content-center">
-                             <i class="@obj.Icon contact-icon"></i>
-                             @obj.Content
-                            <div class="li-cover"></div>
+                        <li>
+                            <a href="@obj.UrlAddress">
+                                <i class="@(obj.Icon != null ? obj.Icon : "bi bi-person-rolodex") contact-icon"></i>
+                                 @obj.Content
+                                <div class="li-cover"></div>
+                            </a>
                         </li>
                     }
                 </ul>
             </div>
-            <div class="col-lg-6 order-lg-2 order-1 d-flex align-items-center justify-content-center">
+            <div class="col-lg-2 order-lg-2"></div>
+            <div class="col-lg-6 order-lg-3 order-1 d-flex align-items-center justify-content-center">
                 <form class="m-lg-0 m-3" style="width: 100%">
                     <div class="form-group mb-lg-3 mb-5">
                         <label for="exampleFormControlInput1">Adres Email</label>
