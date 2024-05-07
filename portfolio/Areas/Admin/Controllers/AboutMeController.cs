@@ -1,6 +1,6 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Mvc;
-using portfolio.DataAccess.Data;
+using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using System.Drawing.Drawing2D;

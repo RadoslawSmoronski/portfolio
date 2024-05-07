@@ -32,4 +32,8 @@
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\json\" />
+  </ItemGroup>
+
 </Project>
