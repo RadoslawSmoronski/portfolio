@@ -64,53 +64,31 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         }
 
-        //[HttpPost]
-        //public IActionResult Upsert(Skill skill, IFormFile? file)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        string wwwRootPath = _webHostEnvironment.WebRootPath;
-        //        if(file != null)
-        //        {
-        //            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-        //            string productPath = Path.Combine(wwwRootPath, @"images\skills");
+        [HttpPost]
+        public IActionResult Upsert(Contact contact)
+        {
+            if (ModelState.IsValid)
+            {
 
-        //            if(string.IsNullOrEmpty(skill.ImageUrl) == false)
-        //            {
-        //                var oldImagePath = 
-        //                    Path.Combine(wwwRootPath,skill.ImageUrl.TrimStart('\\'));
+                if (contact.Id == 0)
+                {
+                    _unitOfWork.ContactRepository.Add(contact);
+                }
+                else
+                {
+                    _unitOfWork.ContactRepository.Update(contact);
+                }
 
-        //                if(System.IO.File.Exists(oldImagePath))
-        //                {
-        //                    System.IO.File.Delete(oldImagePath);
-        //                }
-        //            }
+                _unitOfWork.Save();
+                TempData["success"] = "Kontakt został utworzony.";
+                return RedirectToAction("Index");
 
-        //            using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
-        //            {
-        //                file.CopyTo(fileStream);
-        //            }
-
-        //            skill.ImageUrl = @"\images\skills\" + fileName;
-        //        }
-
-        //        if(skill.Id == 0)
-        //        {
-        //            _unitOfWork.SkillRepository.Add(skill);
-        //        }
-        //        else
-        //        {
-        //            _unitOfWork.SkillRepository.Update(skill);
-        //        }
-
-        //        _unitOfWork.Save();
-        //        TempData["success"] = "Umiejętność zostałą utworzona";
-        //        return RedirectToAction("Index");
-
-        //    }
-
-        //    return View(skill);
-        //}
+            }
+            else
+            {
+                return View(contact);
+            }
+        }
 
         //[HttpDelete]
         //public IActionResult Delete(int? id)
