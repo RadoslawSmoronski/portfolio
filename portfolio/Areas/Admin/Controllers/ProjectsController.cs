@@ -112,38 +112,38 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(project);
         }
 
-        //[HttpDelete]
-        //public IActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return Json(new { success = false, message = "Nie przyjeto id" });
-        //    }
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new { success = false, message = "Nie przyjeto id" });
+            }
 
-        //    Skill? skill = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            Project? project = _unitOfWork.ProjectRepository.Get(u => u.Id == id);
 
-        //    if (skill == null)
-        //    {
-        //        return Json(new { success = false, message = "Nie znaleziono podanego id" });
-        //    }
+            if (project == null)
+            {
+                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+            }
 
-        //    if(skill.ImageUrl != null)
-        //    {
-        //        string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (project.ImageUrl != null)
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
 
-        //        var oldImagePath =
-        //            Path.Combine(wwwRootPath, skill.ImageUrl.TrimStart('\\'));
+                var oldImagePath =
+                    Path.Combine(wwwRootPath, project.ImageUrl.TrimStart('\\'));
 
 
-        //        if (System.IO.File.Exists(oldImagePath))
-        //        {
-        //            System.IO.File.Delete(oldImagePath);
-        //        }
-        //    }
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
 
-        //    _unitOfWork.SkillRepository.Remove(skill);
-        //    _unitOfWork.Save();
-        //    return Json(new { success = true, message = "Usunieto umiejetnosć" });
-        //}
+            _unitOfWork.ProjectRepository.Remove(project);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Usunieto umiejetnosć" });
+        }
     }
 }
