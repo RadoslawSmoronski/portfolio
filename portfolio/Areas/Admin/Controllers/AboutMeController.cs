@@ -10,10 +10,13 @@ namespace portfolioASP.Areas.Admin.Controllers
     [Area("Admin")]
     public class AboutMeController : Controller
     {
-        JsonFileManager _jsonFileManager;
-        public AboutMeController(JsonFileManager jsonFileManager)
+        private readonly JsonFileManager _jsonFileManager;
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
+        public AboutMeController(JsonFileManager jsonFileManager, IWebHostEnvironment webHostEnvironment)
         {
             _jsonFileManager = jsonFileManager;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
@@ -30,53 +33,45 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(_jsonFileManager.AboutMe);
         }
 
-        //[HttpPost]
-        //public IActionResult Upsert(Skill skill, IFormFile? file)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        string wwwRootPath = _webHostEnvironment.WebRootPath;
-        //        if(file != null)
-        //        {
-        //            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-        //            string productPath = Path.Combine(wwwRootPath, @"images\skills");
+        [HttpPost]
+        public IActionResult Edit(AboutMe aboutMe, IFormFile? file)
+        {
+            if (ModelState.IsValid)
+            {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\aboutme");
 
-        //            if(string.IsNullOrEmpty(skill.ImageUrl) == false)
-        //            {
-        //                var oldImagePath = 
-        //                    Path.Combine(wwwRootPath,skill.ImageUrl.TrimStart('\\'));
+                    if (string.IsNullOrEmpty(aboutMe.ImageUrl) == false)
+                    {
+                        var oldImagePath =
+                            Path.Combine(wwwRootPath, aboutMe.ImageUrl.TrimStart('\\'));
 
-        //                if(System.IO.File.Exists(oldImagePath))
-        //                {
-        //                    System.IO.File.Delete(oldImagePath);
-        //                }
-        //            }
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
 
-        //            using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
-        //            {
-        //                file.CopyTo(fileStream);
-        //            }
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
 
-        //            skill.ImageUrl = @"\images\skills\" + fileName;
-        //        }
+                    aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
+                }
 
-        //        if(skill.Id == 0)
-        //        {
-        //            _unitOfWork.SkillRepository.Add(skill);
-        //        }
-        //        else
-        //        {
-        //            _unitOfWork.SkillRepository.Update(skill);
-        //        }
+                _jsonFileManager.Edit(aboutMe);
 
-        //        _unitOfWork.Save();
-        //        TempData["success"] = "Umiejętność zostałą utworzona";
-        //        return RedirectToAction("Index");
+                TempData["success"] = "Edytowałes O Mnie";
+                return RedirectToAction("Index");
 
-        //    }
+            }
 
-        //    return View(skill);
-        //}
+            return View(aboutMe);
+        }
 
     }
 }
