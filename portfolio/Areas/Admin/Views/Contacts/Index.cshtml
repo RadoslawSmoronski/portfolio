@@ -1,4 +1,4 @@
-﻿@model List<Contact>
+﻿@model List<Project>
 
 <style>
     #box {
@@ -20,6 +20,12 @@
 
     .add-btn {
         width: 200px;
+        float: right;
+    }
+
+    .details-btn {
+        width: 200px;
+        height: 50px;
         float: right;
     }
 
@@ -47,14 +53,23 @@
             width: 100px;
         }
 
+        .details-btn {
+            width: 100px;
+            height: 40px;
+        }
+
+        span {
+            display: none;
+        }
+
         .upsert-btn {
             width: 100px;
-            height: 60px;
+            height: 40px;
         }
 
         .delete-btn {
             width: 100px;
-            height: 60px;
+            height: 40px;
         }
 
         .project-img {
@@ -67,16 +82,16 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Kontakty</h1>
+            <h1 class="text-white">Projekty</h1>
         </div>
         <table class="table bg-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Ikona</th>
-                    <th scope="col">Zawartość</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Obrazek</th>
                     <th scope="col">
-                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
+                        <a asp-controller="Projects" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             Dodaj
                         </a>
@@ -89,19 +104,23 @@
                     <tr>
                         <td>@obj.Id</td>
                         <td>
-                            <i class="@obj.Icon"></i>
+                            @obj.Name
                         </td>
                         <td>
-                            @obj.Content
+                            <img class="project-img" src="../../../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")"></img>
                         </td>
                         <td class="text-center">
-                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
+                            <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
-                                Delete
+                                <span>Delete</span>
                             </a>
-                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                            <a asp-controller="Projects" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
-                                Edytuj
+                                <span>Edytuj</span>
+                            </a>
+                            <a asp-controller="Projects" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                                <i class="bi bi-search"></i>
+                                <span>Podgląd</span>
                             </a>
                         </td>
                     </tr>
