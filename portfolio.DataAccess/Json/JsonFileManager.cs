@@ -36,5 +36,13 @@ namespace portfolio.DataAccess.Json
 
             return aboutMe;
         }
+
+        public void Edit(AboutMe aboutMe)
+        {
+            string filePath = "../portfolio/wwwroot/json/aboutme.json";
+
+            string newJson = JsonConvert.SerializeObject(aboutMe);
+            File.WriteAllText(filePath, newJson);
+        }
     }
 }
