@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using portfolio.DataAccess.Data;
+using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.ViewModels;
@@ -12,11 +13,13 @@ namespace portfolioASP.Areas.View.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
+        private readonly JsonFileManager _jsonFileManager;
 
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork, JsonFileManager jsonFileManager)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
+            _jsonFileManager = jsonFileManager;
         }
 
         public IActionResult Index()
@@ -26,6 +29,7 @@ namespace portfolioASP.Areas.View.Controllers
             model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
             model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
             model.Contacts = _unitOfWork.ContactRepository.GetAll().ToList();
+            model.AboutMe = _jsonFileManager.AboutMe;
 
 
             return View(model);
