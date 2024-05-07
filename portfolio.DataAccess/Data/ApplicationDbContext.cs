@@ -12,7 +12,6 @@ namespace portfolio.DataAccess.Data
 
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Project> Projects { get; set; }
-
         public DbSet<Contact> Contacts { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -34,9 +33,9 @@ namespace portfolio.DataAccess.Data
                 );
 
             modelBuilder.Entity<Contact>().HasData(
-                new Contact { Id = 1, Name = "Sample", Content = "email@sample.com", Icon = "bi bi-envelope" },
-                new Contact { Id = 2, Name = "Sample 2", Content = "email_2@sample.com", Icon = "bi bi-envelope" },
-                new Contact { Id = 3, Name = "Sample 3", Content = "email_3@sample.com", Icon = "bi bi-envelope" }
+                new Contact { Id = 1, Name = "Facebook", Content = "/name.surname", UrlAddress = "https://www.facebook.com/", Icon = "bi bi-facebook" },
+                new Contact { Id = 2, Name = "Sample 2", Content = "email_2@sample.com"},
+                new Contact { Id = 3, Name = "Sample 3", Content = "email_3@sample.com"}
                 );
         }
 

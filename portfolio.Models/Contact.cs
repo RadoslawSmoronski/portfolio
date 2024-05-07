@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
 
 namespace portfolio.Models
 {
@@ -15,6 +16,7 @@ namespace portfolio.Models
         public string Name { get; set; }
         [Required]
         public string Content { get; set; }
-        public string Icon { get; set; }
+        public string? UrlAddress { get; set; }
+        public string? Icon { get; set; }
     }
 }

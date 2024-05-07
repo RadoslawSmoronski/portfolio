@@ -7,11 +7,27 @@
 namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddSkillsAndProjectsToDbTableAndSeedThem : Migration
+    public partial class AddContactsProjectsSkillsTablesToTbAndSeedThem : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "Contacts",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    UrlAddress = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Icon = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contacts", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Projects",
                 columns: table => new
@@ -43,6 +59,16 @@ namespace portfolio.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "Contacts",
+                columns: new[] { "Id", "Content", "Icon", "Name", "UrlAddress" },
+                values: new object[,]
+                {
+                    { 1, "/name.surname", "bi bi-facebook", "Facebook", "https://www.facebook.com/" },
+                    { 2, "email_2@sample.com", null, "Sample 2", null },
+                    { 3, "email_3@sample.com", null, "Sample 3", null }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Projects",
                 columns: new[] { "Id", "Description", "GitRepositoryUrl", "ImageUrl", "Name" },
                 values: new object[,]
@@ -68,6 +94,9 @@ namespace portfolio.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Contacts");
+
             migrationBuilder.DropTable(
                 name: "Projects");
 

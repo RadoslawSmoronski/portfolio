@@ -11,8 +11,8 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240506170720_AddSkillsAndProjectsToDbTableAndSeedThem")]
-    partial class AddSkillsAndProjectsToDbTableAndSeedThem
+    [Migration("20240507130619_AddContactsProjectsSkillsTablesToTbAndSeedThem")]
+    partial class AddContactsProjectsSkillsTablesToTbAndSeedThem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -23,6 +23,55 @@ namespace portfolio.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("portfolio.Models.Contact", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlAddress")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Contacts");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "/name.surname",
+                            Icon = "bi bi-facebook",
+                            Name = "Facebook",
+                            UrlAddress = "https://www.facebook.com/"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "email_2@sample.com",
+                            Name = "Sample 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "email_3@sample.com",
+                            Name = "Sample 3"
+                        });
+                });
 
             modelBuilder.Entity("portfolio.Models.Project", b =>
                 {

@@ -34,11 +34,13 @@ namespace portfolio.DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Icon")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
                         .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("UrlAddress")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -49,22 +51,21 @@ namespace portfolio.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Content = "email@sample.com",
-                            Icon = "bi bi-envelope",
-                            Name = "Sample"
+                            Content = "/name.surname",
+                            Icon = "bi bi-facebook",
+                            Name = "Facebook",
+                            UrlAddress = "https://www.facebook.com/"
                         },
                         new
                         {
                             Id = 2,
                             Content = "email_2@sample.com",
-                            Icon = "bi bi-envelope",
                             Name = "Sample 2"
                         },
                         new
                         {
                             Id = 3,
                             Content = "email_3@sample.com",
-                            Icon = "bi bi-envelope",
                             Name = "Sample 3"
                         });
                 });
