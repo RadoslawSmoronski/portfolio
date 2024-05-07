@@ -43,26 +43,26 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         }
 
-        //public IActionResult Upsert(int? id)
-        //{
+        public IActionResult Upsert(int? id)
+        {
 
-        //    if(id == null || id == 0)
-        //    {
-        //        return View(new Skill());
-        //    }
-        //    else
-        //    {
-        //        Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            if (id == null || id == 0)
+            {
+                return View(new Contact());
+            }
+            else
+            {
+                Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
 
-        //        if (skillFromDb == null)
-        //        {
-        //            return NotFound();
-        //        }
+                if (contactFromDb == null)
+                {
+                    return NotFound();
+                }
 
-        //        return View(skillFromDb);
-        //    }
+                return View(contactFromDb);
+            }
 
-        //}
+        }
 
         //[HttpPost]
         //public IActionResult Upsert(Skill skill, IFormFile? file)
