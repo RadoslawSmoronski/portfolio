@@ -41,9 +41,8 @@
         float: right;
     }
 
-    .project-img {
-        width: 50px;
-        height: 50px;
+    .contact-icon {
+        font-size: 30px;
     }
 
 
@@ -72,9 +71,8 @@
             height: 40px;
         }
 
-        .project-img {
-            width: 120px;
-            height: 120px;
+        .contact-icon {
+            font-size: 80px;
         }
 
 </style>
@@ -106,8 +104,8 @@
                         <td>
                             @obj.Name
                         </td>
-                        <td>
-                            <i class="@(obj.Icon != null ? obj.Icon : "bi bi-person-rolodex") contact-icon"></i>
+                        <td class="contact-icon">
+                            <i class="@(obj.Icon != null ? obj.Icon : "bi bi-person-rolodex")"></i>
                         </td>
                         <td class="text-center">
                             <a onClick=Delete('/admin/contacts/delete/@obj.Id') class="btn btn-danger delete-btn">

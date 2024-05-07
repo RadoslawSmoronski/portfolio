@@ -23,6 +23,26 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(objContactsList);
         }
 
+        public IActionResult Details(int? id)
+        {
+            if (id != null || id != 0)
+            {
+                Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
+
+                if (contactFromDb == null)
+                {
+                    return NotFound();
+                }
+
+                return View(contactFromDb);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+        }
+
         //public IActionResult Upsert(int? id)
         //{
 
@@ -41,7 +61,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         //        return View(skillFromDb);
         //    }
-            
+
         //}
 
         //[HttpPost]
@@ -86,7 +106,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         //        _unitOfWork.Save();
         //        TempData["success"] = "Umiejętność zostałą utworzona";
         //        return RedirectToAction("Index");
-                
+
         //    }
 
         //    return View(skill);
