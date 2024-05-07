@@ -1,0 +1,67 @@
+﻿@model Skill
+
+<style>
+    #box {
+        padding-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #box th {
+        background-color: #1E2427;
+        color: white;
+    }
+
+    #box td {
+        background-color: #151a1c;
+        color: white;
+        border-bottom: 1px solid #1E2427;
+    }
+
+    .box {
+        background-color: #151a1c;
+    }
+
+
+</style>
+
+<section id="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-1 col-lg-3 col-md-2"></div>
+            <div class="col-10 col-lg-6 col-md-8 box p-5">
+                <h1 class="text-white text-center mb-5">@(Model.Id != 0 ? "Edytowanie" : "Dodawanie") umiejętności</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        <input asp-for="Id" hidden />
+                        <input asp-for="ImageUrl" hidden />
+                        <div class="form-group mb-4">
+                            <label for="exampleFormControlInput1" class="text-white">Nazwa Umiejętności</label>
+                            <input asp-for="Name" class="form-control">
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-3">
+                            <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
+                            <label asp-for="ImageUrl" class="ms-2"></label>
+                        </div>
+                        <div class="row">
+                            @if(Model.Id != 0 )
+                            {
+                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
+                            }
+                            else
+                            {
+                                <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Dodaj</button>
+                            }
+                            <a asp-controller="skills" asp-action="index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-1 col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}

@@ -1,0 +1,114 @@
+﻿@model List<Skill>
+
+<style>
+    #box {
+        padding-top: 5%;
+        margin-bottom: 10%;
+    }
+
+        #box th {
+            background-color: #1E2427;
+            color: #e3e3e3;
+        }
+
+        #box td {
+            background-color: #151a1c;
+            color: #e3e3e3;
+            border-bottom: 1px solid #1E2427;
+        }
+
+
+    .add-btn {
+        width: 200px;
+        float: right;
+    }
+
+    .upsert-btn {
+        width: 200px;
+        height: 50px;
+        float: right;
+    }
+
+    .delete-btn {
+        width: 200px;
+        height: 50px;
+        float: right;
+    }
+
+    .project-img {
+        width: 50px;
+        height: 50px;
+    }
+
+
+    @@media (max-width: 768px) {
+
+        .add-btn {
+            width: 100px;
+        }
+
+        .upsert-btn {
+            width: 100px;
+            height: 60px;
+        }
+
+        .delete-btn {
+            width: 100px;
+            height: 60px;
+        }
+
+        .project-img {
+            width: 120px;
+            height: 120px;
+        }
+
+</style>
+
+<section id="box">
+    <div class="container">
+        <div class="header text-center mb-5">
+            <h1 class="text-white">Umiejętności</h1>
+        </div>
+        <table class="table bg-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Obrazek</th>
+                    <th scope="col">
+                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
+                            <i class="bi bi-plus-circle"></i>
+                            Dodaj
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>
+                            @obj.Name
+                        </td>
+                        <td>
+                            <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
+                        </td>
+                        <td class="text-center">
+                            <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
+                                <i class="bi bi-trash-fill"></i>
+                                Delete
+                            </a>
+                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                                <i class="bi bi-pen"></i>
+                                Edytuj
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</section>
+
+<script src="~/js/admin.js"></script>
