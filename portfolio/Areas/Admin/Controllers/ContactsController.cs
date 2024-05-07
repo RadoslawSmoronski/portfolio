@@ -90,38 +90,24 @@ namespace portfolioASP.Areas.Admin.Controllers
             }
         }
 
-        //[HttpDelete]
-        //public IActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return Json(new { success = false, message = "Nie przyjeto id" });
-        //    }
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new { success = false, message = "Nie przyjeto id" });
+            }
 
-        //    Skill? skill = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
 
-        //    if (skill == null)
-        //    {
-        //        return Json(new { success = false, message = "Nie znaleziono podanego id" });
-        //    }
+            if (contactFromDb == null)
+            {
+                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+            }
 
-        //    if(skill.ImageUrl != null)
-        //    {
-        //        string wwwRootPath = _webHostEnvironment.WebRootPath;
-
-        //        var oldImagePath =
-        //            Path.Combine(wwwRootPath, skill.ImageUrl.TrimStart('\\'));
-
-
-        //        if (System.IO.File.Exists(oldImagePath))
-        //        {
-        //            System.IO.File.Delete(oldImagePath);
-        //        }
-        //    }
-
-        //    _unitOfWork.SkillRepository.Remove(skill);
-        //    _unitOfWork.Save();
-        //    return Json(new { success = true, message = "Usunieto umiejetnosć" });
-        //}
+            _unitOfWork.ContactRepository.Remove(contactFromDb);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Usunieto kontakt" });
+        }
     }
 }
