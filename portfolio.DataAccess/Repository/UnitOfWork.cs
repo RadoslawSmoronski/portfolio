@@ -12,7 +12,6 @@ namespace portfolio.DataAccess.Repository
     {
         public ISkillRepository SkillRepository { get; private set; }
         public IProjectRepository ProjectRepository { get; private set; }
-
         public IContactRepository ContactRepository { get; private set; }
 
         private ApplicationDbContext _db;

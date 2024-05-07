@@ -25,6 +25,7 @@ namespace portfolioASP.Areas.View.Controllers
 
             model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
             model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
+            model.Contacts = _unitOfWork.ContactRepository.GetAll().ToList();
 
 
             return View(model);

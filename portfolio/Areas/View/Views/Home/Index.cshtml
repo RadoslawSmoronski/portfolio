@@ -99,11 +99,11 @@
         <div class="row">
             <div class="col-lg-6 order-lg-1 order-2 p-5">
                 <ul>
-                    @for(int i=0; i < 3; i++)
+                    @foreach(var obj in Model.Contacts)
                     {
                         <li class="d-flex align-items-center justify-content-center">
-                             <i class="bi bi-envelope contact-icon"></i>
-                             email@rsmoronski.pl
+                             <i class="@obj.Icon contact-icon"></i>
+                             @obj.Content
                             <div class="li-cover"></div>
                         </li>
                     }
