@@ -1,4 +1,4 @@
-﻿@model List<Project>
+﻿@model List<Contact>
 
 <style>
     #box {
@@ -82,16 +82,16 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Projekty</h1>
+            <h1 class="text-white">Kontakty</h1>
         </div>
         <table class="table bg-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
                     <th scope="col">Nazwa</th>
-                    <th scope="col">Obrazek</th>
+                    <th scope="col">Ikona</th>
                     <th scope="col">
-                        <a asp-controller="Projects" asp-action="Upsert" class="btn btn-dark add-btn">
+                        <a asp-controller="Contacts" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             Dodaj
                         </a>
@@ -107,18 +107,18 @@
                             @obj.Name
                         </td>
                         <td>
-                            <img class="project-img" src="../../../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")"></img>
+                            <i class="@(obj.Icon != null ? obj.Icon : "bi bi-person-rolodex") contact-icon"></i>
                         </td>
                         <td class="text-center">
-                            <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">
+                            <a onClick=Delete('/admin/contacts/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 <span>Delete</span>
                             </a>
-                            <a asp-controller="Projects" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                            <a asp-controller="Contacts" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 <span>Edytuj</span>
                             </a>
-                            <a asp-controller="Projects" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                            <a asp-controller="Contacts" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
                                 <span>Podgląd</span>
                             </a>
