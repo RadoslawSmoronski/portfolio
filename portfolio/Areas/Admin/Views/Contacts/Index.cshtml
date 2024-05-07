@@ -1,4 +1,4 @@
-﻿@model List<Skill>
+﻿@model List<Contact>
 
 <style>
     #box {
@@ -67,14 +67,14 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Umiejętności</h1>
+            <h1 class="text-white">Kontakty</h1>
         </div>
         <table class="table bg-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Obrazek</th>
+                    <th scope="col">Ikona</th>
+                    <th scope="col">Zawartość</th>
                     <th scope="col">
                         <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
@@ -89,10 +89,10 @@
                     <tr>
                         <td>@obj.Id</td>
                         <td>
-                            @obj.Name
+                            <i class="@obj.Icon"></i>
                         </td>
                         <td>
-                            <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
+                            @obj.Content
                         </td>
                         <td class="text-center">
                             <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
