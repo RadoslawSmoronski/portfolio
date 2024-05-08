@@ -18,6 +18,7 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly JsonFileManager _jsonFileManager;
         private readonly IEmailService _emailService;
+        private readonly HomePageViewModel _model;
 
         public HomeController(
             ILogger<HomeController> logger, IUnitOfWork unitOfWork,
@@ -27,19 +28,19 @@ namespace portfolioASP.Areas.View.Controllers
             _unitOfWork = unitOfWork;
             _jsonFileManager = jsonFileManager;
             _emailService = emailService;
+
+            _model = new HomePageViewModel
+            {
+                Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
+                Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
+                Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
+                AboutMe = _jsonFileManager.AboutMe
+            };
         }
 
         public IActionResult Index()
         {
-            HomePageViewModel model = new HomePageViewModel();
-
-            model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
-            model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
-            model.Contacts = _unitOfWork.ContactRepository.GetAll().ToList();
-            model.AboutMe = _jsonFileManager.AboutMe;
-
-
-            return View(model);
+            return View(_model);
         }
 
         [HttpPost]
@@ -52,14 +53,7 @@ namespace portfolioASP.Areas.View.Controllers
 
             await _emailService.SendEmailAsync(contactForm.Email, contactForm.Subject, contactForm.Name);
 
-            HomePageViewModel model = new HomePageViewModel();
-
-            model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
-            model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
-            model.Contacts = _unitOfWork.ContactRepository.GetAll().ToList();
-            model.AboutMe = _jsonFileManager.AboutMe;
-
-            return View(model);
+            return RedirectToAction("Index", _model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
