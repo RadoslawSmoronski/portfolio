@@ -1,4 +1,7 @@
-﻿namespace portfolio.Utility.Email
+﻿using System.Net.Mail;
+using System.Net;
+
+namespace portfolio.Utility.Email
 {
     public class EmailSettings
     {
@@ -7,6 +10,29 @@
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set;}
         public bool EnableSsl { get; set; }
+
+        public bool CheckConnection()
+        {
+            try
+            {
+                var client = new SmtpClient(SmtpServer, SmtpPort)
+                {
+                    EnableSsl = EnableSsl,
+                    UseDefaultCredentials = false,
+                    Credentials = new NetworkCredential(Email, Password)
+                };
+
+                MailMessage message = new MailMessage(from: Email, to: Email, "Connection test", "the connection test was successful");
+
+                client.Send(message);
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+        }
 
     }
 }

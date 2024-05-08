@@ -19,7 +19,6 @@ namespace portfolio.Utility.Email
             _emailSettings = emailSettings.Value;
         }
 
-
         public Task SendEmailAsync(string email, string subject, string content)
         {
 
@@ -37,5 +36,6 @@ namespace portfolio.Utility.Email
                                 content));
 
         }
+
     }
 }
