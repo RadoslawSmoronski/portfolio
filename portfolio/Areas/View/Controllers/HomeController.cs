@@ -18,18 +18,15 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly JsonFileManager _jsonFileManager;
         private readonly IEmailService _emailService;
-        private readonly EmailSettings _emailSettings;
 
         public HomeController(
             ILogger<HomeController> logger, IUnitOfWork unitOfWork,
-            JsonFileManager jsonFileManager, IEmailService emailService,
-            IOptions<EmailSettings> settings)
+            JsonFileManager jsonFileManager, IEmailService emailService)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
             _jsonFileManager = jsonFileManager;
             _emailService = emailService;
-            _emailSettings = settings.Value;
         }
 
         public IActionResult Index()

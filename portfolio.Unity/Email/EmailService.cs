@@ -12,28 +12,26 @@ namespace portfolio.Utility.Email
 {
     public class EmailService : IEmailService
     {
-        private readonly EmailSettings _settings;
+        private readonly EmailSettings _emailSettings;
 
-        public EmailService(IOptions<EmailSettings> settings)
+        public EmailService(IOptions<EmailSettings> emailSettings)
         {
-            _settings = settings.Value;
+            _emailSettings = emailSettings.Value;
         }
 
 
         public Task SendEmailAsync(string email, string subject, string content)
         {
-            var mail = _settings.Email;
-            var pw = _settings.Password;
 
-            var client = new SmtpClient("smtp.gmail.com", 587)
+            var client = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.SmtpPort)
             {
-                EnableSsl = true,
+                EnableSsl = _emailSettings.EnableSsl,
                 UseDefaultCredentials = false,
-                Credentials = new NetworkCredential(mail, pw)
+                Credentials = new NetworkCredential(_emailSettings.Email, _emailSettings.Password)
             };
 
             return client.SendMailAsync(
-                new MailMessage(from: mail,
+                new MailMessage(from: _emailSettings.Email,
                                 to: email,
                                 subject,
                                 content));
