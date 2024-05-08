@@ -35,8 +35,11 @@ namespace portfolioASP.Areas.View.Controllers
             return View(model);
         }
 
-        public IActionResult Privacy()
+        [HttpPost]
+        public IActionResult Index(ContactForm model)
         {
+
+
             return View();
         }
 
