@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
+using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
@@ -16,13 +18,18 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly JsonFileManager _jsonFileManager;
         private readonly IEmailService _emailService;
+        private readonly EmailSettings _emailSettings;
 
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork, JsonFileManager jsonFileManager, IEmailService emailService)
+        public HomeController(
+            ILogger<HomeController> logger, IUnitOfWork unitOfWork,
+            JsonFileManager jsonFileManager, IEmailService emailService,
+            IOptions<EmailSettings> settings)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
             _jsonFileManager = jsonFileManager;
             _emailService = emailService;
+            _emailSettings = settings.Value;
         }
 
         public IActionResult Index()
@@ -46,7 +53,7 @@ namespace portfolioASP.Areas.View.Controllers
                 contactForm = new ContactForm();
             }
 
-            await _emailService.SendEmailAsync(contactForm);
+            await _emailService.SendEmailAsync("radoslaw.smo@gmail.com", "test subject", "test content");
 
             HomePageViewModel model = new HomePageViewModel();
 

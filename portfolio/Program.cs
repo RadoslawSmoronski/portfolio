@@ -21,9 +21,8 @@ namespace portfolioASP
                 (options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<JsonFileManager>();
-            builder.Services.AddTransient<IEmailService, EmailService>(Configuration.GetSection("EmailSettings"));
-
-
+            builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.AddTransient<IEmailService, EmailService>();
 
             var app = builder.Build();
 
