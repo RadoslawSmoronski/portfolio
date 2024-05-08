@@ -113,7 +113,7 @@
             </div>
             <div class="col-lg-2 order-lg-2"></div>
             <div class="col-lg-6 order-lg-3 order-1 d-flex align-items-center justify-content-center">
-                <form class="m-lg-0 m-3" style="width: 100%">
+                <form method="post" class="m-lg-0 m-3" style="width: 100%">
                     <div class="form-group mb-lg-3 mb-5">
                         <label for="exampleFormControlInput1">Adres Email</label>
                         <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
@@ -128,4 +128,10 @@
         </div>
     </div>
 </section>
+
+@section Scripts {
+    @{
+        <partial name="_ValidationScriptsPartial" />
+    }
+}
 

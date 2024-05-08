@@ -4,6 +4,7 @@ using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.ViewModels;
+using portfolio.Utility.Email;
 using System.Diagnostics;
 
 namespace portfolioASP.Areas.View.Controllers
@@ -14,12 +15,14 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly JsonFileManager _jsonFileManager;
+        private readonly IEmailService _emailService;
 
-        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork, JsonFileManager jsonFileManager)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork unitOfWork, JsonFileManager jsonFileManager, IEmailService emailService)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
             _jsonFileManager = jsonFileManager;
+            _emailService = emailService;
         }
 
         public IActionResult Index()
@@ -36,11 +39,23 @@ namespace portfolioASP.Areas.View.Controllers
         }
 
         [HttpPost]
-        public IActionResult Index(ContactForm model)
+        public async Task<IActionResult> Index(ContactForm contactForm)
         {
+            if(contactForm == null)
+            {
+                contactForm = new ContactForm();
+            }
 
+            await _emailService.SendEmailAsync(contactForm);
 
-            return View();
+            HomePageViewModel model = new HomePageViewModel();
+
+            model.Skills = _unitOfWork.SkillRepository.GetAll().ToList();
+            model.Projects = _unitOfWork.ProjectRepository.GetAll().ToList();
+            model.Contacts = _unitOfWork.ContactRepository.GetAll().ToList();
+            model.AboutMe = _jsonFileManager.AboutMe;
+
+            return View(model);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

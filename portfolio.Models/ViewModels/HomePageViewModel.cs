@@ -14,6 +14,5 @@ namespace portfolio.Models.ViewModels
         public List<Contact> Contacts { get; set; }
         public AboutMe AboutMe { get; set; }
 
-
     }
 }

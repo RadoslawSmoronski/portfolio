@@ -5,11 +5,11 @@ VisualStudioVersion = 17.9.34714.143
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolioASP", "portfolio\portfolioASP.csproj", "{DB09F268-93CE-4498-91CF-77F835FFB469}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portfolio.DataAccess", "portfolio.DataAccess\portfolio.DataAccess.csproj", "{3686E250-FE86-4CB3-B74B-ED7AC5EDCDE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.DataAccess", "portfolio.DataAccess\portfolio.DataAccess.csproj", "{3686E250-FE86-4CB3-B74B-ED7AC5EDCDE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portfolio.Unity", "portfolio.Unity\portfolio.Unity.csproj", "{FC77C746-D6F5-46F7-A408-CFC276D23248}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.Utility", "portfolio.Unity\portfolio.Utility.csproj", "{FC77C746-D6F5-46F7-A408-CFC276D23248}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "portfolio.Models", "portfolio.Models\portfolio.Models.csproj", "{2AB2D74B-BDFC-4B0F-95ED-2E3CB6A24142}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "portfolio.Models", "portfolio.Models\portfolio.Models.csproj", "{2AB2D74B-BDFC-4B0F-95ED-2E3CB6A24142}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

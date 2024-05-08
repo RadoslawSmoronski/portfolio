@@ -1,8 +1,11 @@
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository;
 using portfolio.DataAccess.Repository.IRepository;
+using portfolio.Utility.Email;
+using System.Configuration;
 
 namespace portfolioASP
 {
@@ -18,6 +21,9 @@ namespace portfolioASP
                 (options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.AddScoped<JsonFileManager>();
+            builder.Services.AddTransient<IEmailService, EmailService>(Configuration.GetSection("EmailSettings"));
+
+
 
             var app = builder.Build();
 
