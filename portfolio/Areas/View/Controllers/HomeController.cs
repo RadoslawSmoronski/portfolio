@@ -47,10 +47,10 @@ namespace portfolioASP.Areas.View.Controllers
         {
             if(contactForm == null)
             {
-                contactForm = new ContactForm();
+                return NotFound();
             }
 
-            await _emailService.SendEmailAsync("radoslaw.smo@gmail.com", "test subject", "test content");
+            await _emailService.SendEmailAsync(contactForm.Email, contactForm.Subject, contactForm.Name);
 
             HomePageViewModel model = new HomePageViewModel();
 
