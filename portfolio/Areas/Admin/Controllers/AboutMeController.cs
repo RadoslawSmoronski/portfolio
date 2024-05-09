@@ -10,27 +10,21 @@ namespace portfolioASP.Areas.Admin.Controllers
     [Area("Admin")]
     public class AboutMeController : Controller
     {
-        private readonly JsonFileManager _jsonFileManager;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AboutMeController(JsonFileManager jsonFileManager, IWebHostEnvironment webHostEnvironment)
+        public AboutMeController(IWebHostEnvironment webHostEnvironment)
         {
-            _jsonFileManager = jsonFileManager;
             _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
         {
-            return View(_jsonFileManager.AboutMe);
+            return View(JsonFileManager<AboutMe>.Get());
         }
 
         public IActionResult Edit()
         {
-            string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue purus. Etiam imperdiet dui a dui ultricies, eget sagittis lacus porttitor.Etiam id eleifend sapien. Suspendisse tempus mauris maximus fringilla rhoncus. Mauris vel nisi mollis, varius ex in, maximus enim. Aenean iaculis lobortis sem sed hendrerit.";
-
-            AboutMe aboutMe = new AboutMe { Title = "Name and Surname", Description = description };
-
-            return View(_jsonFileManager.AboutMe);
+            return View(JsonFileManager<AboutMe>.Get());
         }
 
         [HttpPost]
@@ -63,7 +57,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                     aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
                 }
 
-                _jsonFileManager.Edit(aboutMe);
+                JsonFileManager<AboutMe>.Save(aboutMe);
 
                 TempData["success"] = "Edytowałes O Mnie";
                 return RedirectToAction("Index");

@@ -17,17 +17,15 @@ namespace portfolioASP.Areas.View.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
-        private readonly JsonFileManager _jsonFileManager;
         private readonly IEmailService _emailService;
         private readonly HomePageViewModel _model;
 
         public HomeController(
             ILogger<HomeController> logger, IUnitOfWork unitOfWork,
-            JsonFileManager jsonFileManager, IEmailService emailService)
+            IEmailService emailService)
         {
             _logger = logger;
             _unitOfWork = unitOfWork;
-            _jsonFileManager = jsonFileManager;
             _emailService = emailService;
 
             _model = new HomePageViewModel
@@ -35,7 +33,7 @@ namespace portfolioASP.Areas.View.Controllers
                 Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
-                AboutMe = _jsonFileManager.AboutMe
+                AboutMe = JsonFileManager<AboutMe>.Get()
             };
         }
 

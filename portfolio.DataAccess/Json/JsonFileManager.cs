@@ -1,47 +1,44 @@
-﻿using portfolio.Models;
+﻿using Newtonsoft.Json;
+using portfolio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace portfolio.DataAccess.Json
 {
-    public class JsonFileManager
+    public static class JsonFileManager<T>
     {
-        public AboutMe AboutMe { get; private set; }
-
-        public JsonFileManager()
+        public static T Get()
         {
-            AboutMe = GetAboutMeFromJsonToObject();
-        }
-
-        private AboutMe GetAboutMeFromJsonToObject()
-        {
-            string filePath = "../portfolio/wwwroot/json/aboutme.json";
+            Type typ = typeof(T);
+            string fileName = typ.Name;
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "json", $"{fileName}.json");
 
             if (File.Exists(filePath))
             {
                 string json = File.ReadAllText(filePath);
-                return JsonConvert.DeserializeObject<AboutMe>(json);
+                return JsonConvert.DeserializeObject<T>(json);
             }
 
-            string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean vel augue purus. Etiam imperdiet dui a dui ultricies, eget sagittis lacus porttitor.Etiam id eleifend sapien. Suspendisse tempus mauris maximus fringilla rhoncus. Mauris vel nisi mollis, varius ex in, maximus enim. Aenean iaculis lobortis sem sed hendrerit.";
-            AboutMe aboutMe = new AboutMe { Title = "Name and Surname", Description = description };
 
-            string newJson = JsonConvert.SerializeObject(aboutMe);
+            T newObject = Activator.CreateInstance<T>();
+            string newJson = JsonConvert.SerializeObject(newObject);
             File.WriteAllText(filePath, newJson);
-
-            return aboutMe;
+            return newObject;
         }
 
-        public void Edit(AboutMe aboutMe)
+        public static void Save(T entity)
         {
-            string filePath = "../portfolio/wwwroot/json/aboutme.json";
+            if (entity == null) return;
 
-            string newJson = JsonConvert.SerializeObject(aboutMe);
+            Type typ = entity.GetType();
+            string fileName = typ.Name;
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "json", $"{fileName}.json");
+
+            string newJson = JsonConvert.SerializeObject(default(T));
             File.WriteAllText(filePath, newJson);
         }
     }
