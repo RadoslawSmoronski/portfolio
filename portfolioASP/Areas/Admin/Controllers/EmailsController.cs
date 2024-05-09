@@ -16,6 +16,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmailSettings _emailSettings;
 
+
         public EmailsController(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings)
         {
             _unitOfWork = unitOfWork;

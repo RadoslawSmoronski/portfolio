@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Options;
+using portfolio.Models.Email;
 using portfolio.Models;
 using System;
 using System.Collections.Generic;

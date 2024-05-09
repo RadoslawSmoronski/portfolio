@@ -1,7 +1,7 @@
 ﻿using System.Net.Mail;
 using System.Net;
 
-namespace portfolio.Utility.Email
+namespace portfolio.Models.Email
 {
     public class EmailSettings
     {
