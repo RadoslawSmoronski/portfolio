@@ -38,7 +38,7 @@ namespace portfolio.DataAccess.Json
             string fileName = typ.Name;
             string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "json", $"{fileName}.json");
 
-            string newJson = JsonConvert.SerializeObject(default(T));
+            string newJson = JsonConvert.SerializeObject(entity);
             File.WriteAllText(filePath, newJson);
         }
     }
