@@ -11,6 +11,7 @@ namespace portfolio.DataAccess.Repository.IRepository
         ISkillRepository SkillRepository { get; }
         IProjectRepository ProjectRepository { get; }
         IContactRepository ContactRepository { get; }
+        IEmailMessageRepository EmailMessageRepository { get; }
 
         void Save();
     }
