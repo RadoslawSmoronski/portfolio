@@ -5,6 +5,7 @@ using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
+using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility.Email;
 using System.Diagnostics;
