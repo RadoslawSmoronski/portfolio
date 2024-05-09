@@ -30,7 +30,7 @@
   <ItemGroup>
     <ProjectReference Include="..\portfolio.DataAccess\portfolio.DataAccess.csproj" />
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
-    <ProjectReference Include="..\portfolio.Unity\portfolio.Utility.csproj" />
+    <ProjectReference Include="..\portfolio.Utility\portfolio.Utility.csproj" />
   </ItemGroup>
 
   <ItemGroup>

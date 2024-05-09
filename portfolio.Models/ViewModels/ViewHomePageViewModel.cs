@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace portfolio.Models.ViewModels
 {
-    public class HomePageViewModel
+    public class ViewHomePageViewModel
     {
         public List<Skill> Skills { get; set; }
         public List<Project> Projects { get; set; }

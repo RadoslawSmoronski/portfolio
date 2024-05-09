@@ -18,7 +18,7 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly ILogger<HomeController> _logger;
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailService _emailService;
-        private readonly HomePageViewModel _model;
+        private readonly ViewHomePageViewModel _model;
 
         public HomeController(
             ILogger<HomeController> logger, IUnitOfWork unitOfWork,
@@ -28,7 +28,7 @@ namespace portfolioASP.Areas.View.Controllers
             _unitOfWork = unitOfWork;
             _emailService = emailService;
 
-            _model = new HomePageViewModel
+            _model = new ViewHomePageViewModel
             {
                 Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
