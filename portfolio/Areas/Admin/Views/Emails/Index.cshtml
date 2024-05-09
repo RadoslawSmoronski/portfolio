@@ -1,83 +1,129 @@
-﻿@model EmailSettings
+﻿@model List<EmailMessage>
 
 <style>
     #box {
-        padding-top: 10%;
+        padding-top: 5%;
         margin-bottom: 10%;
     }
 
-    #box th {
-        background-color: #1E2427;
-        color: white;
+        #box th {
+            background-color: #1E2427;
+            color: #e3e3e3;
+        }
+
+        #box td {
+            background-color: #151a1c;
+            color: #e3e3e3;
+            border-bottom: 1px solid #1E2427;
+        }
+
+
+    .add-btn {
+        width: 200px;
+        float: right;
     }
 
-    #box td {
-        background-color: #151a1c;
-        color: white;
-        border-bottom: 1px solid #1E2427;
+    .details-btn {
+        width: 200px;
+        height: 50px;
+        float: right;
     }
 
-    .box {
-        background-color: #151a1c;
+    .upsert-btn {
+        width: 200px;
+        height: 50px;
+        float: right;
     }
 
-    .detail-box {
-        margin-bottom: 30px;
-    }
-
-    .detail-box h5 {
-        color: white;
+    .delete-btn {
+        width: 200px;
+        height: 50px;
+        float: right;
     }
 
     .project-img {
-        height: 200px;
-        width: 200px;
+        width: 50px;
+        height: 50px;
     }
 
+
+    @@media (max-width: 768px) {
+
+        .add-btn {
+            width: 100px;
+        }
+
+        .details-btn {
+            width: 100px;
+            height: 40px;
+        }
+
+        span {
+            display: none;
+        }
+
+        .upsert-btn {
+            width: 100px;
+            height: 40px;
+        }
+
+        .delete-btn {
+            width: 100px;
+            height: 40px;
+        }
+
+        .project-img {
+            width: 120px;
+            height: 120px;
+        }
 
 </style>
 
 <section id="box">
     <div class="container">
-        <div class="row">
-            <div class="col-1 col-lg-3 col-md-2"></div>
-            <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Formularz Kontakowy</h1>
-
-                <div class="detail-box">
-                    <h5>Email</h5>
-                    @Model.Email
-                </div>
-
-                <div class="detail-box">
-                    <h5>Hasło</h5>
-                    @Model.Password
-                </div>
-
-                <div class="detail-box">
-                    <h5>Serwer SMTP</h5>
-                    @Model.SmtpServer
-                </div>
-
-                <div class="detail-box">
-                    <h5>Port SMTP</h5>
-                    @Model.SmtpPort
-                </div>
-
-                <div class="detail-box">
-                    <h5>Szyfrowanie SMTP</h5>
-                    @Model.Encryption (@(Model.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
-                </div>
-
-                <a asp-controller="ContactForm" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
-            </div>
-            <div class="col-1 col-lg-3 col-md-2"></div>
+        <div class="header text-center mb-5">
+            <h1 class="text-white">Wiadomości</h1>
         </div>
+        <table class="table bg-dark">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Temat</th>
+                    <th scope="col">
+                        <a asp-controller="Emails" asp-action="EmailConfigure" class="btn btn-dark add-btn">
+                            <i class="bi bi-gear"></i>
+                            Konfiguracja
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach(var obj in Model)
+                {
+                    <tr>
+                        <td>@obj.Id</td>
+                        <td>
+                            @obj.Name
+                        </td>
+                        <td>
+                            @obj.Subject
+                        </td>
+                        <td class="text-center">
+                            <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">
+                                <i class="bi bi-trash-fill"></i>
+                                <span>Delete</span>
+                            </a>
+                            <a asp-controller="" asp-action="" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                                <i class="bi bi-search"></i>
+                                <span>Podgląd</span>
+                            </a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
     </div>
 </section>
 
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
-    }
-}
+<script src="~/js/admin.js"></script>
