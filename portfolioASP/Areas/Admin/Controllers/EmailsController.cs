@@ -63,5 +63,31 @@ namespace portfolioASP.Areas.Admin.Controllers
             }
         }
 
+        public IActionResult MessageEdit()
+        {
+            AutoEmailMessageContent message = JsonFileManager<AutoEmailMessageContent>.Get();
+
+            return View("EmailConfigure/MessageEdit", message);
+        }
+
+        [HttpPost]
+        public IActionResult MessageEdit(AutoEmailMessageContent message)
+        {
+
+            try
+            {
+                JsonFileManager<AutoEmailMessageContent>.Save(message);
+
+                TempData["success"] = "Wiadomość zostałą zmieniona.";
+                return RedirectToAction("EmailConfigure");
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = ex.Message;
+
+                return View(message);
+            }
+        }
+
     }
 }

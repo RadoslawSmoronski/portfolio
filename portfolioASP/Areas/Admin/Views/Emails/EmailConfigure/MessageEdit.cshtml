@@ -1,4 +1,4 @@
-﻿@model EmailSettings
+﻿@model AutoEmailMessageContent
 
 <style>
     #box {
@@ -29,38 +29,20 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Edytowanie - Formularz Kontaktowy</h1>
+                <h1 class="text-white text-center mb-5">Edytowanie - Wiadomości</h1>
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Email</label>
-                            <input asp-for="Email" class="form-control">
-                            <span asp-validation-for="Email" class="text-danger"></span>
+                            <label class="text-white">Temat</label>
+                            <input asp-for="Subject" class="form-control">
                         </div>
                         <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Hasło</label>
-                            <input asp-for="Password" class="form-control">
-                            <span asp-validation-for="Password" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Serwer SMTP</label>
-                            <input asp-for="SmtpServer" class="form-control">
-                            <span asp-validation-for="SmtpServer" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Port SMTP</label>
-                            <input asp-for="SmtpPort" class="form-control">
-                            <span asp-validation-for="SmtpPort" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mb-4">
-                        <input asp-for="Encryption" class="form-check-input" type="checkbox">
-                        <label class="form-check-label">
-                            Szyfrowanie SMTP
-                        </label>
-                        <p>Szyfrowanie SMTP jest automatycznie wybierane po porcie (port 465 - SSL/TLS, port - 587 StartTLS)</p>
+                            <label class="text-white">Treść</label>
+                            <textarea asp-for="Content" class="form-control"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                            <a asp-controller="ContactForm" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                        <a asp-controller="Emails" asp-action="EmailConfigure" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>
