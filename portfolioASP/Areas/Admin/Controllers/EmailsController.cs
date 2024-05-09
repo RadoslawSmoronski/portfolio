@@ -5,6 +5,7 @@ using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.Email;
+using portfolio.Models.ViewModels;
 using portfolio.Utility.Email;
 using System.Drawing.Drawing2D;
 
@@ -32,7 +33,11 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult EmailConfigure()
         {
-            return View("EmailConfigure/Details", _emailSettings);
+            AdminEmailsEmailConfigureDetailsPageViewModel viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel();
+            viewModel.EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get();
+            viewModel.EmailSettings = _emailSettings;
+
+            return View("EmailConfigure/Details", viewModel);
         }
 
         public IActionResult EmailEdit()

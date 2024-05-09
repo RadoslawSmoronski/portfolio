@@ -1,4 +1,4 @@
-﻿@model EmailSettings
+﻿@model AdminEmailsEmailConfigureDetailsPageViewModel
 
 <style>
     #box {
@@ -45,7 +45,13 @@
                 <h1 class="text-white text-center mb-5">Wiadomość</h1>
 
                 <div class="detail-box">
-                    test
+                    <h5>Temat</h5>
+                    @Model.EmailMessageContent.Subject
+                </div>
+
+                <div class="detail-box">
+                    <h5>Treść</h5>
+                    @Model.EmailMessageContent.Content
                 </div>
 
                 <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
@@ -60,27 +66,27 @@
 
                 <div class="detail-box">
                     <h5>Email</h5>
-                    @Model.Email
+                    @Model.EmailSettings.Email
                 </div>
 
                 <div class="detail-box">
                     <h5>Hasło</h5>
-                    @Model.Password
+                    @Model.EmailSettings.Password
                 </div>
 
                 <div class="detail-box">
                     <h5>Serwer SMTP</h5>
-                    @Model.SmtpServer
+                    @Model.EmailSettings.SmtpServer
                 </div>
 
                 <div class="detail-box">
                     <h5>Port SMTP</h5>
-                    @Model.SmtpPort
+                    @Model.EmailSettings.SmtpPort
                 </div>
 
                 <div class="detail-box">
                     <h5>Szyfrowanie SMTP</h5>
-                    @Model.Encryption (@(Model.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
+                    @Model.EmailSettings.Encryption (@(Model.EmailSettings.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
                 </div>
 
                 <a asp-controller="Emails" asp-action="EmailEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
