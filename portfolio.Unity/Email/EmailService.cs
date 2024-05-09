@@ -24,7 +24,7 @@ namespace portfolio.Utility.Email
 
             var client = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.SmtpPort)
             {
-                EnableSsl = _emailSettings.EnableSsl,
+                EnableSsl = _emailSettings.Encryption,
                 UseDefaultCredentials = false,
                 Credentials = new NetworkCredential(_emailSettings.Email, _emailSettings.Password)
             };

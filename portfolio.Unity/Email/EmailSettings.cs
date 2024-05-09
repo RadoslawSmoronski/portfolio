@@ -9,7 +9,7 @@ namespace portfolio.Utility.Email
         public string Password { get; set; }
         public string SmtpServer { get; set; }
         public int SmtpPort { get; set;}
-        public bool EnableSsl { get; set; }
+        public bool Encryption  { get; set; }
 
         public bool CheckConnection()
         {
@@ -17,7 +17,7 @@ namespace portfolio.Utility.Email
             {
                 var client = new SmtpClient(SmtpServer, SmtpPort)
                 {
-                    EnableSsl = EnableSsl,
+                    EnableSsl = Encryption,
                     UseDefaultCredentials = false,
                     Credentials = new NetworkCredential(Email, Password)
                 };
