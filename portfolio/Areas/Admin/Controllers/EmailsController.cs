@@ -10,11 +10,11 @@ using System.Drawing.Drawing2D;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class ContactFormController : Controller
+    public class EmailsController : Controller
     {
         private readonly EmailSettings _emailSettings;
 
-        public ContactFormController(IOptions<EmailSettings> emailSettings)
+        public EmailsController(IOptions<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }
