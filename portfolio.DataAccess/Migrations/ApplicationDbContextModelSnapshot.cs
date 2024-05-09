@@ -70,6 +70,61 @@ namespace portfolio.DataAccess.Migrations
                         });
                 });
 
+            modelBuilder.Entity("portfolio.Models.Email.EmailMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmailMessages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test@email.com",
+                            Name = "John",
+                            Subject = "Test Subject"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test2@email.com",
+                            Name = "Mark",
+                            Subject = "Test Subject 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test3@email.com",
+                            Name = "Jeniffer",
+                            Subject = "Test Subject 3"
+                        });
+                });
+
             modelBuilder.Entity("portfolio.Models.Project", b =>
                 {
                     b.Property<int>("Id")

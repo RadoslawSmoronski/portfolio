@@ -7,7 +7,7 @@
 namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddContactsProjectsSkillsTablesToTbAndSeedThem : Migration
+    public partial class AddTablesToDbAndSeedThey : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -26,6 +26,22 @@ namespace portfolio.DataAccess.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Contacts", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "EmailMessages",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_EmailMessages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -69,6 +85,16 @@ namespace portfolio.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "EmailMessages",
+                columns: new[] { "Id", "Content", "Email", "Name", "Subject" },
+                values: new object[,]
+                {
+                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test@email.com", "John", "Test Subject" },
+                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test2@email.com", "Mark", "Test Subject 2" },
+                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test3@email.com", "Jeniffer", "Test Subject 3" }
+                });
+
+            migrationBuilder.InsertData(
                 table: "Projects",
                 columns: new[] { "Id", "Description", "GitRepositoryUrl", "ImageUrl", "Name" },
                 values: new object[,]
@@ -96,6 +122,9 @@ namespace portfolio.DataAccess.Migrations
         {
             migrationBuilder.DropTable(
                 name: "Contacts");
+
+            migrationBuilder.DropTable(
+                name: "EmailMessages");
 
             migrationBuilder.DropTable(
                 name: "Projects");

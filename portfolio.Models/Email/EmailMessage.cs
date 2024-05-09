@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 
 namespace portfolio.Models.Email
 {
-    public class EmailMessages : ContactForm
+    public class EmailMessage : ContactForm
     {
         [Required]
-        public int id { get; set; }
+        public int Id { get; set; }
     }
 }

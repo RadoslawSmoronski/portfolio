@@ -11,8 +11,8 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240507130619_AddContactsProjectsSkillsTablesToTbAndSeedThem")]
-    partial class AddContactsProjectsSkillsTablesToTbAndSeedThem
+    [Migration("20240509122754_AddTablesToDbAndSeedThey")]
+    partial class AddTablesToDbAndSeedThey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -70,6 +70,61 @@ namespace portfolio.DataAccess.Migrations
                             Id = 3,
                             Content = "email_3@sample.com",
                             Name = "Sample 3"
+                        });
+                });
+
+            modelBuilder.Entity("portfolio.Models.Email.EmailMessage", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Subject")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmailMessages");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test@email.com",
+                            Name = "John",
+                            Subject = "Test Subject"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test2@email.com",
+                            Name = "Mark",
+                            Subject = "Test Subject 2"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Content = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            Email = "test3@email.com",
+                            Name = "Jeniffer",
+                            Subject = "Test Subject 3"
                         });
                 });
 

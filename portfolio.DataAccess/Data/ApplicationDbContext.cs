@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using portfolio.Models;
+using portfolio.Models.Email;
 
 namespace portfolio.DataAccess.Data
 {
@@ -13,6 +14,7 @@ namespace portfolio.DataAccess.Data
         public DbSet<Skill> Skills { get; set; }
         public DbSet<Project> Projects { get; set; }
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<EmailMessage> EmailMessages { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -36,6 +38,12 @@ namespace portfolio.DataAccess.Data
                 new Contact { Id = 1, Name = "Facebook", Content = "/name.surname", UrlAddress = "https://www.facebook.com/", Icon = "bi bi-facebook" },
                 new Contact { Id = 2, Name = "Sample 2", Content = "email_2@sample.com"},
                 new Contact { Id = 3, Name = "Sample 3", Content = "email_3@sample.com"}
+                );
+
+            modelBuilder.Entity<EmailMessage>().HasData(
+                new EmailMessage { Id = 1, Email = "test@email.com", Name = "John", Subject = "Test Subject", Content = description},
+                new EmailMessage { Id = 2, Email = "test2@email.com", Name = "Mark", Subject = "Test Subject 2", Content = description },
+                new EmailMessage { Id = 3, Email = "test3@email.com", Name = "Jeniffer", Subject = "Test Subject 3", Content = description }
                 );
         }
 
