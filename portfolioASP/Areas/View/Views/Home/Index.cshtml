@@ -6,10 +6,8 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-3"></div>
                 <div class="col-lg-9 col-md-9 col-9">
-                    <h1 class="text-white header-socrates">Radosław Smoroński</h1>
-                    <div class="text-white">Computer Science Student</div>
-                    <a asp-area="Admin" asp-controller="Skills" asp-action="Index" class="btn btn-dark">Edytowanie umiejętności</a>
-                    <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-dark">Edytowanie Projektów</a>
+                    <h1 class="text-white header-socrates">@Model.Welcome.Header</h1>
+                    <div class="text-white">@Model.Welcome.Description</div>
                 </div>
             </div>
         </div>

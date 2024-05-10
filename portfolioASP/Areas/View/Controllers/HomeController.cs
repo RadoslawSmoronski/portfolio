@@ -30,10 +30,11 @@ namespace portfolioASP.Areas.View.Controllers
 
             _model = new ViewHomePageViewModel
             {
+                Welcome = JsonFileManager<Welcome>.Get(),
+                AboutMe = JsonFileManager<AboutMe>.Get(),
                 Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
-                AboutMe = JsonFileManager<AboutMe>.Get()
             };
         }
 
