@@ -19,5 +19,22 @@ namespace portfolio.DataAccess.Repository
         {
             _db = db;
         }
+
+        public int GetUnreadAmount()
+        {
+            IQueryable<EmailMessage> query = dbSet;
+
+            int i = 0;
+
+            foreach (EmailMessage message in query)
+            {
+                if(message.IsReaded == false)
+                {
+                    i++;
+                }
+            }
+
+            return i;
+        }
     }
 }
