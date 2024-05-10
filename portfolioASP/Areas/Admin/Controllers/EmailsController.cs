@@ -27,14 +27,18 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            List<EmailMessage> emailMessages = _unitOfWork.EmailMessageRepository.GetAll().ToList();
+            List<EmailMessage>? emailMessages = _unitOfWork.EmailMessageRepository.GetAll().ToList();
+
+            if (emailMessages == null) return NotFound();
 
             return View(emailMessages);
         }
 
         public IActionResult Details(int? id)
         {
-            EmailMessage emailMessage = _unitOfWork.EmailMessageRepository.Get( u => u.Id == id );
+            EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get( u => u.Id == id );
+
+            if (emailMessage == null) return NotFound();
 
             return View(emailMessage);
         }
@@ -73,7 +77,9 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult MessageEdit()
         {
-            AutoEmailMessageContent message = JsonFileManager<AutoEmailMessageContent>.Get();
+            AutoEmailMessageContent? message = JsonFileManager<AutoEmailMessageContent>.Get();
+
+            if (message == null) return NotFound();
 
             return View("EmailConfigure/MessageEdit", message);
         }
