@@ -1,4 +1,4 @@
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
 using portfolio.DataAccess.Data;
@@ -50,7 +50,28 @@ namespace portfolioASP.Areas.View.Controllers
                 return NotFound();
             }
 
-            await _emailService.SendEmailAsync(contactForm.Email, contactForm.Subject, contactForm.Name);
+            try
+            {
+                await _emailService.SendEmailAsync(contactForm.Email, contactForm.Subject, contactForm.Name);
+            }
+            catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
+            finally
+            {
+                var message = new EmailMessage
+                {
+                    Email = contactForm.Email,
+                    Subject = contactForm.Subject,
+                    Name = contactForm.Name,
+                    Content = contactForm.Content
+                };
+
+                _unitOfWork.EmailMessageRepository.Add(message);
+                _unitOfWork.Save();
+                TempData["success"] = "Wiadomość została wysłana.";
+            }
 
             return RedirectToAction("Index", _model);
         }

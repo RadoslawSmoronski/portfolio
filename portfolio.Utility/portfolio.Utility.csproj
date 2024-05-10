@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\portfolio.DataAccess\portfolio.DataAccess.csproj" />
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
   </ItemGroup>
 

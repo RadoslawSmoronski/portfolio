@@ -8,12 +8,14 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
+using portfolio.DataAccess.Repository.IRepository;
 
 namespace portfolio.Utility.Email
 {
     public class EmailService : IEmailService
     {
         private readonly EmailSettings _emailSettings;
+        private readonly IUnitOfWork _unitOfWork;
 
         public EmailService(IOptions<EmailSettings> emailSettings)
         {
