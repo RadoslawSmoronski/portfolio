@@ -1,0 +1,73 @@
+﻿@model AboutMe
+
+<style>
+    #box {
+        padding-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #box th {
+        background-color: #1E2427;
+        color: white;
+    }
+
+    #box td {
+        background-color: #151a1c;
+        color: white;
+        border-bottom: 1px solid #1E2427;
+    }
+
+    .box {
+        background-color: #151a1c;
+    }
+
+    .detail-box {
+        margin-bottom: 30px;
+    }
+
+    .detail-box h5 {
+        color: white;
+    }
+
+    .project-img {
+        height: 200px;
+        width: 200px;
+    }
+
+
+</style>
+
+<section id="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-1 col-lg-3 col-md-2"></div>
+            <div class="col-10 col-lg-6 col-md-8 box p-5">
+                <h1 class="text-white text-center mb-5">O Mnie</h1>
+
+                <div class="detail-box">
+                    <h5>Tytuł</h5>
+                    @Model.Title
+                </div>
+
+                <div class="detail-box">
+                    <h5>Opis</h5>
+                    @Model.Description
+                </div>
+
+                <div class="detail-box">
+                    <h5>Obrazek</h5>
+                    <img class="project-img" src="../../../@(Model.ImageUrl != null ? Model.ImageUrl : @"\images\projects\default-project.png")"></img>
+                </div>
+
+                <a asp-controller="AboutMe" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+            </div>
+            <div class="col-1 col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
