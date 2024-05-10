@@ -66,7 +66,8 @@ namespace portfolioASP.Areas.View.Controllers
                     Email = contactForm.Email,
                     Subject = contactForm.Subject,
                     Name = contactForm.Name,
-                    Content = contactForm.Content
+                    Content = contactForm.Content,
+                    SentAt = DateTime.Now
                 };
 
                 _unitOfWork.EmailMessageRepository.Add(message);
