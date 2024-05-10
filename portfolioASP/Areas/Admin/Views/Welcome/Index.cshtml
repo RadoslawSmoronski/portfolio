@@ -1,4 +1,4 @@
-﻿@model AboutMe
+﻿@model Welcome
 
 <style>
     #box {
@@ -42,11 +42,11 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">O Mnie</h1>
+                <h1 class="text-white text-center mb-5">Sekcja Witam</h1>
 
                 <div class="detail-box">
-                    <h5>Tytuł</h5>
-                    @Model.Title
+                    <h5>Nagłowek</h5>
+                    @Model.Header
                 </div>
 
                 <div class="detail-box">
@@ -54,12 +54,7 @@
                     @Model.Description
                 </div>
 
-                <div class="detail-box">
-                    <h5>Obrazek</h5>
-                    <img class="project-img" src="../../../@(Model.ImageUrl != null ? Model.ImageUrl : @"\images\projects\default-project.png")"></img>
-                </div>
-
-                <a asp-controller="AboutMe" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="Welcome" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>

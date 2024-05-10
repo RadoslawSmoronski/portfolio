@@ -8,63 +8,37 @@ using System.Drawing.Drawing2D;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class AboutMeController : Controller
+    public class WelcomeController : Controller
     {
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public AboutMeController(IWebHostEnvironment webHostEnvironment)
+        public WelcomeController()
         {
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()
         {
-            return View(JsonFileManager<AboutMe>.Get());
+            return View(JsonFileManager<Welcome>.Get());
         }
 
         public IActionResult Edit()
         {
-            return View(JsonFileManager<AboutMe>.Get());
+            return View(JsonFileManager<Welcome>.Get());
         }
 
         [HttpPost]
-        public IActionResult Edit(AboutMe aboutMe, IFormFile? file)
+        public IActionResult Edit(Welcome welcome)
         {
             if (ModelState.IsValid)
             {
-                string wwwRootPath = _webHostEnvironment.WebRootPath;
-                if (file != null)
-                {
-                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"images\aboutme");
 
-                    if (string.IsNullOrEmpty(aboutMe.ImageUrl) == false)
-                    {
-                        var oldImagePath =
-                            Path.Combine(wwwRootPath, aboutMe.ImageUrl.TrimStart('\\'));
+                JsonFileManager<Welcome>.Save(welcome);
 
-                        if (System.IO.File.Exists(oldImagePath))
-                        {
-                            System.IO.File.Delete(oldImagePath);
-                        }
-                    }
-
-                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
-                    {
-                        file.CopyTo(fileStream);
-                    }
-
-                    aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
-                }
-
-                JsonFileManager<AboutMe>.Save(aboutMe);
-
-                TempData["success"] = "Edytowałes O Mnie";
+                TempData["success"] = "Edytowałes sekcjie Witam";
                 return RedirectToAction("Index");
 
             }
 
-            return View(aboutMe);
+            return View(welcome);
         }
 
     }
