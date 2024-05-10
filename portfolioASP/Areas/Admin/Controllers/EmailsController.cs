@@ -31,6 +31,13 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(emailMessages);
         }
 
+        public IActionResult Details(int? id)
+        {
+            EmailMessage emailMessage = _unitOfWork.EmailMessageRepository.Get( u => u.Id == id );
+
+            return View(emailMessage);
+        }
+
         public IActionResult EmailConfigure()
         {
             AdminEmailsEmailConfigureDetailsPageViewModel viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel();
