@@ -22,7 +22,7 @@ namespace portfolio.Utility.Email
             _emailSettings = emailSettings.Value;
         }
 
-        public Task SendEmailAsync(string email, string subject, string content)
+        public Task SendEmailAsync(string email, string? subject, string? content)
         {
 
             var client = new SmtpClient(_emailSettings.SmtpServer, _emailSettings.SmtpPort)

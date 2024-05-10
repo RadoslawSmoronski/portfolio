@@ -52,7 +52,8 @@ namespace portfolioASP.Areas.View.Controllers
 
             try
             {
-                await _emailService.SendEmailAsync(contactForm.Email, contactForm.Subject, contactForm.Name);
+                AutoEmailMessageContent autoMessage =  JsonFileManager<AutoEmailMessageContent>.Get();
+                await _emailService.SendEmailAsync(contactForm.Email, autoMessage.Subject, autoMessage.Content);
             }
             catch(Exception ex)
             {
