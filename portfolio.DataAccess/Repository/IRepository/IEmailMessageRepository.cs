@@ -11,5 +11,6 @@ namespace portfolio.DataAccess.Repository.IRepository
     public interface IEmailMessageRepository : IRepository<EmailMessage>
     {
         public int GetUnreadAmount();
+        void Update(EmailMessage obj);
     }
 }

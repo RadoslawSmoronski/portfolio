@@ -36,5 +36,10 @@ namespace portfolio.DataAccess.Repository
 
             return i;
         }
+
+        public void Update(EmailMessage obj)
+        {
+            _db.EmailMessages.Update(obj);
+        }
     }
 }

@@ -31,7 +31,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             if (emailMessages == null) return NotFound();
 
-            return View(emailMessages);
+            emailMessages.Reverse();
+
+            AdminEmailsViewModel viewModel = new AdminEmailsViewModel();
+            viewModel.EmailMessages = emailMessages;
+            viewModel.UnreadEmailMessages = _unitOfWork.EmailMessageRepository.GetUnreadAmount();
+
+            return View(viewModel);
         }
 
         public IActionResult Details(int? id)
@@ -39,6 +45,11 @@ namespace portfolioASP.Areas.Admin.Controllers
             EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get( u => u.Id == id );
 
             if (emailMessage == null) return NotFound();
+
+            emailMessage.IsReaded = true;
+
+            _unitOfWork.EmailMessageRepository.Update(emailMessage);
+            _unitOfWork.Save();
 
             return View(emailMessage);
         }

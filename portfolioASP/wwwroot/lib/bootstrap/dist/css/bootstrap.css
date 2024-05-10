@@ -2209,8 +2209,8 @@ progress {
 
 .table-secondary {
     --bs-table-color: #000;
-    --bs-table-bg: white;
-    --bs-table-border-color: #cccccc;
+    --bs-table-bg: #21282b;
+    --bs-table-border-color: #21282b;
     --bs-table-striped-bg: #f2f2f2;
     --bs-table-striped-color: #000;
     --bs-table-active-bg: #e6e6e6;
@@ -2293,7 +2293,7 @@ progress {
 
 .table-dark {
     --bs-table-color: #fff;
-    --bs-table-bg: #343a40;
+    --bs-table-bg: #151a1c;
     --bs-table-border-color: #5d6166;
     --bs-table-striped-bg: #3e444a;
     --bs-table-striped-color: #fff;
