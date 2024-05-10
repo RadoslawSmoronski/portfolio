@@ -8,6 +8,7 @@ namespace portfolio.Models.ViewModels
 {
     public class ViewHomePageViewModel
     {
+        public Welcome Welcome { get; set; }
         public List<Skill> Skills { get; set; }
         public List<Project> Projects { get; set; }
 
