@@ -96,10 +96,26 @@
                 </th>
             </thead>
             <tbody>
+                @{
+                    DateTime? dateTime = null;
+                }
                 @foreach(var obj in Model.EmailMessages)
                 {
+
+                    @if (dateTime != obj.SentAt.Date)
+                    {
+                        dateTime = obj.SentAt.Date;
+
+                        <tr class="table-dark">
+                            <td>@obj.SentAt.Date.ToString("yyyy-MM-dd")</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    }
+
                     <tr class="@(obj.IsReaded ? "table-dark" : "table-secondary")">
-                        <td>@obj.Id</td>
+                        <td>@obj.SentAt.Hour:@obj.SentAt.Minute</td>
                         <td>
                             @obj.Email
                         </td>
