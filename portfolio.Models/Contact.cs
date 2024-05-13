@@ -13,9 +13,9 @@ namespace portfolio.Models
         [Key]
         public int Id { get; set; }
         [Required]
-        public string Name { get; set; }
+        public string? Name { get; set; }
         [Required]
-        public string Content { get; set; }
+        public string? Content { get; set; }
         public string? UrlAddress { get; set; }
         public string? Icon { get; set; }
     }
