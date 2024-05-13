@@ -56,8 +56,34 @@ namespace portfolioASP.Areas.Admin.Controllers
 
                 JsonFileManager<NavbarLogo>.Save(navbarLogo);
 
-                TempData["success"] = "Projekt został utworzony.";
+                TempData["success"] = "Informacje zostały edytowane.";
                 return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteImage()
+        {
+            NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
+
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+
+            if (navbarLogo.ImageUrl != null)
+            {
+                var oldImagePath =
+                    Path.Combine(wwwRootPath, navbarLogo.ImageUrl.TrimStart('\\'));
+
+                if (System.IO.File.Exists(oldImagePath))
+                {
+                    System.IO.File.Delete(oldImagePath);
+                }
+            }
+
+            navbarLogo.ImageUrl = null;
+            
+
+            JsonFileManager<NavbarLogo>.Save(navbarLogo);
+
+            TempData["success"] = "Zdjęcie zostało usunięte.";
+            return RedirectToAction("Edit", navbarLogo);
         }
 
     }
