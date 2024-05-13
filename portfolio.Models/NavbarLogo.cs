@@ -8,8 +8,8 @@ namespace portfolio.Models
 {
     public class NavbarLogo
     {
-        public string? Title { get; set; }
-        public string? ImageUrl { get; set; }
+        public string? Title { get; set; } = "Lorem Ipsum";
+        public string? ImageUrl { get; set; } = null;
 
     }
 }

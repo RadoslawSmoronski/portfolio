@@ -15,7 +15,6 @@ namespace portfolio.Utility.Email
     public class EmailService : IEmailService
     {
         private readonly EmailSettings _emailSettings;
-        private readonly IUnitOfWork _unitOfWork;
 
         public EmailService(IOptions<EmailSettings> emailSettings)
         {
