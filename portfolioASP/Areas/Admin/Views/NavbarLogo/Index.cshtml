@@ -46,7 +46,13 @@
 
                 <div class="detail-box">
                     <h5>Treść</h5>
-                    @Model.Title
+                    @{
+                        if (Model.Title != null)
+                        {
+                            string title = Model.Title.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
                 </div>
 
                 <div class="detail-box">
