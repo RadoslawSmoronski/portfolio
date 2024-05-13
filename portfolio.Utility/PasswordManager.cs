@@ -20,5 +20,6 @@ namespace portfolio.Utility
         {
             return BCrypt.Net.BCrypt.Verify(enteredPassword, hashedPassword);
         }
+
     }
 }

@@ -60,12 +60,17 @@ namespace portfolioASP.Areas.Admin.Controllers
             viewModel.EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get();
             viewModel.EmailSettings = _emailSettings;
 
+            viewModel.EmailSettings.Password = null;
+
             return View("EmailConfigure/Details", viewModel);
         }
 
         public IActionResult EmailEdit()
         {
-            return View("EmailConfigure/EmailEdit", _emailSettings);
+            EmailSettings emailSettings = _emailSettings;
+            emailSettings.Password = null;
+
+            return View("EmailConfigure/EmailEdit", emailSettings);
         }
 
         [HttpPost]
@@ -82,7 +87,11 @@ namespace portfolioASP.Areas.Admin.Controllers
             catch (Exception ex)
             {
                 TempData["error"] = ex.Message;
-                return View(_emailSettings);
+
+                EmailSettings emailSettingsObj = _emailSettings;
+                emailSettingsObj.Password = null;
+
+                return View("EmailConfigure/EmailEdit", emailSettingsObj);
             }
         }
 

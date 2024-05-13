@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="BCrypt" Version="1.0.0" />
+    <PackageReference Include="BCrypt.Net" Version="0.1.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\portfolio.DataAccess\portfolio.DataAccess.csproj" />
     <ProjectReference Include="..\portfolio.Models\portfolio.Models.csproj" />
   </ItemGroup>
