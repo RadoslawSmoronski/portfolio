@@ -21,7 +21,7 @@
                         @{
                             NavbarLogo navbarLogo = JsonClientGetter<NavbarLogo>.Get();
 
-                            @if(navbarLogo.ImageUrl != null)
+                            @if (navbarLogo.ImageUrl != null)
                             {
                                 <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
                             }
@@ -38,10 +38,10 @@
                         }
                     </a>
                 </div>
-                <button class="navbar-toggler bg-white text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="right: 0;">
+                <button class="navbar-toggler bg-white text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="right: 0;">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse show d-md-inline-flex justify-content-between">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
                             <a class="nav-link" href="#about">O mnie</a>
