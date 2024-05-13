@@ -1,1 +1,64 @@
-﻿<h1>HOME CONTROLLER</h1>
+﻿@model Project
+
+<style>
+    #box {
+        padding-top: 10%;
+        margin-bottom: 10%;
+    }
+
+    #box th {
+        background-color: #1E2427;
+        color: white;
+    }
+
+    #box td {
+        background-color: #151a1c;
+        color: white;
+        border-bottom: 1px solid #1E2427;
+    }
+
+    .box {
+        background-color: #151a1c;
+    }
+
+    .detail-box {
+        margin-bottom: 30px;
+    }
+
+    .detail-box h5 {
+        color: white;
+    }
+
+    .project-img {
+        height: 200px;
+        width: 200px;
+    }
+
+
+</style>
+
+<section id="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-1 col-lg-3 col-md-2"></div>
+            <div class="col-10 col-lg-6 col-md-8 box p-5">
+                <div class="detail-box">
+                    <h3 class="text-white">Portfolio Website Project</h3>
+                    <p>by Radosław Smoroński</p>
+                </div>
+
+                <div class="detail-box">
+                    <h5>Wersja</h5>
+                    <p>W trakcie produkcji</p>
+                </div>            
+            </div>
+            <div class="col-1 col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</section>
+
+@section Scripts{
+    @{
+        <partial name="_ValidationScriptsPartial"/>
+    }
+}
