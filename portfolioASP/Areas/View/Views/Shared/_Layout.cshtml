@@ -18,10 +18,14 @@
             <div class="container-fluid">
                 <div style="display:flex; align-items:center;">
                     <a class="navbar-brand text-white" style="font-size: 10px; display:flex; align-items:center;" href="#">
-                        <img src="~/images/logo.png" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                        @{
+                        NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
+
+                        <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
                         <div class="logo-text">
-                            Radosław <br /> Smoroński
+                            @navbarLogo.Title
                         </div>
+                        }
                     </a>
                 </div>
                 <button class="navbar-toggler bg-white text-white collapsed" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" style="right: 0;">
