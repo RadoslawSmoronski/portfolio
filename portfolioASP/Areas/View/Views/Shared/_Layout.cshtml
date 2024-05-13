@@ -83,7 +83,17 @@
 
     <script>
         $(document).ready(function () {
+            updateNavbarClass(); // Wywołaj funkcję po załadowaniu strony
+
             $(window).on('scroll', function () {
+                updateNavbarClass();
+            });
+
+            $(window).on('load', function () {
+                updateNavbarClass();
+            });
+
+            function updateNavbarClass() {
                 var scrollTop = $(this).scrollTop();
                 var navbar = $('.navbar');
 
@@ -92,7 +102,7 @@
                 } else {
                     navbar.removeClass('navbar-solid');
                 }
-            });
+            }
         });
     </script>
 

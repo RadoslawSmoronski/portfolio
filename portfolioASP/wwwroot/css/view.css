@@ -35,8 +35,13 @@ footer {
 
 /*navbar section*/
 
+.navbar {
+    transition: background-color 0.3s ease;
+}
+
 .navbar-solid {
     background-color: #0F0F0F;
+    transition: background-color 0.3s ease;
 }
 
 .nav-item .nav-link {
