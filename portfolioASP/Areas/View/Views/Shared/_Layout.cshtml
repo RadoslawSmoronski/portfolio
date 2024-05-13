@@ -21,10 +21,20 @@
                         @{
                             NavbarLogo navbarLogo = JsonClientGetter<NavbarLogo>.Get();
 
-                            <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                            @if(navbarLogo.ImageUrl != null)
+                            {
+                                <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                            }
+
                             <div class="logo-text">
-                            @navbarLogo.Title
-                        </div>
+                                @{
+                                    if (navbarLogo.Title != null)
+                                    {
+                                        string title = navbarLogo.Title.Replace("\r\n", "<br />");
+                                        @Html.Raw(title)
+                                    }
+                                }
+                            </div>
                         }
                     </a>
                 </div>
