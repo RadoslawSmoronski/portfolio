@@ -19,10 +19,10 @@
                 <div style="display:flex; align-items:center;">
                     <a class="navbar-brand text-white" style="font-size: 10px; display:flex; align-items:center;" href="#">
                         @{
-                        NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
+                            NavbarLogo navbarLogo = JsonClientGetter<NavbarLogo>.Get();
 
-                        <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
-                        <div class="logo-text">
+                            <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                            <div class="logo-text">
                             @navbarLogo.Title
                         </div>
                         }
