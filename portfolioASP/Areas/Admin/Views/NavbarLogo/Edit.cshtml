@@ -1,4 +1,4 @@
-﻿@model AboutMe
+﻿@model NavbarLogo
 
 <style>
     #box {
@@ -29,18 +29,13 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Edytowanie - O Mnie</h1>
+                <h1 class="text-white text-center mb-5">Edytowanie - Nagłowek menu nawigacji</h1>
                     <form method="post" enctype="multipart/form-data">
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Tytuł</label>
+                            <label for="exampleFormControlInput1" class="text-white">Treść</label>
                             <input asp-for="Title" class="form-control">
                             <span asp-validation-for="Title" class="text-danger"></span>
-                        </div>
-                        <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Opis</label>
-                            <textarea asp-for="Description" class="form-control"></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label for="exampleFormControlInput1" class="text-white">Obrazek</label>
@@ -48,7 +43,7 @@
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                            <a asp-controller="AboutMe" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                            <a asp-controller="NavbarLogo" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>

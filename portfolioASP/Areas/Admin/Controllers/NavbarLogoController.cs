@@ -21,53 +21,44 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(JsonFileManager<NavbarLogo>.Get());
         }
 
-        //[HttpPost]
-        //public IActionResult Upsert(Project project, IFormFile? file)
-        //{
-        //    if(ModelState.IsValid)
-        //    {
-        //        string wwwRootPath = _webHostEnvironment.WebRootPath;
-        //        if(file != null)
-        //        {
-        //            string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-        //            string productPath = Path.Combine(wwwRootPath, @"images\projects");
+        public IActionResult Edit()
+        {
+            return View(JsonFileManager<NavbarLogo>.Get());
+        }
 
-        //            if(string.IsNullOrEmpty(project.ImageUrl) == false)
-        //            {
-        //                var oldImagePath = 
-        //                    Path.Combine(wwwRootPath,project.ImageUrl.TrimStart('\\'));
+        [HttpPost]
+        public IActionResult Edit(NavbarLogo navbarLogo, IFormFile? file)
+        {
+                string wwwRootPath = _webHostEnvironment.WebRootPath;
+                if (file != null)
+                {
+                    string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                    string productPath = Path.Combine(wwwRootPath, @"images\navbar");
 
-        //                if(System.IO.File.Exists(oldImagePath))
-        //                {
-        //                    System.IO.File.Delete(oldImagePath);
-        //                }
-        //            }
+                    if (string.IsNullOrEmpty(navbarLogo.ImageUrl) == false)
+                    {
+                        var oldImagePath =
+                            Path.Combine(wwwRootPath, navbarLogo.ImageUrl.TrimStart('\\'));
 
-        //            using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
-        //            {
-        //                file.CopyTo(fileStream);
-        //            }
+                        if (System.IO.File.Exists(oldImagePath))
+                        {
+                            System.IO.File.Delete(oldImagePath);
+                        }
+                    }
 
-        //            project.ImageUrl = @"\images\projects\" + fileName;
-        //        }
+                    using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                    {
+                        file.CopyTo(fileStream);
+                    }
 
-        //        if(project.Id == 0)
-        //        {
-        //            _unitOfWork.ProjectRepository.Add(project);
-        //        }
-        //        else
-        //        {
-        //            _unitOfWork.ProjectRepository.Update(project);
-        //        }
+                    navbarLogo.ImageUrl = @"\images\navbar\" + fileName;
+                }
 
-        //        _unitOfWork.Save();
-        //        TempData["success"] = "Projekt został utworzony.";
-        //        return RedirectToAction("Index");
+                JsonFileManager<NavbarLogo>.Save(navbarLogo);
 
-        //    }
-
-        //    return View(project);
-        //}
+                TempData["success"] = "Projekt został utworzony.";
+                return RedirectToAction("Index");
+        }
 
     }
 }
