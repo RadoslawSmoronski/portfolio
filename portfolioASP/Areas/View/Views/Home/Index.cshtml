@@ -34,16 +34,16 @@
     </div> 
 </section>
 
-<section id="about" style="min-height: 465px;">
+<section id="about">
     <div class="section-header">
         <h1 class="text-white">
             O mnie
         </h1>
     </div>
     <div class="container about-box">
-        <div class="row mb-5 mt-5 d-flex align-items-center justify-content-center">
+        <div class="row pb-5 pt-5 d-flex align-items-center justify-content-center">
             <div class="col-lg-5 order-lg-2 col-md-12 text-center align-self-center pb-2 pt-2">
-                <img class="project-image" src="@(Model.AboutMe.ImageUrl != null ? Model.AboutMe.ImageUrl : @"\images\aboutme\default-aboutme.jpg")" />
+                <img class="about-image" src="@(Model.AboutMe.ImageUrl != null ? Model.AboutMe.ImageUrl : @"\images\aboutme\default-aboutme.jpg")" />
             </div>
             <div class="col-lg-7 order-lg-1 col-md-12 d-flex align-items-center justify-content-center pb-2 pt-2">
                 <div>
@@ -63,19 +63,21 @@
     </div>
 </section>
 
-<section id="skills" style="min-height: 465px;">
+<section id="skills">
     <div class="section-header">
         <h1 class="text-white">
             Umiejętności
         </h1>
     </div>
     <div class="container skills-box">
-        <div class="row">
+        <div class="row pb-5 pt-5 d-flex align-items-center justify-content-center">
             @foreach(var obj in Model.Skills)
             {
-                <div class="col-lg-4 col-6 text-center px-5 pb-5">
+                <div class="col-lg-2 col-md-4 col-6 mb-2 mt-2 text-center d-flex align-items-center justify-content-center">
+                    <div>
                     <img src="@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")" width="50px" height="50px" />
                     <h5 class="text-white m-3">@obj.Name</h5>
+                    </div>
                 </div>
             }
         </div>
@@ -90,12 +92,12 @@
     </div>
     <div class="portfolio container">
         <div class="container">
-            <div class="row">
+            <div class="row pb-5 pt-5">
                 @foreach(var obj in Model.Projects)
                 {
                     <div class="col-lg-4 px-5 pb-5">
                         <div class="project-box text-center">
-                            <img src="@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")" style="width: 100%; height: 100%" />
+                            <img src="@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")" class="project-img" />
                             <div class="text-white pb-1 m-3" style="font-size: 25px;">@obj.Name</div>
                             <div class="cover text-center">
                                 <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>
@@ -127,8 +129,8 @@
         </h1>
     </div>
     <div class="container contact-box">
-        <div class="row">
-            <div class="col-lg-4 order-lg-1 order-2 p-5">
+        <div class="row pb-5 pt-5">
+            <div class="col-lg-4 order-lg-1 order-2 p-5 d-flex align-items-center justify-content-center">
                 <ul>
                     @foreach(var obj in Model.Contacts)
                     {

@@ -36,6 +36,12 @@
     padding-left: 20%;
 }
 
+.about-image {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    border-radius: 50%;
+}
 
 
 /*Skills section CSS*/
@@ -44,21 +50,10 @@
     background-color: #151a1c;
 }
 
-.skills-box {
-    padding-top: 10%;
-    padding-bottom: 10%;
-}
-
-
 /*Projects section CSS*/
 
 #portfolio{
     background-color: #151a1c;
-}
-
-.portfolio .container {
-    padding-top: 10%;
-    padding-bottom: 10%;
 }
 
 .project-box {
@@ -88,11 +83,16 @@
 }
 
 
-.project-image {
-    width: 250px;
-    height: 250px;
+.project-img {
     object-fit: cover;
-    border-radius: 50%;
+    height: 300px;
+    width: 100%;
+}
+
+@media (max-width: 575.98px) {
+    .project-img {
+        height: 350px;
+    }
 }
 
 
@@ -104,8 +104,6 @@
 }
 
 .contact-box {
-    padding-top: 25px;
-    padding-bottom: 25px;
 }
 
     .contact-box ul {
