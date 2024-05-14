@@ -7,8 +7,24 @@
             <div class="row">
                 <div class="col-lg-3 col-md-3 col-3"></div>
                 <div class="col-lg-9 col-md-9 col-9">
-                    <h1 class="text-white header-socrates">@Model.Welcome.Header</h1>
-                    <div class="text-white">@Model.Welcome.Description</div>
+                    <h1 class="text-white header-socrates">
+                        @{
+                            if (Model.Welcome.Header != null)
+                            {
+                                string title = Model.Welcome.Header.Replace("\r\n", "<br />");
+                                @Html.Raw(title)
+                            }
+                        }
+                        </h1>
+                    <div class="text-white">
+                        @{
+                            if (Model.Welcome.Description != null)
+                            {
+                                string title = Model.Welcome.Description.Replace("\r\n", "<br />");
+                                @Html.Raw(title)
+                            }
+                        }
+                    </div>
                 </div>
             </div>
         </div>
@@ -32,7 +48,15 @@
             <div class="col-lg-7 order-lg-1 col-md-12 d-flex align-items-center justify-content-center pb-2 pt-2">
                 <div>
                     <h3 class="text-center text-white">@Model.AboutMe.Title</h3>
-                    <p class="text-center">@Model.AboutMe.Description</p>
+                    <p class="text-center">
+                        @{
+                            if (Model.AboutMe.Description != null)
+                            {
+                                string title = Model.AboutMe.Description.Replace("\r\n", "<br />");
+                                @Html.Raw(title)
+                            }
+                        }
+                    </p>
                 </div>
             </div>
         </div>
@@ -75,7 +99,15 @@
                             <div class="text-white pb-1 m-3" style="font-size: 25px;">@obj.Name</div>
                             <div class="cover text-center">
                                 <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>
-                                <p class="text-white m-3">@obj.Description</p>
+                                <p class="text-white m-3">
+                                    @{
+                                        if (obj.Description != null)
+                                        {
+                                            string title = obj.Description.Replace("\r\n", "<br />");
+                                            @Html.Raw(title)
+                                        }
+                                    }
+                                </p>
                                 <a class="btn btn-dark" href="@obj.GitRepositoryUrl" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
                                     <i class="bi bi-github text-white" style="font-size: 35px;"></i> <br> Repozytorium
                                 </a>

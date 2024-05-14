@@ -9,12 +9,10 @@ namespace portfolioASP.Areas.Admin.Controllers
     public class ContactsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ContactsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public ContactsController(IUnitOfWork unitOfWork)
         {
             _unitOfWork = unitOfWork;
-            _webHostEnvironment = webHostEnvironment;
         }
 
         public IActionResult Index()

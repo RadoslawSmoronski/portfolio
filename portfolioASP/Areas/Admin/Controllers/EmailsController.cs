@@ -33,9 +33,11 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             emailMessages.Reverse();
 
-            AdminEmailsViewModel viewModel = new AdminEmailsViewModel();
-            viewModel.EmailMessages = emailMessages;
-            viewModel.UnreadEmailMessages = _unitOfWork.EmailMessageRepository.GetUnreadAmount();
+            var viewModel = new AdminEmailsViewModel
+            {
+                EmailMessages = emailMessages,
+                UnreadEmailMessages = _unitOfWork.EmailMessageRepository.GetUnreadAmount()
+            };
 
             return View(viewModel);
         }
@@ -56,9 +58,11 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult EmailConfigure()
         {
-            AdminEmailsEmailConfigureDetailsPageViewModel viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel();
-            viewModel.EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get();
-            viewModel.EmailSettings = _emailSettings;
+            var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
+            {
+                EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get(),
+                EmailSettings = _emailSettings
+            };
 
             viewModel.EmailSettings.Password = null;
 

@@ -10,12 +10,24 @@
 
                 <div class="detail-box">
                     <h5>Nagłowek</h5>
-                    @Model.Header
+                    @{
+                        if (Model.Header != null)
+                        {
+                            string title = Model.Header.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
                 </div>
 
                 <div class="detail-box">
                     <h5>Opis</h5>
-                    @Model.Description
+                    @{
+                        if (Model.Description != null)
+                        {
+                            string title = Model.Description.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
                 </div>
 
                 <a asp-controller="Welcome" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>

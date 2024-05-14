@@ -11,7 +11,7 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public NavbarLogoController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public NavbarLogoController(IWebHostEnvironment webHostEnvironment)
         {
             _webHostEnvironment = webHostEnvironment;
         }
