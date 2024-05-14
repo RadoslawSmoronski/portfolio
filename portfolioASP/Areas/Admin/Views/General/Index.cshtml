@@ -1,4 +1,5 @@
-﻿<link rel="stylesheet" href="~/css/admin/datails.css" />
+﻿@model AdminGeneralViewModel
+<link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
     <div class="container">
@@ -18,6 +19,31 @@
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Menu</h1>
+
+                <div class="detail-box">
+                    <h5>Tytuł logo</h5>
+                    @{
+                        if (Model.NavbarLogo.Title != null)
+                        {
+                            string title = Model.NavbarLogo.Title.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>Obrazek logo</h5>
+                    @{
+                        if (Model.NavbarLogo.ImageUrl != null)
+                        {
+                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.NavbarLogo.ImageUrl"></img>
+                        }
+                        else
+                        {
+                            <p>brak</p>
+                        }
+                    }
+                </div>
 
                 <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
