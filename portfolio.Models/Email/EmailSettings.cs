@@ -1,14 +1,20 @@
 ﻿using System.Net.Mail;
 using System.Net;
+using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.Models.Email
 {
     public class EmailSettings
     {
+        [Required]
         public string Email { get; set; }
+        [Required]
         public string? Password { get; set; }
+        [Required]
         public string SmtpServer { get; set; }
+        [Required]
         public int SmtpPort { get; set;}
+        [Required]
         public bool Encryption  { get; set; }
 
         public bool CheckConnection()
@@ -30,7 +36,7 @@ namespace portfolio.Models.Email
             }
             catch (Exception ex)
             {
-                throw;
+                throw ex;
             }
         }
 
