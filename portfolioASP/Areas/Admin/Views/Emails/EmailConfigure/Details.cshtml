@@ -51,7 +51,13 @@
 
                 <div class="detail-box">
                     <h5>Treść</h5>
-                    @Model.EmailMessageContent.Content
+                    @{
+                        if (Model.EmailMessageContent.Content != null)
+                        {
+                            string title = Model.EmailMessageContent.Content.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
                 </div>
 
                 <a asp-controller="Emails" asp-action="MessageEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>

@@ -1,28 +1,6 @@
 ﻿@model NavbarLogo
 
-<style>
-    #box {
-        padding-top: 10%;
-        margin-bottom: 10%;
-    }
-
-    #box th {
-        background-color: #1E2427;
-        color: white;
-    }
-
-    #box td {
-        background-color: #151a1c;
-        color: white;
-        border-bottom: 1px solid #1E2427;
-    }
-
-    .box {
-        background-color: #151a1c;
-    }
-
-
-</style>
+<link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
     <div class="container">
@@ -33,12 +11,11 @@
                     <form method="post" enctype="multipart/form-data">
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label for="exampleFormControlInput1" class="text-white">Treść</label>
+                            <label class="text-white">Treść</label>
                             <textarea asp-for="Title" class="form-control"></textarea>
-                            <span asp-validation-for="Title" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
-                            <label for="exampleFormControlInput1" class="text-white">Obrazek</label>
+                            <label class="text-white">Obrazek</label>
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />                   
                             @if(Model.ImageUrl != null)
                             {
@@ -55,9 +32,3 @@
         </div>
     </div>
 </section>
-
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
-    }
-}

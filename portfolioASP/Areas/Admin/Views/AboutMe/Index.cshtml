@@ -1,41 +1,5 @@
 ﻿@model AboutMe
-
-<style>
-    #box {
-        padding-top: 10%;
-        margin-bottom: 10%;
-    }
-
-    #box th {
-        background-color: #1E2427;
-        color: white;
-    }
-
-    #box td {
-        background-color: #151a1c;
-        color: white;
-        border-bottom: 1px solid #1E2427;
-    }
-
-    .box {
-        background-color: #151a1c;
-    }
-
-    .detail-box {
-        margin-bottom: 30px;
-    }
-
-    .detail-box h5 {
-        color: white;
-    }
-
-    .project-img {
-        height: 200px;
-        width: 200px;
-    }
-
-
-</style>
+<link rel="stylesheet" href="~/css/admin/datails.css" asp-append-version="true" />
 
 <section id="box">
     <div class="container">
@@ -51,7 +15,13 @@
 
                 <div class="detail-box">
                     <h5>Opis</h5>
-                    @Model.Description
+                    @{
+                        if (Model.Description != null)
+                        {
+                            string title = Model.Description.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
                 </div>
 
                 <div class="detail-box">
@@ -65,9 +35,3 @@
         </div>
     </div>
 </section>
-
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
-    }
-}

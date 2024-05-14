@@ -1,28 +1,6 @@
 ﻿@model AutoEmailMessageContent
 
-<style>
-    #box {
-        padding-top: 10%;
-        margin-bottom: 10%;
-    }
-
-    #box th {
-        background-color: #1E2427;
-        color: white;
-    }
-
-    #box td {
-        background-color: #151a1c;
-        color: white;
-        border-bottom: 1px solid #1E2427;
-    }
-
-    .box {
-        background-color: #151a1c;
-    }
-
-
-</style>
+<link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
     <div class="container">
@@ -38,11 +16,10 @@
                         <div class="form-group mb-4">
                             <label class="text-white">Treść</label>
                             <textarea asp-for="Content" class="form-control"></textarea>
-                            <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                        <a asp-controller="Emails" asp-action="EmailConfigure" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                            <a asp-controller="Emails" asp-action="EmailConfigure" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>
@@ -50,9 +27,3 @@
         </div>
     </div>
 </section>
-
-@section Scripts{
-    @{
-        <partial name="_ValidationScriptsPartial"/>
-    }
-}
