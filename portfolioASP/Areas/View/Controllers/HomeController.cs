@@ -34,8 +34,11 @@ namespace portfolioASP.Areas.View.Controllers
         public IActionResult Index()
         {
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
-
             ViewData["NavbarLogo"] = navbarLogo;
+
+            Footer footer = JsonFileManager<Footer>.Get();
+            ViewData["Footer"] = footer;
+
             return View(_model);
         }
 

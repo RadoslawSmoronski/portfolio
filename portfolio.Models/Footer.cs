@@ -8,6 +8,6 @@ namespace portfolio.Models
 {
     public class Footer
     {
-        public string Content { get; set; }
+        public string? Content { get; set; }
     }
 }

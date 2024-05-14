@@ -75,9 +75,15 @@
     </div>
 
     <footer class="footer d-flex align-items-center justify-content-center">
-        <div>
+@*         <div>
             2024 &copy; Radosław Smoroński <a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-        </div>
+        </div> *@
+
+        @{
+            string? footerContent = ViewData["Footer"] as string;
+        }
+
+        @Html.Raw(footerContent)
 
     </footer>
 
