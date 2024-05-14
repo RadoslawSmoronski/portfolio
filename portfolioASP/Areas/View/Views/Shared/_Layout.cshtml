@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>temp</title>
+    <title>test</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/view/view.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/portfolioASP.styles.css" asp-append-version="true" />
@@ -17,22 +17,30 @@
                 <div style="display:flex; align-items:center;">
                     <a class="navbar-brand text-white" style="font-size: 10px; display:flex; align-items:center;" href="#">
                         @{
-                            NavbarLogo navbarLogo = JsonClientGetter<NavbarLogo>.Get();
+                            NavbarLogo? navbarLogo = ViewData["NavbarLogo"] as NavbarLogo;
 
-                            @if (navbarLogo.ImageUrl != null)
+                            @if (navbarLogo != null)
                             {
-                                <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                                @if (navbarLogo.ImageUrl != null)
+                                {
+                                    <img src="@navbarLogo.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                                }
+
+                                <div class="logo-text">
+                                    @{
+                                        if (navbarLogo.Title != null)
+                                        {
+                                            string title = navbarLogo.Title.Replace("\r\n", "<br />");
+                                            @Html.Raw(title)
+                                        }
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <p>Load Error</p>
                             }
 
-                            <div class="logo-text">
-                                @{
-                                    if (navbarLogo.Title != null)
-                                    {
-                                        string title = navbarLogo.Title.Replace("\r\n", "<br />");
-                                        @Html.Raw(title)
-                                    }
-                                }
-                            </div>
                         }
                     </a>
                 </div>
