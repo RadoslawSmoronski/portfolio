@@ -1,7 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pages.Manage;
-using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
