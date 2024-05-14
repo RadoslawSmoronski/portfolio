@@ -13,13 +13,13 @@ using System.Drawing.Drawing2D;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    public class EmailsController : Controller
+    public class General2Controller : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmailSettings _emailSettings;
 
 
-        public EmailsController(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings)
+        public General2Controller(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings)
         {
             _unitOfWork = unitOfWork;
             _emailSettings = emailSettings.Value;
