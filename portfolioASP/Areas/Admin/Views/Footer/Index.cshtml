@@ -1,0 +1,21 @@
+﻿@model Footer
+<link rel="stylesheet" href="~/css/admin/datails.css" asp-append-version="true" />
+
+<section id="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-1 col-lg-3 col-md-2"></div>
+            <div class="col-10 col-lg-6 col-md-8 box p-5">
+                <h1 class="text-white text-center mb-5">O Mnie</h1>
+
+                <div class="detail-box">
+                    <h5>Treść</h5>
+                    @Html.Raw(Model.Content)
+                </div>
+
+                <a asp-controller="Footer" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+            </div>
+            <div class="col-1 col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</section>

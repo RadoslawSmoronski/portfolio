@@ -80,10 +80,13 @@
         </div> *@
 
         @{
-            string? footerContent = ViewData["Footer"] as string;
-        }
+            Footer? footer = ViewData["Footer"] as Footer;
 
-        @Html.Raw(footerContent)
+            @if(footer != null)
+            {
+                @Html.Raw(footer.Content)
+            }
+        }
 
     </footer>
 
