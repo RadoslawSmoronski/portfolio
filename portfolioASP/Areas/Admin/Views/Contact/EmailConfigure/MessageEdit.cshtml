@@ -1,0 +1,28 @@
+﻿@model AutoEmailMessageContent
+<link rel="stylesheet" href="~/css/admin/datails.css" />
+
+<section id="box">
+    <div class="container">
+        <div class="row">
+            <div class="col-1 col-lg-3 col-md-2"></div>
+            <div class="col-10 col-lg-6 col-md-8 box p-5">
+                <h1 class="text-white text-center mb-5">Edytowanie - Wiadomości</h1>
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="form-group mb-4">
+                            <label class="text-white">Temat</label>
+                            <input asp-for="Subject" class="form-control">
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white">Treść</label>
+                            <textarea asp-for="Content" class="form-control"></textarea>
+                        </div>
+                        <div class="row">
+                            <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
+                            <a asp-controller="Contact" asp-action="EmailConfigure" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                        </div>
+                    </form>
+            </div>
+            <div class="col-1 col-lg-3 col-md-2"></div>
+        </div>
+    </div>
+</section>

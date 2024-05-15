@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
+using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
@@ -67,6 +68,77 @@ namespace portfolioASP.Areas.Admin.Controllers
             _unitOfWork.EmailMessageRepository.Remove(emailMessage);
             _unitOfWork.Save();
             return Json(new { success = true, message = "Usunieto wiadomość" });
+        }
+
+        public IActionResult EmailConfigure()
+        {
+            var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
+            {
+                EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get(),
+                EmailSettings = _emailSettings
+            };
+
+            viewModel.EmailSettings.Password = null;
+
+            return View("EmailConfigure/Details", viewModel);
+        }
+
+        public IActionResult EmailEdit()
+        {
+            EmailSettings emailSettings = _emailSettings;
+            emailSettings.Password = null;
+
+            return View("EmailConfigure/EmailEdit", emailSettings);
+        }
+
+        [HttpPost]
+        public IActionResult EmailEdit(EmailSettings emailSettings)
+        {
+
+            try
+            {
+                emailSettings.CheckConnection();
+
+                TempData["success"] = "Dane zostały zmienione pomyślnie.";
+                return RedirectToAction("EmailConfigure");
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = ex.Message;
+
+                EmailSettings emailSettingsObj = _emailSettings;
+                emailSettingsObj.Password = null;
+
+                return View("EmailConfigure/EmailEdit", emailSettingsObj);
+            }
+        }
+
+        public IActionResult MessageEdit()
+        {
+            AutoEmailMessageContent? message = JsonFileManager<AutoEmailMessageContent>.Get();
+
+            if (message == null) return NotFound();
+
+            return View("EmailConfigure/MessageEdit", message);
+        }
+
+        [HttpPost]
+        public IActionResult MessageEdit(AutoEmailMessageContent message)
+        {
+
+            try
+            {
+                JsonFileManager<AutoEmailMessageContent>.Save(message);
+
+                TempData["success"] = "Wiadomość zostałą zmieniona.";
+                return RedirectToAction("EmailConfigure");
+            }
+            catch (Exception ex)
+            {
+                TempData["error"] = ex.Message;
+
+                return View(message);
+            }
         }
     }
 }

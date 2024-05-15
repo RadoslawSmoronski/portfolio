@@ -14,6 +14,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Include="Areas\Admin\Views\Contact\EmailConfigure\Details.cshtml" />
+    <None Include="Areas\Admin\Views\Contact\EmailConfigure\EmailEdit.cshtml" />
+    <None Include="Areas\Admin\Views\Contact\EmailConfigure\MessageEdit.cshtml" />
     <None Include="wwwroot\css\view\home.css" />
   </ItemGroup>
 
