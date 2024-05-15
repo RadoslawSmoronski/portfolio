@@ -12,10 +12,10 @@
 
                 <div class="detail-box">
                     <h5>Treść</h5>
-                    @Html.Raw(Model.WebsiteTitle.Title)
+                    @Model.WebsiteTitle.Title
                 </div>
 
-                <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="General" asp-action="EditWebsiteTitle" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Components.Routing;
+using Microsoft.AspNetCore.Mvc;
 using portfolio.DataAccess.Json;
 using portfolio.Models;
 using portfolio.Models.ViewModels;
@@ -30,6 +31,20 @@ namespace portfolioASP.Areas.Admin.Controllers
         public IActionResult Index()
         {
             return View(_viewModel);
+        }
+
+        public IActionResult EditWebsiteTitle()
+        {
+            return View(_viewModel.WebsiteTitle);
+        }
+
+        [HttpPost]
+        public IActionResult EditWebsiteTitle(WebsiteTitle websiteTitle)
+        {
+            JsonFileManager<WebsiteTitle>.Save(websiteTitle);
+
+            TempData["success"] = "Edytowałes Tytuł Strony";
+            return RedirectToAction("Index", _viewModel);
         }
     }
 }
