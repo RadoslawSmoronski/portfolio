@@ -78,7 +78,7 @@ namespace portfolioASP.Areas.View.Controllers
                 TempData["success"] = "Wiadomość została wysłana.";
             }
 
-            return RedirectToAction("Index", _model);
+            return RedirectToAction("Index");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
