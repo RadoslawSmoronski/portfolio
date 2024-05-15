@@ -8,6 +8,7 @@ namespace portfolio.Models
 {
     public class WebsiteTitle
     {
-        public string Title { get; set; }
+        public string? Title { get; set; } = "Lorem Ipsum";
+        public string? ImageUrl { get; set; }
     }
 }
