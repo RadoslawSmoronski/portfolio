@@ -8,6 +8,9 @@ namespace portfolio.Models.ViewModels
 {
     public class AdminGeneralViewModel
     {
+        public WebsiteTitle WebsiteTitle { get; set; }
         public NavbarLogo NavbarLogo { get; set; }
+        public Welcome Welcome { get; set; }
+        public Footer Footer { get; set; }
     }
 }

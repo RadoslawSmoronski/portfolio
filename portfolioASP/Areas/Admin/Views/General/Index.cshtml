@@ -5,17 +5,22 @@
     <div class="container">
 
         
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Tytuł Strony</h1>
+
+                <div class="detail-box">
+                    <h5>Treść</h5>
+                    @Html.Raw(Model.WebsiteTitle.Title)
+                </div>
 
                 <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Menu</h1>
@@ -50,22 +55,49 @@
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Powitalna Wiadomość</h1>
+
+                <div class="detail-box">
+                    <h5>Nagłowek</h5>
+                    @{
+                        if (Model.Welcome.Header != null)
+                        {
+                            string title = Model.Welcome.Header.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>Opis</h5>
+                    @{
+                        if (Model.Welcome.Description != null)
+                        {
+                            string title = Model.Welcome.Description.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
 
                 <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Stopka</h1>
 
-                <a asp-controller="" asp-action="" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <div class="detail-box">
+                    <h5>Treść</h5>
+                    @Html.Raw(Model.Footer.Content)
+                </div>
+
+                <a asp-controller="Footer" asp-action="Edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>

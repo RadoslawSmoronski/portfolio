@@ -11,13 +11,19 @@ namespace portfolioASP.Areas.Admin.Controllers
         AdminGeneralViewModel _viewModel;
         public GeneralController()
         {
+            WebsiteTitle websiteTitle = JsonFileManager<WebsiteTitle>.Get();
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
+            Welcome welcome = JsonFileManager<Welcome>.Get();
+            Footer footer = JsonFileManager<Footer>.Get();
 
 
 
             _viewModel = new AdminGeneralViewModel
             {
-                NavbarLogo = navbarLogo
+                WebsiteTitle = websiteTitle,
+                NavbarLogo = navbarLogo,
+                Welcome = welcome,
+                Footer = footer
             };
         }
 
