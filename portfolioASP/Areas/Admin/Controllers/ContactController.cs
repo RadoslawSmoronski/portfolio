@@ -48,5 +48,25 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             return View(emailMessage);
         }
+
+        [HttpDelete]
+        public IActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return Json(new { success = false, message = "Nie przyjeto id" });
+            }
+
+            EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get(u => u.Id == id);
+
+            if (emailMessage == null)
+            {
+                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+            }
+
+            _unitOfWork.EmailMessageRepository.Remove(emailMessage);
+            _unitOfWork.Save();
+            return Json(new { success = true, message = "Usunieto wiadomość" });
+        }
     }
 }
