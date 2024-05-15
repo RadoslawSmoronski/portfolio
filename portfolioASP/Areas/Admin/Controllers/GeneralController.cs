@@ -47,11 +47,41 @@ namespace portfolioASP.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public IActionResult EditWebsiteTitle(WebsiteTitle websiteTitle)
+        public IActionResult EditWebsiteTitle(WebsiteTitle websiteTitle, IFormFile? file)
         {
+            string wwwRootPath = _webHostEnvironment.WebRootPath;
+            if (file != null)
+            {
+                string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
+                string productPath = Path.Combine(wwwRootPath, @"images\websiteTitle");
+
+                DeleteImageFile(websiteTitle.ImageUrl);
+
+                using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
+                {
+                    file.CopyTo(fileStream);
+                }
+
+                websiteTitle.ImageUrl = @"\images\websiteTitle\" + fileName;
+            }
+
             JsonFileManager<WebsiteTitle>.Save(websiteTitle);
 
             TempData["success"] = "Edytowałes Tytuł Strony";
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult DeleteWebsiteTitleImage()
+        {
+            WebsiteTitle obj = JsonFileManager<WebsiteTitle>.Get();
+
+            DeleteImageFile(obj.ImageUrl);
+
+            obj.ImageUrl = null;
+
+            JsonFileManager<WebsiteTitle>.Save(obj);
+
+            TempData["success"] = "Zdjęcie zostało usunięte.";
             return RedirectToAction("Index");
         }
 
@@ -87,14 +117,13 @@ namespace portfolioASP.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteImage()
+        public IActionResult DeleteNavbarImage()
         {
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
 
             DeleteImageFile(navbarLogo.ImageUrl);
 
             navbarLogo.ImageUrl = null;
-
 
             JsonFileManager<NavbarLogo>.Save(navbarLogo);
 

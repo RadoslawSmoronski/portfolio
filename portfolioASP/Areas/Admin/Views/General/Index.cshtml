@@ -8,11 +8,25 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Tytuł Strony</h1>
+                <h1 class="text-white text-center mb-5">Zakładka</h1>
 
                 <div class="detail-box">
                     <h5>Treść</h5>
                     @Model.WebsiteTitle.Title
+                </div>
+
+                <div class="detail-box">
+                    <h5>Obrazek zakładki</h5>
+                    @{
+                        if (Model.WebsiteTitle.ImageUrl != null)
+                        {
+                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.WebsiteTitle.ImageUrl"></img>
+                        }
+                        else
+                        {
+                            <p>brak</p>
+                        }
+                    }
                 </div>
 
                 <a asp-controller="General" asp-action="EditWebsiteTitle" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
