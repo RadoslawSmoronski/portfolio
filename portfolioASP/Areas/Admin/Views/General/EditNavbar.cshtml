@@ -1,4 +1,4 @@
-﻿@* @model WebsiteTitle
+﻿@model NavbarLogo
 <link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
@@ -18,16 +18,16 @@
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />                   
                             @if(Model.ImageUrl != null)
                             {
-                                <a asp-controller="NavbarLogo" asp-action="DeleteImage" class="btn btn-outline-dark col-12">Usuń zdjęcie</a>
+                                <a asp-controller="General" asp-action="DeleteImage" class="btn btn-outline-dark col-12">Usuń zdjęcie</a>
                             }                        
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                            <a asp-controller="NavbarLogo" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                            <a asp-controller="General" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
     </div>
-</section> *@
+</section>
