@@ -1,4 +1,4 @@
-﻿@model AdminEmailsViewModel
+﻿@model List<Contact>
 
 <style>
     #box {
@@ -12,10 +12,11 @@
         }
 
         #box td {
+            background-color: #151a1c;
             color: #e3e3e3;
             border-bottom: 1px solid #1E2427;
         }
-      
+
 
     .add-btn {
         width: 200px;
@@ -40,9 +41,8 @@
         float: right;
     }
 
-    .project-img {
-        width: 50px;
-        height: 50px;
+    .contact-icon {
+        font-size: 30px;
     }
 
 
@@ -71,9 +71,8 @@
             height: 40px;
         }
 
-        .project-img {
-            width: 120px;
-            height: 120px;
+        .contact-icon {
+            font-size: 80px;
         }
 
 </style>
@@ -81,55 +80,41 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Wiadomości (@Model.UnreadEmailMessages / @Model.EmailMessages.Count())</h1>
+            <h1 class="text-white">Kontakty</h1>
         </div>
-        <table class="table">
+        <table class="table bg-dark">
             <thead>
-                <th scope="col">#</th>
-                <th scope="col">eMail</th>
-                <th scope="col">Temat</th>
-                <th scope="col">
-                    <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark add-btn">
-                        <i class="bi bi-gear"></i>
-                        Kontakty
-                    </a>
-                    <a asp-controller="Contact" asp-action="EmailConfigure" class="btn btn-dark add-btn">
-                        <i class="bi bi-gear"></i>
-                        Email
-                    </a>
-                </th>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nazwa</th>
+                    <th scope="col">Ikona</th>
+                    <th scope="col">
+                        <a asp-controller="Contact" asp-action="Upsert" class="btn btn-dark add-btn">
+                            <i class="bi bi-plus-circle"></i>
+                            Dodaj
+                        </a>
+                    </th>
+                </tr>
             </thead>
             <tbody>
-                @{
-                    DateTime? dateTime = null;
-                }
-                @foreach(var obj in Model.EmailMessages)
+                @foreach(var obj in Model)
                 {
-
-                    @if (dateTime != obj.SentAt.Date)
-                    {
-                        dateTime = obj.SentAt.Date;
-
-                        <tr class="table-dark">
-                            <td>@obj.SentAt.Date.ToString("yyyy-MM-dd")</td>
-                            <td></td>
-                            <td></td>
-                            <td></td>
-                        </tr>
-                    }
-
-                    <tr class="@(obj.IsReaded ? "table-dark" : "table-secondary")">
-                        <td>@obj.SentAt.Hour:@obj.SentAt.Minute</td>
+                    <tr>
+                        <td>@obj.Id</td>
                         <td>
-                            @obj.Email
+                            @obj.Name
                         </td>
-                        <td>
-                            @obj.Subject
+                        <td class="contact-icon">
+                            <i class="@(obj.Icon != null ? obj.Icon : "bi bi-person-rolodex")"></i>
                         </td>
                         <td class="text-center">
-                            <a onClick=Delete('/admin/contact/delete/@obj.Id') class="btn btn-danger delete-btn">
+                            <a onClick=Delete('/admin/contacts/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 <span>Delete</span>
+                            </a>
+                            <a asp-controller="Contact" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                                <i class="bi bi-pen"></i>
+                                <span>Edytuj</span>
                             </a>
                             <a asp-controller="Contact" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>

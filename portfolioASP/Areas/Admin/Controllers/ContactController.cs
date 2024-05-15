@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Options;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
+using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 
@@ -140,5 +141,12 @@ namespace portfolioASP.Areas.Admin.Controllers
                 return View(message);
             }
         }
+
+        public IActionResult ContactsIndex()
+        {
+            List<Contact> objContactsList = _unitOfWork.ContactRepository.GetAll().ToList();
+            return View("Contacts/ContactsIndex", objContactsList);
+        }
+
     }
 }
