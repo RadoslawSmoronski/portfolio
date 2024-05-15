@@ -39,6 +39,8 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(_viewModel);
         }
 
+        //WebsiteTitle
+
         public IActionResult EditWebsiteTitle()
         {
             return View(_viewModel.WebsiteTitle);
@@ -52,6 +54,8 @@ namespace portfolioASP.Areas.Admin.Controllers
             TempData["success"] = "Edytowałes Tytuł Strony";
             return RedirectToAction("Index");
         }
+
+        //Navbar
 
         public IActionResult EditNavbar()
         {
@@ -112,6 +116,38 @@ namespace portfolioASP.Areas.Admin.Controllers
                     System.IO.File.Delete(oldImagePath);
                 }
             }
+        }
+
+        //Welcome
+
+        public IActionResult EditWelcome()
+        {
+            return View(_viewModel.Welcome);
+        }
+
+        [HttpPost]
+        public IActionResult EditWelcome(Welcome welcome)
+        {
+            JsonFileManager<Welcome>.Save(welcome);
+
+            TempData["success"] = "Edytowałes sekecji Witam";
+            return RedirectToAction("Index");
+        }
+
+        //Footer
+
+        public IActionResult EditFooter()
+        {
+            return View(_viewModel.Footer);
+        }
+
+        [HttpPost]
+        public IActionResult EditFooter(Footer footer)
+        {
+            JsonFileManager<Footer>.Save(footer);
+
+            TempData["success"] = "Edytowałes sekecji Stopka";
+            return RedirectToAction("Index");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿@model NavbarLogo
+﻿@model Footer
 <link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
@@ -8,22 +8,14 @@
             <div class="col-10 col-lg-6 col-md-8 box p-5">
                 <h1 class="text-white text-center mb-5">Edytowanie - Nagłowek menu nawigacji</h1>
                     <form method="post" enctype="multipart/form-data">
-                        <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
                             <label class="text-white">Treść</label>
-                            <textarea asp-for="Title" class="form-control"></textarea>
-                        </div>
-                        <div class="form-group mb-3">
-                            <label class="text-white">Obrazek</label>
-                            <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />                   
-                            @if(Model.ImageUrl != null)
-                            {
-                                <a asp-controller="NavbarLogo" asp-action="DeleteImage" class="btn btn-outline-dark col-12">Usuń zdjęcie</a>
-                            }                        
+                            <textarea asp-for="Content" class="form-control"></textarea>
+                            <span asp-validation-for="Content" class="text-danger"></span>
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</button>
-                            <a asp-controller="NavbarLogo" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                            <a asp-controller="General" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
                         </div>
                     </form>
             </div>
