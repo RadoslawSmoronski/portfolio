@@ -34,7 +34,7 @@ namespace portfolioASP.Areas.View.Controllers
         public IActionResult Index()
         {
             WebsiteTitle websiteTitle = JsonFileManager<WebsiteTitle>.Get();
-            ViewData["WebsiteTitle"] = websiteTitle.Title;
+            ViewData["WebsiteTitle"] = websiteTitle;
 
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
             ViewData["NavbarLogo"] = navbarLogo;

@@ -3,12 +3,25 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["WebsiteTitle"]</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css/view/view.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/portfolioASP.styles.css" asp-append-version="true" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
+
+    @{
+        WebsiteTitle? websiteTitle = ViewData["WebsiteTitle"] as WebsiteTitle;
+
+        @if (websiteTitle != null)
+        {
+            <title>@websiteTitle.Title</title>
+            if(websiteTitle.ImageUrl != null)
+            {
+                <link rel="icon" href="@websiteTitle.ImageUrl">
+            }
+        }
+    }
+
 </head>
 <body>
     <header>
