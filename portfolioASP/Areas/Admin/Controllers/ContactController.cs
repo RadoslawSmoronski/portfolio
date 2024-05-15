@@ -34,5 +34,19 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             return View(viewModel);
         }
+
+        public IActionResult Details(int? id)
+        {
+            EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get(u => u.Id == id);
+
+            if (emailMessage == null) return NotFound();
+
+            emailMessage.IsReaded = true;
+
+            _unitOfWork.EmailMessageRepository.Update(emailMessage);
+            _unitOfWork.Save();
+
+            return View(emailMessage);
+        }
     }
 }
