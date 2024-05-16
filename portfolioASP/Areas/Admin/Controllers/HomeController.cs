@@ -4,6 +4,7 @@ using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
+using portfolio.Utility;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -48,10 +49,19 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult Login(AdminLogin adminLogin)
         {
+            var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
+
+            if(AdminLoginFailedBanned.IsUserBanned(ipAddress))
+            {
+                TempData["error"] = "Przekroczyleś ilość prób, spróbuj później.";
+                return View();
+            }
+
             if (ModelState.IsValid)
             {
                 if (BCrypt.Net.BCrypt.Verify(adminLogin.Password, _adminLogin.Password))
                 {
+                    AdminLoginFailedBanned.RemoveFailderLoginAttempts(ipAddress);
                     HttpContext.Session.SetString("IsActiveSession", "true");
                     TempData["success"] = "Zalogowano pomyslnie.";
                     return View("Index");
@@ -59,7 +69,9 @@ namespace portfolioASP.Areas.Admin.Controllers
                 }
             }
 
-            Task.Delay(2000).Wait();
+            AdminLoginFailedBanned.AddFailedLoginAttempts(ipAddress);
+
+            Task.Delay(1000).Wait();
             TempData["error"] = "Nieprawidłowe hasło.";
             return View();
         }
