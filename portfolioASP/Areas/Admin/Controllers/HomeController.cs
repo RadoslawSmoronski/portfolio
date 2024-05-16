@@ -9,6 +9,10 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         public IActionResult Index()
         {
+            return RedirectToAction("Login");
+        }
+        public IActionResult Login()
+        {
             return View();
         }
 
