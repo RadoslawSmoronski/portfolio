@@ -57,5 +57,12 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View();
         }
 
+        public IActionResult LogOut()
+        {
+            HttpContext.Session.SetString("IsActiveSession", "false");
+
+            return RedirectToAction("Index", new { area = "View" });
+        }
+
     }
 }
