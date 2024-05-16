@@ -1,4 +1,5 @@
 ﻿using Azure;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
@@ -8,6 +9,7 @@ using System.Drawing.Drawing2D;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [CustomAuthorization]
     public class AboutMeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;

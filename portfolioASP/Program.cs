@@ -1,3 +1,4 @@
+﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using portfolio.DataAccess.Data;
@@ -6,8 +7,10 @@ using portfolio.DataAccess.Repository;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.Email;
+using portfolio.Utility;
 using portfolio.Utility.Email;
 using System.Configuration;
+using System.Net;
 
 namespace portfolioASP
 {
@@ -25,6 +28,12 @@ namespace portfolioASP
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.Configure<AdminLogin>(builder.Configuration.GetSection("AdminLogin"));
             builder.Services.AddTransient<IEmailService, EmailService>();
+            builder.Services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(30);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
 
             var app = builder.Build();
 
@@ -41,7 +50,10 @@ namespace portfolioASP
 
             app.UseRouting();
 
+            app.UseAuthentication();
             app.UseAuthorization();
+
+            app.UseSession();
 
             app.MapControllerRoute(
                 name: "default",

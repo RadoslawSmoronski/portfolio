@@ -33,7 +33,9 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if(BCrypt.Net.BCrypt.Verify(adminLogin.Password, _adminLogin.Password))
             {
+                HttpContext.Session.SetString("IsActiveSession", "true");
                 return View("Index");
+
             }
 
             return View();
