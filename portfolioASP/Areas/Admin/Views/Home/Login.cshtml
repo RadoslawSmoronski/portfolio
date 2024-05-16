@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Admin Panel</title>
+    <title>Loogowanie</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
     <link rel="stylesheet" href="~/css//admin/admin.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/portfolioASP.styles.css" asp-append-version="true" />
@@ -18,17 +18,18 @@
     <link rel="stylesheet" href="~/css/admin/datails.css" asp-append-version="true" />
 </head>
 <body>
-
+    <partial name="_Notification" />
     <section id="box">
         <div class="container">
             <div class="row">
                 <div class="col-1 col-lg-4 col-md-2"></div>
                 <div class="col-10 col-lg-4 col-md-8 box p-5">
                     <h5 class="text-white text-center mb-5">Logowanie do panelu Administratora</h5>
-                    <form method="post" enctype="multipart/form-data">
+                    <form method="post" asp-validation-summary="All">
                         <div class="form-group mb-4">
                             <label class="text-white">Hasło</label>
                             <input asp-for="Password" type="password" class="form-control">
+                            <span asp-validation-for="Password" class="text-danger"></span>
                         </div>
 
                         <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-4">Zaloguj</button>
@@ -40,6 +41,8 @@
     </section>
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>

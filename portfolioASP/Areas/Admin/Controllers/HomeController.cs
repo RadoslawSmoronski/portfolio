@@ -44,16 +44,23 @@ namespace portfolioASP.Areas.Admin.Controllers
             return RedirectToAction("Index");
         }
 
+
         [HttpPost]
         public IActionResult Login(AdminLogin adminLogin)
         {
-            if(BCrypt.Net.BCrypt.Verify(adminLogin.Password, _adminLogin.Password))
+            if (ModelState.IsValid)
             {
-                HttpContext.Session.SetString("IsActiveSession", "true");
-                return View("Index");
+                if (BCrypt.Net.BCrypt.Verify(adminLogin.Password, _adminLogin.Password))
+                {
+                    HttpContext.Session.SetString("IsActiveSession", "true");
+                    TempData["success"] = "Zalogowano pomyslnie.";
+                    return View("Index");
 
+                }
             }
 
+            Task.Delay(2000).Wait();
+            TempData["error"] = "Nieprawidłowe hasło.";
             return View();
         }
 
@@ -61,6 +68,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             HttpContext.Session.SetString("IsActiveSession", "false");
 
+            TempData["success"] = "Wylogowano";
             return RedirectToAction("Index", new { area = "View" });
         }
 
