@@ -31,7 +31,8 @@ namespace portfolioASP.Areas.Admin.Controllers
                 WebsiteTitle = websiteTitle,
                 NavbarLogo = navbarLogo,
                 Welcome = welcome,
-                Footer = footer
+                Footer = footer,
+                EditAdminLogin = new EditAdminLogin()
             };
         }
 
@@ -178,6 +179,19 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             TempData["success"] = "Edytowałes sekecji Stopka";
             return RedirectToAction("Index");
+        }
+
+        //EditPassword
+
+        public IActionResult EditPassword()
+        {
+            return View(_viewModel.EditAdminLogin);
+        }
+
+        [HttpPost]
+        public IActionResult EditPassword(EditAdminLogin editAdminLogin)
+        {
+            return View(_viewModel.EditAdminLogin);
         }
     }
 }
