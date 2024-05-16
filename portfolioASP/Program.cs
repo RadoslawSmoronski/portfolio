@@ -4,6 +4,7 @@ using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository;
 using portfolio.DataAccess.Repository.IRepository;
+using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Utility.Email;
 using System.Configuration;
@@ -22,6 +23,7 @@ namespace portfolioASP
                 (options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
+            builder.Services.Configure<AdminLogin>(builder.Configuration.GetSection("AdminLogin"));
             builder.Services.AddTransient<IEmailService, EmailService>();
 
             var app = builder.Build();
