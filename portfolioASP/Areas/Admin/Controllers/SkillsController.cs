@@ -6,6 +6,7 @@ using portfolio.Models;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [SessionAuthorization]
     public class SkillsController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

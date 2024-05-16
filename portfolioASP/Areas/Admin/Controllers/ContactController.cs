@@ -9,6 +9,7 @@ using portfolio.Models.ViewModels;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [SessionAuthorization]
     public class ContactController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;

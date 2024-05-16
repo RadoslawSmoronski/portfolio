@@ -19,13 +19,29 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return RedirectToAction("Login");
+            var isActiveSession = HttpContext.Session.GetString("IsActiveSession");
+
+            if (isActiveSession == "true")
+            {
+                return View();
+            }
+            else
+            {
+                return RedirectToAction("Login");
+            }
         }
         public IActionResult Login()
         {
-            AdminLogin adminLogin = new AdminLogin();
+            var isActiveSession = HttpContext.Session.GetString("IsActiveSession");
 
-            return View(adminLogin);
+            if (isActiveSession != "true")
+            {
+                AdminLogin adminLogin = new AdminLogin();
+
+                return View(adminLogin);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

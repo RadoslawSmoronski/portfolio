@@ -9,7 +9,7 @@ using System.Drawing.Drawing2D;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [CustomAuthorization]
+    [SessionAuthorization]
     public class AboutMeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;

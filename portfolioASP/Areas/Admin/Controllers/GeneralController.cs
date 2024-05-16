@@ -9,6 +9,7 @@ using portfolio.Models.ViewModels;
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [SessionAuthorization]
     public class GeneralController : Controller
     {
         IWebHostEnvironment _webHostEnvironment;

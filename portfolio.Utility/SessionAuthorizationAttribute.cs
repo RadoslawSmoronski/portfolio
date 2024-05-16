@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Http;
 using System;
 
 [AttributeUsage(AttributeTargets.Class | AttributeTargets.Method, AllowMultiple = true, Inherited = true)]
-public class CustomAuthorizationAttribute : Attribute, IAuthorizationFilter
+public class SessionAuthorizationAttribute : Attribute, IAuthorizationFilter
 {
     public void OnAuthorization(AuthorizationFilterContext context)
     {
