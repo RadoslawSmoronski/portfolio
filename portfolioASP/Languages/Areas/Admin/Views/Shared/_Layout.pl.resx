@@ -117,16 +117,25 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="By" xml:space="preserve">
-    <value>stworzona przez Radosława Smorońskiego</value>
+  <data name="AboutMe" xml:space="preserve">
+    <value>O mnie</value>
   </data>
-  <data name="Title" xml:space="preserve">
-    <value>Aplikacja Portfolio</value>
+  <data name="Back" xml:space="preserve">
+    <value>Wróć</value>
   </data>
-  <data name="Version" xml:space="preserve">
-    <value>w trakcie produkcji...</value>
+  <data name="Contact" xml:space="preserve">
+    <value>Kontakt</value>
   </data>
-  <data name="VersionTitle" xml:space="preserve">
-    <value>Wersja</value>
+  <data name="General" xml:space="preserve">
+    <value>Ogólne</value>
+  </data>
+  <data name="Logout" xml:space="preserve">
+    <value>Wyloguj</value>
+  </data>
+  <data name="Portfolio" xml:space="preserve">
+    <value>Portfolio</value>
+  </data>
+  <data name="Skills" xml:space="preserve">
+    <value>Umiejętności</value>
   </data>
 </root>

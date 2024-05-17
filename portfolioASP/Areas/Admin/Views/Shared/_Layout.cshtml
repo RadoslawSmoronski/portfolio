@@ -19,25 +19,25 @@
                         <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="btn btn-dark"><i class="bi bi-house"></i></a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="General" asp-action="Index" class="btn btn-dark">Ogólne</a>
+                        <a asp-area="Admin" asp-controller="General" asp-action="Index" class="btn btn-dark">@Localizer["General"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="AboutMe" asp-action="Index" class="btn btn-dark">O Mnie</a>
+                        <a asp-area="Admin" asp-controller="AboutMe" asp-action="Index" class="btn btn-dark">@Localizer["AboutMe"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="Skills" asp-action="Index" class="btn btn-dark">Umiejętności</a>
+                        <a asp-area="Admin" asp-controller="Skills" asp-action="Index" class="btn btn-dark">@Localizer["Skills"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-dark">Projekty</a>
+                        <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="btn btn-dark">@Localizer["Portfolio"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="btn btn-dark">Kontakt</a>
+                        <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="btn btn-dark">@Localizer["Contact"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="View" asp-controller="Home" asp-action="Index" class="btn btn-dark">Wróc</a>
+                        <a asp-area="View" asp-controller="Home" asp-action="Index" class="btn btn-dark">@Localizer["Back"]</a>
                     </li>
                     <li class="text-white m-2">
-                        <a asp-area="Admin" asp-controller="Home" asp-action="LogOut" class="btn btn-danger">Wyloguj</a>
+                        <a asp-area="Admin" asp-controller="Home" asp-action="LogOut" class="btn btn-danger">@Localizer["Logout"]</a>
                     </li>
                 </ul>
             </div>

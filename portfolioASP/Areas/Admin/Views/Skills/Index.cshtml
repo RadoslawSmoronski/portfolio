@@ -67,18 +67,18 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Umiejętności</h1>
+            <h1 class="text-white">@Localizer["Skills"]</h1>
         </div>
         <table class="table bg-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Obrazek</th>
+                    <th scope="col">@Localizer["Name"]</th>
+                    <th scope="col">@Localizer["Image"]</th>
                     <th scope="col">
                         <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
-                            Dodaj
+                            @Localizer["AddButton"]
                         </a>
                     </th>
                 </tr>
@@ -97,11 +97,11 @@
                         <td class="text-center">
                             <a onClick=Delete('/admin/skills/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
-                                Delete
+                                @Localizer["Delete"]
                             </a>
                             <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
-                                Edytuj
+                                @Localizer["Edit"]
                             </a>
                         </td>
                     </tr>
