@@ -102,7 +102,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                emailSettings.CheckConnection();
+                //emailSettings.CheckConnection();
 
                 EditAppSettings.AddOrUpdateAppSetting<String>("EmailSettings:Password", emailSettings.Password);
 

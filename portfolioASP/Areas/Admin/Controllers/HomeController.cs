@@ -13,7 +13,7 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly AdminLogin _adminLogin;
 
-        public HomeController(IOptions<AdminLogin> adminLogin)
+        public HomeController(IOptionsSnapshot<AdminLogin> adminLogin)
         {
             _adminLogin = adminLogin.Value;
         }

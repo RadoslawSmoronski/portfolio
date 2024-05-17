@@ -2,7 +2,9 @@
 using Microsoft.Extensions.Options;
 using portfolio.DataAccess.Json;
 using portfolio.Models;
+using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
+using portfolio.Utility;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -14,7 +16,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         AdminGeneralViewModel _viewModel;
         private readonly AdminLogin _adminLogin;
 
-        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptions<AdminLogin> adminLogin)
+        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptionsSnapshot<AdminLogin> adminLogin)
         {
             _webHostEnvironment = webHostEnvironment;
 
@@ -194,13 +196,16 @@ namespace portfolioASP.Areas.Admin.Controllers
             {
                 if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, _adminLogin.Password))
                 {
+                    string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(editAdminLogin.NewPassword);
+
+                    EditAppSettings.AddOrUpdateAppSetting<String>("AdminLogin:Password", newHashedPassword);
                     TempData["success"] = "Zmieniono hasło pomyślnie.";
-                    return View("Index");
+                    return RedirectToAction("Index");
 
                 }
             }
 
-            TempData["success"] = "Użyłeś niepoprawnego aktualnego hasła.";
+            TempData["error"] = "Użyłeś niepoprawnego aktualnego hasła.";
 
             return View(_viewModel.EditAdminLogin);
         }

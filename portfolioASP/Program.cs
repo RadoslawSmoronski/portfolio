@@ -36,8 +36,6 @@ namespace portfolioASP
                 options.Cookie.IsEssential = true;
             });
 
-            var configurationRoot = builder.Configuration as IConfigurationRoot;
-            var configReloader = new ConfigurationReloader(configurationRoot, Path.Combine(AppContext.BaseDirectory, "appsettings.json"));
 
             var app = builder.Build();
 
