@@ -16,7 +16,7 @@ namespace portfolio.Utility.Email
     {
         private readonly EmailSettings _emailSettings;
 
-        public EmailService(IOptions<EmailSettings> emailSettings)
+        public EmailService(IOptionsSnapshot<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }

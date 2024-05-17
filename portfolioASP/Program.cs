@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Options;
 using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository;
@@ -34,6 +35,9 @@ namespace portfolioASP
                 options.Cookie.HttpOnly = true;
                 options.Cookie.IsEssential = true;
             });
+
+            var configurationRoot = builder.Configuration as IConfigurationRoot;
+            var configReloader = new ConfigurationReloader(configurationRoot, Path.Combine(AppContext.BaseDirectory, "appsettings.json"));
 
             var app = builder.Build();
 

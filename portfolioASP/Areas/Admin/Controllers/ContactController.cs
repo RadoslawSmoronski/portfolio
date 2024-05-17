@@ -5,6 +5,7 @@ using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
+using portfolio.Utility;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -101,9 +102,9 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                //emailSettings.CheckConnection();
+                emailSettings.CheckConnection();
 
-                JsonFileManager<EmailSettings>.AddOrUpdateAppSetting("EmailSettings", emailSettings);
+                EditAppSettings.AddOrUpdateAppSetting<String>("EmailSettings:Password", emailSettings.Password);
 
                 TempData["success"] = "Dane zostały zmienione pomyślnie.";
                 return RedirectToAction("EmailConfigure");

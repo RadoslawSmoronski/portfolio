@@ -57,13 +57,7 @@ namespace portfolioASP.Areas.View.Controllers
             {
                 AutoEmailMessageContent autoMessage =  JsonFileManager<AutoEmailMessageContent>.Get();
                 await _emailService.SendEmailAsync(contactForm.Email, autoMessage.Subject, autoMessage.Content);
-            }
-            catch(Exception ex)
-            {
-                return NotFound(ex.Message);
-            }
-            finally
-            {
+
                 var message = new EmailMessage
                 {
                     Email = contactForm.Email,
@@ -76,6 +70,11 @@ namespace portfolioASP.Areas.View.Controllers
                 _unitOfWork.EmailMessageRepository.Add(message);
                 _unitOfWork.Save();
                 TempData["success"] = "Wiadomość została wysłana.";
+            }
+            catch(Exception ex)
+            {
+                TempData["error"] = "Wiadomość nie zostałą wysłana, błąd po stronie serwera.";
+                return RedirectToAction("Index");
             }
 
             return RedirectToAction("Index");
