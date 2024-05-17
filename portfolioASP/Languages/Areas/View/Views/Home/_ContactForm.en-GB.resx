@@ -117,16 +117,31 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMe" xml:space="preserve">
-    <value>O mnie</value>
+  <data name="Content" xml:space="preserve">
+    <value>Message Content</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+  <data name="ContentExample" xml:space="preserve">
+    <value>enter your message content</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+  <data name="EMail" xml:space="preserve">
+    <value>E-mail address</value>
   </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Umiejętności</value>
+  <data name="EMailExample" xml:space="preserve">
+    <value>Enter your e-mail</value>
+  </data>
+  <data name="Name" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="NameExample" xml:space="preserve">
+    <value>Enter your name</value>
+  </data>
+  <data name="SendMessage" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+  <data name="Subject" xml:space="preserve">
+    <value>Subject</value>
+  </data>
+  <data name="SubjectExample" xml:space="preserve">
+    <value>Enter your subject</value>
   </data>
 </root>

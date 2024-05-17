@@ -118,15 +118,15 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="AboutMe" xml:space="preserve">
-    <value>O mnie</value>
+    <value>About Me</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+    <value>Contact</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
   </data>
   <data name="Skills" xml:space="preserve">
-    <value>Umiejętności</value>
+    <value>Skills</value>
   </data>
 </root>

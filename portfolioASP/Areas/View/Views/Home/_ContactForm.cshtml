@@ -1,30 +1,32 @@
 ﻿@model ContactForm
+@using Microsoft.AspNetCore.Mvc.Localization
+@inject IViewLocalizer Localizer
 
 <form method="post" class="m-lg-0 m-3" style="width: 100%">
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>E-mail</label>
-        <input asp-for="Email" type="email" class="form-control" placeholder="Adres Email">
+        <label>@Localizer["EMail"]</label>
+        <input asp-for="Email" type="email" class="form-control" placeholder="@Localizer["EMailExample"]">
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>Imię</label>
-        <input asp-for="Name" class="form-control" placeholder="Imię">
+        <label>@Localizer["Name"]</label>
+        <input asp-for="Name" class="form-control" placeholder="@Localizer["NameExample"]">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>Temat</label>
-        <input asp-for="Subject" class="form-control" placeholder="Temat">
+        <label>@Localizer["Subject"]</label>
+        <input asp-for="Subject" class="form-control" placeholder="@Localizer["SubjectExample"]">
         <span asp-validation-for="Subject" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>Treść</label>
-        <textarea asp-for="Content" class="form-control" placeholder="Treść"></textarea>
+        <label>@Localizer["Content"]</label>
+        <textarea asp-for="Content" class="form-control" placeholder="@Localizer["ContentExample"]"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-dark">Wyślij Wiadomość</button>
+    <button type="submit" class="btn btn-dark">@Localizer["SendMessage"]</button>
 </form>
