@@ -12,6 +12,9 @@ using portfolio.Utility;
 using portfolio.Utility.Email;
 using System.Configuration;
 using System.Net;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.AspNetCore.Localization;
+using System.Globalization;
 
 namespace portfolioASP
 {
@@ -22,7 +25,27 @@ namespace portfolioASP
             var builder = WebApplication.CreateBuilder(args);
 
             // Add services to the container.
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews()
+                .AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix);
+
+            builder.Services.AddLocalization(options =>
+            {
+                options.ResourcesPath = "Languages";
+            });
+
+            builder.Services.Configure<RequestLocalizationOptions>(options =>
+            {
+                var supportedCultures = new[]
+                {
+                    new CultureInfo("en-GB"),
+                    new CultureInfo("pl")
+                };
+
+                options.DefaultRequestCulture = new RequestCulture("en-GB");
+                options.SupportedUICultures = supportedCultures;
+
+            });
+
             builder.Services.AddDbContext<ApplicationDbContext>
                 (options=> options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
             builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
@@ -38,6 +61,8 @@ namespace portfolioASP
 
 
             var app = builder.Build();
+
+            app.UseRequestLocalization();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
