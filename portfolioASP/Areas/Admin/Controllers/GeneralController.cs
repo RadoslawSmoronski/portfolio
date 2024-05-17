@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Components.Routing;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Options;
 using portfolio.DataAccess.Json;
 using portfolio.Models;
 using portfolio.Models.ViewModels;
@@ -14,8 +12,9 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         IWebHostEnvironment _webHostEnvironment;
         AdminGeneralViewModel _viewModel;
+        private readonly AdminLogin _adminLogin;
 
-        public GeneralController(IWebHostEnvironment webHostEnvironment)
+        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptions<AdminLogin> adminLogin)
         {
             _webHostEnvironment = webHostEnvironment;
 
@@ -23,8 +22,6 @@ namespace portfolioASP.Areas.Admin.Controllers
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
             Welcome welcome = JsonFileManager<Welcome>.Get();
             Footer footer = JsonFileManager<Footer>.Get();
-
-
 
             _viewModel = new AdminGeneralViewModel
             {
@@ -34,6 +31,8 @@ namespace portfolioASP.Areas.Admin.Controllers
                 Footer = footer,
                 EditAdminLogin = new EditAdminLogin()
             };
+
+            _adminLogin = adminLogin.Value;
         }
 
         public IActionResult Index()
@@ -191,6 +190,18 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditPassword(EditAdminLogin editAdminLogin)
         {
+            if (ModelState.IsValid)
+            {
+                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, _adminLogin.Password))
+                {
+                    TempData["success"] = "Zmieniono hasło pomyślnie.";
+                    return View("Index");
+
+                }
+            }
+
+            TempData["success"] = "Użyłeś niepoprawnego aktualnego hasła.";
+
             return View(_viewModel.EditAdminLogin);
         }
     }

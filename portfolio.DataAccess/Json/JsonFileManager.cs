@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
 using portfolio.Models;
 using System;
 using System.Collections.Generic;
@@ -40,6 +41,35 @@ namespace portfolio.DataAccess.Json
 
             string newJson = JsonConvert.SerializeObject(entity);
             File.WriteAllText(filePath, newJson);
+        }
+
+        public static void AddOrUpdateAppSetting(string key, T value)
+        {
+            try
+            {
+                var filePath = Path.Combine(AppContext.BaseDirectory, "appsettings.json");
+                string json = File.ReadAllText(filePath);
+                dynamic jsonObj = Newtonsoft.Json.JsonConvert.DeserializeObject(json);
+
+                var sectionPath = key.Split(":")[0];
+
+                if (!string.IsNullOrEmpty(sectionPath))
+                {
+                    var keyPath = key.Split(":")[1];
+                    jsonObj[sectionPath][keyPath] = value;
+                }
+                else
+                {
+                    jsonObj[sectionPath] = value;
+                }
+
+                string output = Newtonsoft.Json.JsonConvert.SerializeObject(jsonObj, Newtonsoft.Json.Formatting.Indented);
+                File.WriteAllText(filePath, output);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
     }
 }

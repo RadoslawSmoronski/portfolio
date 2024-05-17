@@ -101,7 +101,9 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                emailSettings.CheckConnection();
+                //emailSettings.CheckConnection();
+
+                JsonFileManager<EmailSettings>.AddOrUpdateAppSetting("EmailSettings", emailSettings);
 
                 TempData["success"] = "Dane zostały zmienione pomyślnie.";
                 return RedirectToAction("EmailConfigure");
