@@ -118,12 +118,12 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="LoginButton" xml:space="preserve">
-    <value>Login</value>
+    <value>Zaloguj</value>
   </data>
   <data name="LoginToAdminPanel" xml:space="preserve">
-    <value>Login to admin panel</value>
+    <value>Logowanie do panelu administratora</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Access password</value>
+    <value>Hasło dostępu</value>
   </data>
 </root>
