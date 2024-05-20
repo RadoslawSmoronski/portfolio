@@ -81,21 +81,21 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Wiadomości (@Model.UnreadEmailMessages / @Model.EmailMessages.Count())</h1>
+            <h1 class="text-white">@Localizer["Messages"] (@Model.UnreadEmailMessages / @Model.EmailMessages.Count())</h1>
         </div>
         <table class="table">
             <thead>
                 <th scope="col">#</th>
-                <th scope="col">eMail</th>
-                <th scope="col">Temat</th>
+                <th scope="col">@Localizer["Email"]</th>
+                <th scope="col">@Localizer["Subject"]</th>
                 <th scope="col">
                     <a asp-controller="Contact" asp-action="EmailConfigure" class="btn btn-dark add-btn">
                         <i class="bi bi-gear"></i>
-                        Email
+                        @Localizer["EmailButton"]
                     </a>
                     <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark add-btn">
                         <i class="bi bi-gear"></i>
-                        Kontakty
+                        @Localizer["ContactsButton"]
                     </a>
                 </th>
             </thead>
@@ -129,11 +129,11 @@
                         <td class="text-center">
                             <a onClick=Delete('/admin/contact/delete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
-                                <span>Delete</span>
+                                <span>@Localizer["DeleteButton"]</span>
                             </a>
                             <a asp-controller="Contact" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
-                                <span>Podgląd</span>
+                                <span>@Localizer["DetailsButton"]</span>
                             </a>
                         </td>
                     </tr>

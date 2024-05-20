@@ -6,15 +6,15 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Wiadomość</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["Message"]</h1>
 
                 <div class="detail-box">
-                    <h5>Temat</h5>
+                    <h5>@Localizer["Subject"]</h5>
                     @Model.EmailMessageContent.Subject
                 </div>
 
                 <div class="detail-box">
-                    <h5>Treść</h5>
+                    <h5>@Localizer["Content"]</h5>
                     @{
                         if (Model.EmailMessageContent.Content != null)
                         {
@@ -24,7 +24,7 @@
                     }
                 </div>
 
-                <a asp-controller="Contact" asp-action="MessageEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="Contact" asp-action="MessageEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton1"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -32,29 +32,29 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Email</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["Email"]</h1>
 
                 <div class="detail-box">
-                    <h5>Email</h5>
+                    <h5>@Localizer["EmailAddress"]</h5>
                     @Model.EmailSettings.Email
                 </div>
 
                 <div class="detail-box">
-                    <h5>Serwer SMTP</h5>
+                    <h5>@Localizer["SmtpServer"]</h5>
                     @Model.EmailSettings.SmtpServer
                 </div>
 
                 <div class="detail-box">
-                    <h5>Port SMTP</h5>
+                    <h5>@Localizer["SmtpPort"]</h5>
                     @Model.EmailSettings.SmtpPort
                 </div>
 
                 <div class="detail-box">
-                    <h5>Szyfrowanie SMTP</h5>
-                    @Model.EmailSettings.Encryption (@(Model.EmailSettings.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
+                    <h5>@Localizer["SmtpEncryption"]</h5>
+                    @Localizer[@Model.EmailSettings.Encryption.ToString()] (@(Model.EmailSettings.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
                 </div>
 
-                <a asp-controller="Contact" asp-action="EmailEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="Contact" asp-action="EmailEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton2"]</a>
 
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
@@ -63,7 +63,7 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <a asp-controller="Contact" asp-action="Index" class="btn btn-dark mb-2 col-12">Wróc</a>
+                <a asp-controller="Contact" asp-action="Index" class="btn btn-dark mb-2 col-12">@Localizer["BackButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>

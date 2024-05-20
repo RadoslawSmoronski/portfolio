@@ -80,21 +80,21 @@
 <section id="box">
     <div class="container">
         <div class="header text-center mb-5">
-            <h1 class="text-white">Kontakty</h1>
+            <h1 class="text-white">@Localizer["Contacts"]</h1>
         </div>
         <table class="table bg-dark">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nazwa</th>
-                    <th scope="col">Ikona</th>
+                    <th scope="col">@Localizer["Name"]</th>
+                    <th scope="col">@Localizer["Icon"]</th>
                     <th scope="col">
                         <a asp-controller="Contact" asp-action="ContactsUpsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
-                            Dodaj
+                            @Localizer["AddButton"]
                         </a>
                         <a asp-controller="Contact" asp-action="Index" class="btn btn-dark add-btn">
-                            Wróc
+                            @Localizer["BackButton"]
                         </a>
                     </th>
                 </tr>
@@ -113,15 +113,15 @@
                         <td class="text-center">
                             <a onClick=Delete('/admin/contact/contactsdelete/@obj.Id') class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
-                                <span>Delete</span>
+                                <span>@Localizer["DeleteButton"]</span>
                             </a>
                             <a asp-controller="Contact" asp-action="ContactsUpsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
-                                <span>Edytuj</span>
+                                <span>@Localizer["EditButton"]</span>
                             </a>
                             <a asp-controller="Contact" asp-action="ContactsDetails" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
-                                <span>Podgląd</span>
+                                <span>@Localizer["DetailsButton"]</span>
                             </a>
                         </td>
                     </tr>
