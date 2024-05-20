@@ -6,15 +6,15 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Szczegóły projektu</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["Title"]</h1>
 
                 <div class="detail-box">
-                    <h5>Nazwa Projektu</h5>
+                    <h5>@Localizer["Name"]</h5>
                     @Model.Name
                 </div>
 
                 <div class="detail-box">
-                    <h5>Opis</h5>
+                    <h5>@Localizer["Description"]</h5>
                     @{
                         if (Model.Description != null)
                         {
@@ -25,16 +25,16 @@
                 </div>
 
                 <div class="detail-box">
-                    <h5>Git repository</h5>
+                    <h5>@Localizer["GitRepository"]</h5>
                     @Model.GitRepositoryUrl
                 </div>
 
                 <div class="detail-box">
-                    <h5>Obrazek</h5>
+                    <h5>@Localizer["Image"]</h5>
                     <img class="project-img" src="../../../@(Model.ImageUrl != null ? Model.ImageUrl : @"\images\projects\default-project.png")"></img>
                 </div>
 
-                <a asp-controller="Projects" asp-action="Index" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Wróc</a>
+                <a asp-controller="Projects" asp-action="Index" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["BackButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
