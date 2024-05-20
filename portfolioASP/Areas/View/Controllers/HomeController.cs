@@ -6,6 +6,7 @@ using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility.Email;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -15,8 +16,9 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly IEmailService _emailService;
         private readonly ViewHomePageViewModel _model;
+        private readonly IHtmlLocalizer<HomeController> _localizer;
 
-        public HomeController(IUnitOfWork unitOfWork, IEmailService emailService)
+        public HomeController(IUnitOfWork unitOfWork, IEmailService emailService, IHtmlLocalizer<HomeController> localizer)
         {
             _unitOfWork = unitOfWork;
             _emailService = emailService;
@@ -29,6 +31,8 @@ namespace portfolioASP.Areas.View.Controllers
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
             };
+
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -69,11 +73,11 @@ namespace portfolioASP.Areas.View.Controllers
 
                 _unitOfWork.EmailMessageRepository.Add(message);
                 _unitOfWork.Save();
-                TempData["success"] = "Wiadomość została wysłana.";
+                TempData["success"] = _localizer["MessageWasSent"].Value;
             }
             catch(Exception ex)
             {
-                TempData["error"] = "Wiadomość nie zostałą wysłana, błąd po stronie serwera.";
+                TempData["error"] = _localizer["MessageSendError"].Value;
                 return RedirectToAction("Index");
             }
 

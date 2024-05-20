@@ -117,22 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMe" xml:space="preserve">
-    <value>About Me</value>
+  <data name="MessageSendError" xml:space="preserve">
+    <value>Wiadomość nie została wysłana. Błąd serwera.</value>
   </data>
-  <data name="Contact" xml:space="preserve">
-    <value>Contact</value>
-  </data>
-  <data name="NotifiHomeMessageSendError" xml:space="preserve">
-    <value>test2</value>
-  </data>
-  <data name="NotifiHomeMessageWasSent" xml:space="preserve">
-    <value>test1</value>
-  </data>
-  <data name="Projects" xml:space="preserve">
-    <value>Projects</value>
-  </data>
-  <data name="Skills" xml:space="preserve">
-    <value>Skills</value>
+  <data name="MessageWasSent" xml:space="preserve">
+    <value>Wiadomość została wysłana.</value>
   </data>
 </root>
