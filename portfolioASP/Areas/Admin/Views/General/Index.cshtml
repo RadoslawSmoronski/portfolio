@@ -8,15 +8,15 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Zakładka</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["TabTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>Treść</h5>
+                    <h5>@Localizer["TabHeader"]</h5>
                     @Model.WebsiteTitle.Title
                 </div>
 
                 <div class="detail-box">
-                    <h5>Obrazek zakładki</h5>
+                    <h5>@Localizer["TabImage"]</h5>
                     @{
                         if (Model.WebsiteTitle.ImageUrl != null)
                         {
@@ -29,7 +29,7 @@
                     }
                 </div>
 
-                <a asp-controller="General" asp-action="EditWebsiteTitle" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="General" asp-action="EditWebsiteTitle" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["TabEditButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -37,10 +37,10 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Menu</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["NavbarTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>Tytuł logo</h5>
+                    <h5>@Localizer["NavbarHeader"]</h5>
                     @{
                         if (Model.NavbarLogo.Title != null)
                         {
@@ -51,7 +51,7 @@
                 </div>
 
                 <div class="detail-box">
-                    <h5>Obrazek logo</h5>
+                    <h5>@Localizer["NavbarImage"]</h5>
                     @{
                         if (Model.NavbarLogo.ImageUrl != null)
                         {
@@ -64,7 +64,7 @@
                     }
                 </div>
 
-                <a asp-controller="General" asp-action="EditNavbar" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="General" asp-action="EditNavbar" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["NavbarEditButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -72,10 +72,10 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Powitalna Wiadomość</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["WelcomeTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>Nagłowek</h5>
+                    <h5>@Localizer["WelcomeHeader"]</h5>
                     @{
                         if (Model.Welcome.Header != null)
                         {
@@ -86,7 +86,7 @@
                 </div>
 
                 <div class="detail-box">
-                    <h5>Opis</h5>
+                    <h5>@Localizer["WelcomeDescription"]</h5>
                     @{
                         if (Model.Welcome.Description != null)
                         {
@@ -96,7 +96,7 @@
                     }
                 </div>
 
-                <a asp-controller="General" asp-action="EditWelcome" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="General" asp-action="EditWelcome" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["WelcomeEditButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -104,14 +104,14 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Stopka</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["FooterTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>Treść</h5>
+                    <h5>@Localizer["FooterContant"]</h5>
                     @Html.Raw(Model.Footer.Content)
                 </div>
 
-                <a asp-controller="General" asp-action="EditFooter" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">Edytuj</a>
+                <a asp-controller="General" asp-action="EditFooter" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["FooterEditButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -119,9 +119,9 @@
         <div class="row mb-2">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <h1 class="text-white text-center mb-5">Edytowanie Hasła</h1>
+                <h1 class="text-white text-center mb-5">@Localizer["EditPasswordTitle"]</h1>
 
-                <a asp-controller="General" asp-action="EditPassword" class="btn btn-dark col-12">Edytuj</a>
+                <a asp-controller="General" asp-action="EditPassword" class="btn btn-dark col-12">@Localizer["EditPasswordEditButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
