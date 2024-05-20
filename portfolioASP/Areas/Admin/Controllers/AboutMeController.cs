@@ -1,6 +1,7 @@
 ﻿using Azure;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
@@ -13,10 +14,12 @@ namespace portfolioASP.Areas.Admin.Controllers
     public class AboutMeController : Controller
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHtmlLocalizer<AboutMeController> _localizer;
 
-        public AboutMeController(IWebHostEnvironment webHostEnvironment)
+        public AboutMeController(IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<AboutMeController> localizer)
         {
             _webHostEnvironment = webHostEnvironment;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -61,7 +64,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
                 JsonFileManager<AboutMe>.Save(aboutMe);
 
-                TempData["success"] = "Edytowałes O Mnie";
+                TempData["success"] = _localizer["AboutMeWasEdited"].Value;
                 return RedirectToAction("Index");
 
             }
