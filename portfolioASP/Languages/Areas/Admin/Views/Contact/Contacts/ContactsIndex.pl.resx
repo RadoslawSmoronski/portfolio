@@ -141,4 +141,13 @@
   <data name="Name" xml:space="preserve">
     <value>Nazwa</value>
   </data>
+  <data name="SweetAlertCancelButtonText" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="SweetAlertConfirmButtonText" xml:space="preserve">
+    <value>Tak, usuń</value>
+  </data>
+  <data name="SweetAlertTitle" xml:space="preserve">
+    <value>Czy napewno chcesz usunąć kontakt?</value>
+  </data>
 </root>
