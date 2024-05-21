@@ -110,7 +110,14 @@
                             <img class="project-img" src="../../../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")"></img>
                         </td>
                         <td class="text-center">
-                            <a onClick=Delete('/admin/projects/delete/@obj.Id') class="btn btn-danger delete-btn">
+                            @{
+                                string saTitle = Localizer["SweetAlertTitle"].Value;
+                                string saText = $"{obj.Name} (id: {obj.Id})";
+                                string saConfirmButtonText = Localizer["SweetAlertConfirmButtonText"].Value;
+                                string saCancelButtonText = Localizer["SweetAlertCancelButtonText"].Value;
+                            }
+
+                            <a onClick="Delete('/admin/projects/delete/@obj.Id', '@saTitle', '@saText', '@saConfirmButtonText', '@saCancelButtonText')" class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 <span>@Localizer["DeleteButton"]</span>
                             </a>

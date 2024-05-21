@@ -95,14 +95,15 @@
                             <img class="project-img" src="../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\skills\default-skill.png")"></img>
                         </td>
 
-                        @{
-                            string saTitle = Localizer["SweetAlertTitle"].Value;
-                            string saText = $"{obj.Name} (id: {obj.Id})";
-                            string saConfirmButtonText = Localizer["SweetAlertConfirmButtonText"].Value;
-                            string saCancelButtonText = Localizer["SweetAlertCancelButtonText"].Value;
-                        }
-
                         <td class="text-center">
+
+                            @{
+                                string saTitle = Localizer["SweetAlertTitle"].Value;
+                                string saText = $"{obj.Name} (id: {obj.Id})";
+                                string saConfirmButtonText = Localizer["SweetAlertConfirmButtonText"].Value;
+                                string saCancelButtonText = Localizer["SweetAlertCancelButtonText"].Value;
+                            }
+
                             <a onClick="Delete('/admin/skills/delete/@obj.Id', '@saTitle', '@saText', '@saConfirmButtonText', '@saCancelButtonText')" class="btn btn-danger delete-btn">
                                 <i class="bi bi-trash-fill"></i>
                                 @Localizer["Delete"]
