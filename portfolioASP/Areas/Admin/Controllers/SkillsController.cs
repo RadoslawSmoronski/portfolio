@@ -2,6 +2,8 @@
 using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -11,11 +13,13 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHtmlLocalizer<SkillsController> _localizer;
 
-        public SkillsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public SkillsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<SkillsController> localizer)
         {
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -78,14 +82,15 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if(skill.Id == 0)
                 {
                     _unitOfWork.SkillRepository.Add(skill);
+                    TempData["success"] = _localizer["SkillWasAdded"].Value;
                 }
                 else
                 {
                     _unitOfWork.SkillRepository.Update(skill);
+                    TempData["success"] = _localizer["SkillWasEdited"].Value;
                 }
 
                 _unitOfWork.Save();
-                TempData["success"] = "Umiejętność zostałą utworzona";
                 return RedirectToAction("Index");
                 
             }
@@ -98,14 +103,14 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return Json(new { success = false, message = "Nie przyjeto id" });
+                return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
             Skill? skill = _unitOfWork.SkillRepository.Get(u => u.Id == id);
 
             if (skill == null)
             {
-                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+                return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
             if(skill.ImageUrl != null)
@@ -124,7 +129,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             _unitOfWork.SkillRepository.Remove(skill);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Usunieto umiejetnosć" });
+            return Json(new { success = true, message = _localizer["SkillWasRemoved"].Value });
         }
     }
 }

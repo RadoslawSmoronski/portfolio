@@ -117,4 +117,19 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="IdNotFound" xml:space="preserve">
+    <value>Id nie zostało znalezione.</value>
+  </data>
+  <data name="IdNotProvided" xml:space="preserve">
+    <value>Id nie zostało dostarczone.</value>
+  </data>
+  <data name="SkillWasAdded" xml:space="preserve">
+    <value>Umiejętność została dodana.</value>
+  </data>
+  <data name="SkillWasEdited" xml:space="preserve">
+    <value>Umiejętność została edytowana.</value>
+  </data>
+  <data name="SkillWasRemoved" xml:space="preserve">
+    <value>Umiejętność została usunięta.</value>
+  </data>
 </root>
