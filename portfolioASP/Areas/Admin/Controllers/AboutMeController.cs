@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.DataAccess.Json;
 using portfolio.DataAccess.Repository.IRepository;
-using portfolio.Models;
+using portfolio.Models.AboutMe;
 using System.Drawing.Drawing2D;
 
 namespace portfolioASP.Areas.Admin.Controllers

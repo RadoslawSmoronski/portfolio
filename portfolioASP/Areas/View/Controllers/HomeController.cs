@@ -7,6 +7,8 @@ using portfolio.Models.ViewModels;
 using portfolio.Utility.Email;
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Localization;
+using portfolio.Models.AboutMe;
+using System.Globalization;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -23,10 +25,12 @@ namespace portfolioASP.Areas.View.Controllers
             _unitOfWork = unitOfWork;
             _emailService = emailService;
 
+            string currentUICulture = CultureInfo.CurrentUICulture.Name;
+
             _model = new ViewHomePageViewModel
             {
                 Welcome = JsonFileManager<Welcome>.Get(),
-                AboutMe = JsonFileManager<AboutMe>.Get(),
+                AboutMeView = new AboutMeView(JsonFileManager<AboutMe>.Get(), currentUICulture),
                 Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),

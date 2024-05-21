@@ -1,4 +1,5 @@
-﻿@model AboutMe
+﻿@using portfolio.Models.AboutMe
+@model AboutMe
 <link rel="stylesheet" href="~/css/admin/datails.css" asp-append-version="true" />
 
 <section id="box">
@@ -9,16 +10,32 @@
                 <h1 class="text-white text-center mb-5">@Localizer["AboutMe"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Title"]</h5>
-                    @Model.Title
+                    <h5>@Localizer["Title"] (ENG)</h5>
+                    @Model.TitleENG
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Description"]</h5>
+                    <h5>@Localizer["Title"] (PL)</h5>
+                    @Model.TitlePL
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["Description"] (ENG)</h5>
                     @{
-                        if (Model.Description != null)
+                        if (Model.DescriptionENG != null)
                         {
-                            string title = Model.Description.Replace("\r\n", "<br />");
+                            string title = Model.DescriptionENG.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["Description"] (PL)</h5>
+                    @{
+                        if (Model.DescriptionPL != null)
+                        {
+                            string title = Model.DescriptionPL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }

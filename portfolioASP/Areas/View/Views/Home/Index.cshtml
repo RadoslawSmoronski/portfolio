@@ -43,16 +43,16 @@
     <div class="container about-box">
         <div class="row pb-5 pt-5 d-flex align-items-center justify-content-center">
             <div class="col-lg-5 order-lg-2 col-md-12 text-center align-self-center pb-2 pt-2">
-                <img class="about-image" src="@(Model.AboutMe.ImageUrl != null ? Model.AboutMe.ImageUrl : @"\images\aboutme\default-aboutme.jpg")" />
+                <img class="about-image" src="@(Model.AboutMeView.ImageUrl != null ? Model.AboutMeView.ImageUrl : @"\images\aboutme\default-aboutme.jpg")" />
             </div>
             <div class="col-lg-7 order-lg-1 col-md-12 d-flex align-items-center justify-content-center pb-2 pt-2">
                 <div>
-                    <h3 class="text-center text-white">@Model.AboutMe.Title</h3>
+                    <h3 class="text-center text-white">@Model.AboutMeView.Title</h3>
                     <p class="text-center">
                         @{
-                            if (Model.AboutMe.Description != null)
+                            if (Model.AboutMeView.Description != null)
                             {
-                                string title = Model.AboutMe.Description.Replace("\r\n", "<br />");
+                                string title = Model.AboutMeView.Description.Replace("\r\n", "<br />");
                                 @Html.Raw(title)
                             }
                         }
