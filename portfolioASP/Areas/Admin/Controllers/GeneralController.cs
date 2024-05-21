@@ -5,6 +5,7 @@ using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -15,8 +16,9 @@ namespace portfolioASP.Areas.Admin.Controllers
         IWebHostEnvironment _webHostEnvironment;
         AdminGeneralViewModel _viewModel;
         private readonly AdminLogin _adminLogin;
+        private readonly IHtmlLocalizer<GeneralController> _localizer;
 
-        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptionsSnapshot<AdminLogin> adminLogin)
+        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptionsSnapshot<AdminLogin> adminLogin, IHtmlLocalizer<GeneralController> localizer)
         {
             _webHostEnvironment = webHostEnvironment;
 
@@ -35,6 +37,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             };
 
             _adminLogin = adminLogin.Value;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -70,7 +73,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             JsonFileManager<WebsiteTitle>.Save(websiteTitle);
 
-            TempData["success"] = "Edytowałes Tytuł Strony";
+            TempData["success"] = _localizer["EditedWebsiteTitle"].Value;
             return RedirectToAction("Index");
         }
 
@@ -84,7 +87,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             JsonFileManager<WebsiteTitle>.Save(obj);
 
-            TempData["success"] = "Zdjęcie zostało usunięte.";
+            TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
         }
 
@@ -116,7 +119,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             JsonFileManager<NavbarLogo>.Save(navbarLogo);
 
-            TempData["success"] = "Menu zostało edytowane.";
+            TempData["success"] = _localizer["MenuWasEdited"].Value;
             return RedirectToAction("Index");
         }
 
@@ -130,7 +133,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             JsonFileManager<NavbarLogo>.Save(navbarLogo);
 
-            TempData["success"] = "Zdjęcie zostało usunięte.";
+            TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
         }
 
@@ -162,7 +165,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             JsonFileManager<Welcome>.Save(welcome);
 
-            TempData["success"] = "Edytowałes sekecji Witam";
+            TempData["success"] = _localizer["WelcomeSectionWasEdited"].Value;
             return RedirectToAction("Index");
         }
 
@@ -178,7 +181,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             JsonFileManager<Footer>.Save(footer);
 
-            TempData["success"] = "Edytowałes sekecji Stopka";
+            TempData["success"] = _localizer["FooterWasEdited"].Value;
             return RedirectToAction("Index");
         }
 
@@ -199,13 +202,13 @@ namespace portfolioASP.Areas.Admin.Controllers
                     string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(editAdminLogin.NewPassword);
 
                     EditAppSettings.AddOrUpdateAppSetting<String>("AdminLogin:Password", newHashedPassword);
-                    TempData["success"] = "Zmieniono hasło pomyślnie.";
+                    TempData["success"] = _localizer["PasswordWasChanged"].Value;
                     return RedirectToAction("Index");
 
                 }
             }
 
-            TempData["error"] = "Użyłeś niepoprawnego aktualnego hasła.";
+            TempData["error"] = _localizer["WrongCurrentPassword"].Value;
 
             return View(_viewModel.EditAdminLogin);
         }
