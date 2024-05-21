@@ -2,6 +2,8 @@
 using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
+using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -11,11 +13,13 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IHtmlLocalizer<ProjectsController> _localizer;
 
-        public ProjectsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment)
+        public ProjectsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<ProjectsController> localizer)
         {
             _unitOfWork = unitOfWork;
             _webHostEnvironment = webHostEnvironment;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -98,14 +102,15 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if(project.Id == 0)
                 {
                     _unitOfWork.ProjectRepository.Add(project);
+                    TempData["success"] = _localizer["ProjectWasAdded"].Value;
                 }
                 else
                 {
+                    TempData["success"] = _localizer["ProjectWasEdited"].Value;
                     _unitOfWork.ProjectRepository.Update(project);
                 }
 
                 _unitOfWork.Save();
-                TempData["success"] = "Projekt został utworzony.";
                 return RedirectToAction("Index");
                 
             }
@@ -118,14 +123,14 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return Json(new { success = false, message = "Nie przyjeto id" });
+                return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
             Project? project = _unitOfWork.ProjectRepository.Get(u => u.Id == id);
 
             if (project == null)
             {
-                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+                return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
             if (project.ImageUrl != null)
@@ -144,7 +149,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             _unitOfWork.ProjectRepository.Remove(project);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Usunieto umiejetnosć" });
+            return Json(new { success = true, message = _localizer["ProjectWasRemoved"].Value });
         }
     }
 }
