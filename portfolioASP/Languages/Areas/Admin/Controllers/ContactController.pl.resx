@@ -117,7 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="AboutMeWasEdited" xml:space="preserve">
-    <value>About me section has been edited.</value>
+  <data name="AutoEmailMessageHasBeenEdited" xml:space="preserve">
+    <value>Automatyczna wiadomość została edytowana.</value>
+  </data>
+  <data name="ContactHasBeenCreated" xml:space="preserve">
+    <value>Kontakt został utworzony.</value>
+  </data>
+  <data name="ContactHasBeenEdited" xml:space="preserve">
+    <value>Kontakt został edytowany.</value>
+  </data>
+  <data name="EmailSettingsHasBeenEdited" xml:space="preserve">
+    <value>Automatyczny email został edytowany.</value>
+  </data>
+  <data name="IdNotFound" xml:space="preserve">
+    <value>Nie znaleziono id.</value>
+  </data>
+  <data name="IdNotProvided" xml:space="preserve">
+    <value>Id nie zostało dostarczone.</value>
   </data>
 </root>

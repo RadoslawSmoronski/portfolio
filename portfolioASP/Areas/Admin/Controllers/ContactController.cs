@@ -6,6 +6,7 @@ using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -15,11 +16,13 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmailSettings _emailSettings;
+        private readonly IHtmlLocalizer<ContactController> _localizer;
 
-        public ContactController(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings)
+        public ContactController(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings, IHtmlLocalizer<ContactController> localizer)
         {
             _unitOfWork = unitOfWork;
             _emailSettings = emailSettings.Value;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -58,19 +61,19 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return Json(new { success = false, message = "Nie przyjeto id" });
+                return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
             EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get(u => u.Id == id);
 
             if (emailMessage == null)
             {
-                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+                return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
             _unitOfWork.EmailMessageRepository.Remove(emailMessage);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Usunieto wiadomość" });
+            return Json(new { success = true, message = _localizer["MessageHasBeenDeleted"].Value });
         }
 
         //EmailConfigure
@@ -102,11 +105,11 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                //emailSettings.CheckConnection();
+                emailSettings.CheckConnection();
 
                 EditAppSettings.AddOrUpdateAppSetting<String>("EmailSettings:Password", emailSettings.Password);
 
-                TempData["success"] = "Dane zostały zmienione pomyślnie.";
+                TempData["success"] = _localizer["EmailSettingsHasBeenEdited"].Value;
                 return RedirectToAction("EmailConfigure");
             }
             catch (Exception ex)
@@ -137,7 +140,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             {
                 JsonFileManager<AutoEmailMessageContent>.Save(message);
 
-                TempData["success"] = "Wiadomość zostałą zmieniona.";
+                TempData["success"] = _localizer["AutoEmailMessageHasBeenEdited"].Value;
                 return RedirectToAction("EmailConfigure");
             }
             catch (Exception ex)
@@ -206,14 +209,15 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if (contact.Id == 0)
                 {
                     _unitOfWork.ContactRepository.Add(contact);
+                    TempData["success"] = _localizer["ContactHasBeenCreated"].Value;
                 }
                 else
                 {
                     _unitOfWork.ContactRepository.Update(contact);
+                    TempData["success"] = _localizer["ContactHasBeenEdited"].Value;
                 }
 
                 _unitOfWork.Save();
-                TempData["success"] = "Kontakt został utworzony.";
                 return RedirectToAction("ContactsIndex");
             }
             else
@@ -227,19 +231,19 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (id == null)
             {
-                return Json(new { success = false, message = "Nie przyjeto id" });
+                return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
             Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
 
             if (contactFromDb == null)
             {
-                return Json(new { success = false, message = "Nie znaleziono podanego id" });
+                return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
             _unitOfWork.ContactRepository.Remove(contactFromDb);
             _unitOfWork.Save();
-            return Json(new { success = true, message = "Usunieto kontakt" });
+            return Json(new { success = true, message = _localizer["MessageHasBeenDeleted"].Value });
         }
     }
 }
