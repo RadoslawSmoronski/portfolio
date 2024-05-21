@@ -5,6 +5,7 @@ using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility;
+using Microsoft.AspNetCore.Mvc.Localization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -12,10 +13,12 @@ namespace portfolioASP.Areas.Admin.Controllers
     public class HomeController : Controller
     {
         private readonly AdminLogin _adminLogin;
+        private readonly IHtmlLocalizer<HomeController> _localizer;
 
-        public HomeController(IOptionsSnapshot<AdminLogin> adminLogin)
+        public HomeController(IOptionsSnapshot<AdminLogin> adminLogin, IHtmlLocalizer<HomeController> localizer)
         {
             _adminLogin = adminLogin.Value;
+            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -53,7 +56,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             if(AdminLoginFailedBanned.IsUserBanned(ipAddress))
             {
-                TempData["error"] = "Przekroczyleś ilość prób, spróbuj później.";
+                TempData["error"] = _localizer["ToMuchFailedLoginAttempt"].Value;
                 return View();
             }
 
@@ -63,7 +66,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 {
                     AdminLoginFailedBanned.RemoveFailderLoginAttempts(ipAddress);
                     HttpContext.Session.SetString("IsActiveSession", "true");
-                    TempData["success"] = "Zalogowano pomyslnie.";
+                    TempData["success"] = _localizer["SuccessfullyLoggedIn"].Value;
                     return View("Index");
 
                 }
@@ -72,7 +75,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             AdminLoginFailedBanned.AddFailedLoginAttempts(ipAddress);
 
             Task.Delay(1000).Wait();
-            TempData["error"] = "Nieprawidłowe hasło.";
+            TempData["error"] = _localizer["PasswordIsNotCorrect"].Value;
             return View();
         }
 
@@ -80,7 +83,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             HttpContext.Session.SetString("IsActiveSession", "false");
 
-            TempData["success"] = "Wylogowano";
+            TempData["success"] = _localizer["Logout"].Value;
             return RedirectToAction("Index", new { area = "View" });
         }
 
