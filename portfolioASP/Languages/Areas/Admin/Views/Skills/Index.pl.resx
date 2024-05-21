@@ -135,4 +135,13 @@
   <data name="Skills" xml:space="preserve">
     <value>Sekcja - Umiejętności</value>
   </data>
+  <data name="SweetAlertCancelButtonText" xml:space="preserve">
+    <value>Anuluj</value>
+  </data>
+  <data name="SweetAlertConfirmButtonText" xml:space="preserve">
+    <value>Tak, usuń</value>
+  </data>
+  <data name="SweetAlertTitle" xml:space="preserve">
+    <value>Czy napewno chcesz usunąć umiejętność?</value>
+  </data>
 </root>

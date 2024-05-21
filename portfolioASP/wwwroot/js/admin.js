@@ -1,12 +1,14 @@
-﻿function Delete(url) {
+﻿function Delete(url, saTitle, saText, saConfirmButtonText, saCancelButtonText) {
     Swal.fire({
-        title: "Are you sure?",
-        text: "You won't be able to revert this!",
+        title: saTitle,
+        text: saText,
         icon: "warning",
         showCancelButton: true,
-        confirmButtonColor: "#3085d6",
-        cancelButtonColor: "#d33",
-        confirmButtonText: "Yes, delete it!"
+        confirmButtonColor: "#d9534f",
+        cancelButtonColor: "#343a40",
+        confirmButtonText: saConfirmButtonText,
+        cancelButtonText: saCancelButtonText,
+        background: '#151a1c'
     }).then((result) => {
         if (result.isConfirmed) {
             $.ajax({
