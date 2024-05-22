@@ -9,13 +9,21 @@
                 <h1 class="text-white text-center mb-5">@Localizer["Title"]</h1>
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Header"]</label>
-                            <textarea asp-for="Header" class="form-control" placeholder="@Localizer["HeaderPlaceholder"]"></textarea>
+                            <label class="text-white">@Localizer["Header"] (ENG)</label>
+                            <textarea asp-for="HeaderENG" class="form-control" placeholder="@Localizer["HeaderPlaceholder"]"></textarea>
                         </div>
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Content"]</label>
-                            <textarea asp-for="Description" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
+                            <label class="text-white">@Localizer["Header"] (PL)</label>
+                            <textarea asp-for="HeaderPL" class="form-control" placeholder="@Localizer["HeaderPlaceholder"]"></textarea>
                         </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white">@Localizer["Content"] (ENG)</label>
+                            <textarea asp-for="DescriptionENG" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
+                        </div>
+                    <div class="form-group mb-4">
+                        <label class="text-white">@Localizer["Content"] (PL)</label>
+                        <textarea asp-for="DescriptionPL" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
+                    </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton"]</button>
                             <a asp-controller="General" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["BackButton"]</a>

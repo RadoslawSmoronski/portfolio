@@ -90,22 +90,44 @@
                 <h1 class="text-white text-center mb-5">@Localizer["WelcomeTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["WelcomeHeader"]</h5>
+                    <h5>@Localizer["WelcomeHeader"] (ENG)</h5>
                     @{
-                        if (Model.Welcome.Header != null)
+                        if (Model.Welcome.HeaderENG != null)
                         {
-                            string title = Model.Welcome.Header.Replace("\r\n", "<br />");
+                            string title = Model.Welcome.HeaderENG.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["WelcomeDescription"]</h5>
+                    <h5>@Localizer["WelcomeHeader"] (PL)</h5>
                     @{
-                        if (Model.Welcome.Description != null)
+                        if (Model.Welcome.HeaderPL != null)
                         {
-                            string title = Model.Welcome.Description.Replace("\r\n", "<br />");
+                            string title = Model.Welcome.HeaderPL.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["WelcomeDescription"] (ENG)</h5>
+                    @{
+                        if (Model.Welcome.DescriptionENG != null)
+                        {
+                            string title = Model.Welcome.DescriptionENG.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["WelcomeDescription"] (PL)</h5>
+                    @{
+                        if (Model.Welcome.DescriptionPL != null)
+                        {
+                            string title = Model.Welcome.DescriptionPL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }

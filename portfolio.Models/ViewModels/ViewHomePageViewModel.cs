@@ -6,12 +6,13 @@ using System.Threading.Tasks;
 using portfolio.Models.AboutMe;
 using portfolio.Models.Skill;
 using portfolio.Models.Project;
+using portfolio.Models.Welcome;
 
 namespace portfolio.Models.ViewModels
 {
     public class ViewHomePageViewModel
     {
-        public Welcome Welcome { get; set; }
+        public WelcomeView WelcomeView { get; set; }
         public List<SkillView> SkillViews { get; set; }
         public List<ProjectView> ProjectViews { get; set; }
 

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models.WebsiteTitle;
 using portfolio.Models.NavbarLogo;
 using portfolio.Models.Footer;
+using portfolio.Models.Welcome;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {

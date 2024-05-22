@@ -12,6 +12,7 @@ using System.Globalization;
 using portfolio.Models.WebsiteTitle;
 using portfolio.Models.NavbarLogo;
 using portfolio.Models.Footer;
+using portfolio.Models.Welcome;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -31,11 +32,11 @@ namespace portfolioASP.Areas.View.Controllers
 
             _model = new ViewHomePageViewModel
             {
-                Welcome = JsonFileManager<Welcome>.Get(),
+                WelcomeView = new WelcomeView(JsonFileManager<Welcome>.Get(), currentUICulture),
                 AboutMeView = new AboutMeView(JsonFileManager<AboutMe>.Get(), currentUICulture),
                 SkillViews = _unitOfWork.SkillRepository.GetAllView(currentUICulture),
                 ProjectViews = _unitOfWork.ProjectRepository.GetAllView(currentUICulture),
-                Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
+                Contacts = _unitOfWork.ContactRepository.GetAll().ToList()
             };
 
             _localizer = localizer;

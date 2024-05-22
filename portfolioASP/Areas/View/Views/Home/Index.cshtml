@@ -9,18 +9,18 @@
                 <div class="col-lg-9 col-md-9 col-9">
                     <h1 class="text-white header-socrates">
                         @{
-                            if (Model.Welcome.Header != null)
+                            if (Model.WelcomeView.Header != null)
                             {
-                                string title = Model.Welcome.Header.Replace("\r\n", "<br />");
+                                string title = Model.WelcomeView.Header.Replace("\r\n", "<br />");
                                 @Html.Raw(title)
                             }
                         }
                         </h1>
                     <div class="text-white">
                         @{
-                            if (Model.Welcome.Description != null)
+                            if (Model.WelcomeView.Description != null)
                             {
-                                string title = Model.Welcome.Description.Replace("\r\n", "<br />");
+                                string title = Model.WelcomeView.Description.Replace("\r\n", "<br />");
                                 @Html.Raw(title)
                             }
                         }
