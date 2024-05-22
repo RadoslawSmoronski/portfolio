@@ -10,6 +10,7 @@ using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models.AboutMe;
 using System.Globalization;
 using portfolio.Models.WebsiteTitle;
+using portfolio.Models.NavbarLogo;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -44,8 +45,8 @@ namespace portfolioASP.Areas.View.Controllers
             WebsiteTitleView websiteTitleView = new WebsiteTitleView(JsonFileManager<WebsiteTitle>.Get(), currentUICulture);
             ViewData["WebsiteTitleView"] = websiteTitleView;
 
-            NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
-            ViewData["NavbarLogo"] = navbarLogo;
+            NavbarLogoView navbarLogoView = new NavbarLogoView(JsonFileManager<NavbarLogo>.Get(), currentUICulture);
+            ViewData["NavbarLogoView"] = navbarLogoView;
 
             Footer footer = JsonFileManager<Footer>.Get();
             ViewData["Footer"] = footer;

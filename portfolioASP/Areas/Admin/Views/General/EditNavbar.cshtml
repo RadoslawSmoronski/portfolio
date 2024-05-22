@@ -10,8 +10,12 @@
                     <form method="post" enctype="multipart/form-data">
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Content"]</label>
-                            <textarea asp-for="Title" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
+                            <label class="text-white">@Localizer["Content"] (ENG)</label>
+                            <textarea asp-for="TitleENG" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white">@Localizer["Content"] (PL)</label>
+                            <textarea asp-for="TitlePL" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></textarea>
                         </div>
                         <div class="form-group mb-3">
                             <label class="text-white">@Localizer["Image"]</label>

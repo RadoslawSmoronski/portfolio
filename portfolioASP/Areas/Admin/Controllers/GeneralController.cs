@@ -7,6 +7,7 @@ using portfolio.Models.ViewModels;
 using portfolio.Utility;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models.WebsiteTitle;
+using portfolio.Models.NavbarLogo;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {

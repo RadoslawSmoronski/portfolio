@@ -44,11 +44,22 @@
                 <h1 class="text-white text-center mb-5">@Localizer["NavbarTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["NavbarHeader"]</h5>
+                    <h5>@Localizer["NavbarHeader"] (ENG)</h5>
                     @{
-                        if (Model.NavbarLogo.Title != null)
+                        if (Model.NavbarLogo.TitleENG != null)
                         {
-                            string title = Model.NavbarLogo.Title.Replace("\r\n", "<br />");
+                            string title = Model.NavbarLogo.TitleENG.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["NavbarHeader"] (PL)</h5>
+                    @{
+                        if (Model.NavbarLogo.TitlePL != null)
+                        {
+                            string title = Model.NavbarLogo.TitlePL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }
