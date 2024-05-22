@@ -138,4 +138,7 @@
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
   </data>
+  <data name="WebsiteTitle" xml:space="preserve">
+    <value>Admin Panel</value>
+  </data>
 </root>

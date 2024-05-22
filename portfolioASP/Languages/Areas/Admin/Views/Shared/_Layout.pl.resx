@@ -138,4 +138,7 @@
   <data name="Skills" xml:space="preserve">
     <value>Umiejętności</value>
   </data>
+  <data name="WebsiteTitle" xml:space="preserve">
+    <value>Panel Administratora</value>
+  </data>
 </root>

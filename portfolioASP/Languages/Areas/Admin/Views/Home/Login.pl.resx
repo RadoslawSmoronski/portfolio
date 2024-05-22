@@ -126,4 +126,7 @@
   <data name="Password" xml:space="preserve">
     <value>Hasło dostępu</value>
   </data>
+  <data name="WebsiteTitle" xml:space="preserve">
+    <value>Logowanie do panelu administratora</value>
+  </data>
 </root>
