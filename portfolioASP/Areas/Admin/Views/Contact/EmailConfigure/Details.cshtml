@@ -9,16 +9,32 @@
                 <h1 class="text-white text-center mb-5">@Localizer["Message"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Subject"]</h5>
-                    @Model.EmailMessageContent.Subject
+                    <h5>@Localizer["Subject"] (ENG)</h5>
+                    @Model.EmailMessageContent.SubjectENG
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Content"]</h5>
+                    <h5>@Localizer["Subject"] (PL)</h5>
+                    @Model.EmailMessageContent.SubjectPL
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["Content"] (ENG)</h5>
                     @{
-                        if (Model.EmailMessageContent.Content != null)
+                        if (Model.EmailMessageContent.ContentENG != null)
                         {
-                            string title = Model.EmailMessageContent.Content.Replace("\r\n", "<br />");
+                            string title = Model.EmailMessageContent.ContentENG.Replace("\r\n", "<br />");
+                            @Html.Raw(title)
+                        }
+                    }
+                </div>
+
+                <div class="detail-box">
+                    <h5>@Localizer["Content"] (PL)</h5>
+                    @{
+                        if (Model.EmailMessageContent.ContentPL != null)
+                        {
+                            string title = Model.EmailMessageContent.ContentPL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }

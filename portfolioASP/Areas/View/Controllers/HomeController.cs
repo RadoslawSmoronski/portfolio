@@ -19,13 +19,12 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly IEmailService _emailService;
         private readonly ViewHomePageViewModel _model;
         private readonly IHtmlLocalizer<HomeController> _localizer;
+        private readonly string currentUICulture = CultureInfo.CurrentUICulture.Name;
 
         public HomeController(IUnitOfWork unitOfWork, IEmailService emailService, IHtmlLocalizer<HomeController> localizer)
         {
             _unitOfWork = unitOfWork;
             _emailService = emailService;
-
-            string currentUICulture = CultureInfo.CurrentUICulture.Name;
 
             _model = new ViewHomePageViewModel
             {
@@ -63,7 +62,9 @@ namespace portfolioASP.Areas.View.Controllers
 
             try
             {
-                AutoEmailMessageContent autoMessage =  JsonFileManager<AutoEmailMessageContent>.Get();
+
+
+                AutoEmailMessageContentView autoMessage = new AutoEmailMessageContentView(JsonFileManager<AutoEmailMessageContent>.Get(), currentUICulture);
                 await _emailService.SendEmailAsync(contactForm.Email, autoMessage.Subject, autoMessage.Content);
 
                 var message = new EmailMessage
