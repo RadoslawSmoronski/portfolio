@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using portfolio.Models;
 using portfolio.Models.Email;
+using portfolio.Models.Skill;
 
 namespace portfolio.DataAccess.Data
 {
@@ -19,11 +20,11 @@ namespace portfolio.DataAccess.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>().HasData(
-                new Skill { Id = 1, Name="C#"},
-                new Skill { Id = 2, Name = "C#2"},
-                new Skill { Id = 3, Name = "C#3"},
-                new Skill { Id = 4, Name = "C#4"},
-                new Skill { Id = 5, Name = "C#5"}
+                new Skill { Id = 1, NameENG="C#", NamePL = "PL C#" },
+                new Skill { Id = 2, NameENG = "C#2", NamePL = "PL C#2" },
+                new Skill { Id = 3, NameENG = "C#3", NamePL = "PL C#3" },
+                new Skill { Id = 4, NameENG = "C#4", NamePL = "PL C#4" },
+                new Skill { Id = 5, NameENG = "C#5", NamePL = "PL C#5" }
                 );
 
             string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.";

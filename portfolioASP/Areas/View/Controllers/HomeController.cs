@@ -31,7 +31,7 @@ namespace portfolioASP.Areas.View.Controllers
             {
                 Welcome = JsonFileManager<Welcome>.Get(),
                 AboutMeView = new AboutMeView(JsonFileManager<AboutMe>.Get(), currentUICulture),
-                Skills = _unitOfWork.SkillRepository.GetAll().ToList(),
+                SkillViews = _unitOfWork.SkillRepository.GetAllView(currentUICulture),
                 Projects = _unitOfWork.ProjectRepository.GetAll().ToList(),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList(),
             };
