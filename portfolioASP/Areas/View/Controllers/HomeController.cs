@@ -11,6 +11,7 @@ using portfolio.Models.AboutMe;
 using System.Globalization;
 using portfolio.Models.WebsiteTitle;
 using portfolio.Models.NavbarLogo;
+using portfolio.Models.Footer;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -48,8 +49,8 @@ namespace portfolioASP.Areas.View.Controllers
             NavbarLogoView navbarLogoView = new NavbarLogoView(JsonFileManager<NavbarLogo>.Get(), currentUICulture);
             ViewData["NavbarLogoView"] = navbarLogoView;
 
-            Footer footer = JsonFileManager<Footer>.Get();
-            ViewData["Footer"] = footer;
+            FooterView footerView = new FooterView(JsonFileManager<Footer>.Get(), currentUICulture);
+            ViewData["FooterView"] = footerView;
 
             return View(_model);
         }

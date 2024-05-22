@@ -92,11 +92,11 @@
         </div> *@
 
         @{
-            Footer? footer = ViewData["Footer"] as Footer;
+            FooterView? footerView = ViewData["FooterView"] as FooterView;
 
-            @if(footer != null)
+            @if(footerView != null)
             {
-                @Html.Raw(footer.Content)
+                @Html.Raw(footerView.Content)
             }
         }
 

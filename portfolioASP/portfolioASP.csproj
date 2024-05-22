@@ -40,7 +40,6 @@
   <ItemGroup>
     <Folder Include="wwwroot\images\navbar\" />
     <Folder Include="wwwroot\images\websiteTitle\" />
-    <Folder Include="wwwroot\json\" />
   </ItemGroup>
 
 </Project>
