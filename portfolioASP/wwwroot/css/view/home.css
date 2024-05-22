@@ -74,6 +74,10 @@
     backdrop-filter: blur(10px);
 }
 
+.cover .description-box{
+    height: 260px;
+}
+
 .project-box-cover {
     background-color: white;
 }

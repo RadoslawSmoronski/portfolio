@@ -93,26 +93,39 @@
     <div class="portfolio container">
         <div class="container">
             <div class="row pb-5 pt-5">
-                @foreach(var obj in Model.Projects)
+                @foreach(var obj in Model.ProjectViews)
                 {
                     <div class="col-lg-4 px-5 pb-5">
                         <div class="project-box text-center">
                             <img src="@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")" class="project-img" />
                             <div class="text-white pb-1 m-3" style="font-size: 25px;">@obj.Name</div>
                             <div class="cover text-center">
-                                <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>
-                                <p class="text-white m-3">
-                                    @{
-                                        if (obj.Description != null)
-                                        {
-                                            string title = obj.Description.Replace("\r\n", "<br />");
-                                            @Html.Raw(title)
+                                <div class="description-box">
+                                    <div class="text-white pb-3 m-3" style="font-size: 25px;">@obj.Name</div>
+                                    <p class="text-white m-3">
+                                        @{
+                                            if (obj.Description != null)
+                                            {
+                                                string title = obj.Description.Replace("\r\n", "<br />");
+                                                @Html.Raw(title)
+                                            }
                                         }
+                                    </p>
+                                </div>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    @if (!string.IsNullOrEmpty(obj.GitRepositoryUrl))
+                                    {
+                                        <a class="btn btn-dark" target="_blank" href="@obj.GitRepositoryUrl">
+                                            <i class="bi bi-git text-white" style="font-size: 20px;"></i> <br> @Localizer["Repository"]
+                                        </a>
                                     }
-                                </p>
-                                <a class="btn btn-dark" href="@obj.GitRepositoryUrl" style="position: absolute; bottom: 20px; left: 50%; transform: translateX(-50%);">
-                                    <i class="bi bi-github text-white" style="font-size: 35px;"></i> <br> Repozytorium
-                                </a>
+                                    @if (!string.IsNullOrEmpty(obj.ProjectWebsiteUrl))
+                                    {
+                                        <a class="btn btn-dark" target="_blank" href="@obj.ProjectWebsiteUrl">
+                                            <i class="bi bi-globe text-white" style="font-size: 20px;"></i> <br> @Localizer["Website"]
+                                        </a>
+                                    }
+                                </div>
                             </div>
                         </div>
                     </div>

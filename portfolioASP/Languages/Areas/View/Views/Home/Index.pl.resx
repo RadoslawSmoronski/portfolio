@@ -126,7 +126,13 @@
   <data name="Portfolio" xml:space="preserve">
     <value>Portfolio</value>
   </data>
+  <data name="Repository" xml:space="preserve">
+    <value>Repozytorium</value>
+  </data>
   <data name="Skills" xml:space="preserve">
     <value>Umiejętności</value>
+  </data>
+  <data name="Website" xml:space="preserve">
+    <value>Witryna</value>
   </data>
 </root>

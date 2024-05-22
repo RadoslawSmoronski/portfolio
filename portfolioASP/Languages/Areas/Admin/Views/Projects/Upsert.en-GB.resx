@@ -139,7 +139,7 @@
     <value>Edit</value>
   </data>
   <data name="GitRepository" xml:space="preserve">
-    <value>Git Repository</value>
+    <value>Git Repository address</value>
   </data>
   <data name="GitRepositoryPlaceholder" xml:space="preserve">
     <value>Enter url address to git repository...</value>
@@ -155,5 +155,11 @@
   </data>
   <data name="Project" xml:space="preserve">
     <value>Project</value>
+  </data>
+  <data name="ProjectWebsiteUrl" xml:space="preserve">
+    <value>Project website url address</value>
+  </data>
+  <data name="ProjectWebsiteUrlPlaceholder" xml:space="preserve">
+    <value>Enter project website url address...</value>
   </data>
 </root>

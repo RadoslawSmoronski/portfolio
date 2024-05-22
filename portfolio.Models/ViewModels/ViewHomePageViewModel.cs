@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using portfolio.Models.AboutMe;
 using portfolio.Models.Skill;
+using portfolio.Models.Project;
 
 namespace portfolio.Models.ViewModels
 {
@@ -12,7 +13,7 @@ namespace portfolio.Models.ViewModels
     {
         public Welcome Welcome { get; set; }
         public List<SkillView> SkillViews { get; set; }
-        public List<Project> Projects { get; set; }
+        public List<ProjectView> ProjectViews { get; set; }
 
         public List<Contact> Contacts { get; set; }
         public AboutMeView AboutMeView { get; set; }

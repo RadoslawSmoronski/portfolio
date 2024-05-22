@@ -1,6 +1,7 @@
 ﻿using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Repository.IRepository;
-using portfolio.Models;
+using portfolio.Models.Project;
+using portfolio.Models.Skill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,6 +23,20 @@ namespace portfolio.DataAccess.Repository
         public void Update(Project obj)
         {
             _db.Projects.Update(obj);
+        }
+
+        public List<ProjectView> GetAllView(string languageCode)
+        {
+            List<ProjectView> viewList = new List<ProjectView>();
+            List<Project> objList = GetAll().ToList();
+
+            foreach (Project obj in objList)
+            {
+                ProjectView viewObj = new ProjectView(obj, languageCode);
+                viewList.Add(viewObj);
+            }
+
+            return viewList;
         }
     }
 }

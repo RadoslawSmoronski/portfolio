@@ -11,19 +11,34 @@
                         <input asp-for="Id" hidden />
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Name"]</label>
-                            <input asp-for="Name" class="form-control" placeholder="@Localizer["NamePlaceholder"]">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                            <label class="text-white">@Localizer["Name"] (ENG)</label>
+                            <input asp-for="NameENG" class="form-control" placeholder="@Localizer["NamePlaceholder"]">
+                            <span asp-validation-for="NameENG" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                        <label class="text-white">@Localizer["Description"]</label>
-                            <textarea asp-for="Description" class="form-control" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
-                            <span asp-validation-for="Description" class="text-danger"></span>
+                            <label class="text-white">@Localizer["Name"] (PL)</label>
+                            <input asp-for="NamePL" class="form-control" placeholder="@Localizer["NamePlaceholder"]">
+                            <span asp-validation-for="NamePL" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                        <label class="text-white">@Localizer["Description"] (ENG)</label>
+                            <textarea asp-for="DescriptionENG" class="form-control" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
+                            <span asp-validation-for="DescriptionENG" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white">@Localizer["Description"] (PL)</label>
+                            <textarea asp-for="DescriptionPL" class="form-control" placeholder="@Localizer["DescriptionPlaceholder"]"></textarea>
+                            <span asp-validation-for="DescriptionPL" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
                             <label class="text-white">@Localizer["GitRepository"]</label>
                             <input asp-for="GitRepositoryUrl" class="form-control" placeholder="@Localizer["GitRepositoryPlaceholder"]">
                             <span asp-validation-for="GitRepositoryUrl" class="text-danger"></span>
+                        </div>
+                        <div class="form-group mb-4">
+                        <label class="text-white">@Localizer["ProjectWebsiteUrl"]</label>
+                            <input asp-for="ProjectWebsiteUrl" class="form-control" placeholder="@Localizer["ProjectWebsiteUrlPlaceholder"]">
+                            <span asp-validation-for="ProjectWebsiteUrl" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-3">
                             <label class="text-white">@Localizer["Image"]</label>

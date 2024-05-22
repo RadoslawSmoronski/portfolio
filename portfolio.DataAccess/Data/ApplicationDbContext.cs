@@ -1,6 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using portfolio.Models;
 using portfolio.Models.Email;
+using portfolio.Models.Project;
 using portfolio.Models.Skill;
 
 namespace portfolio.DataAccess.Data
@@ -30,9 +31,9 @@ namespace portfolio.DataAccess.Data
             string description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.";
 
             modelBuilder.Entity<Project>().HasData(
-                new Project { Id = 1, Name="Project#1", Description = description, GitRepositoryUrl="git"},
-                new Project { Id = 2, Name = "Project#2", Description = description, GitRepositoryUrl = "git" },
-                new Project { Id = 3, Name = "Project#3", Description = description, GitRepositoryUrl = "git" }
+                new Project { Id = 1, NameENG ="Project#1", NamePL = "Projekt#1", DescriptionENG = description, DescriptionPL = "PL " + description, GitRepositoryUrl ="git"},
+                new Project { Id = 2, NameENG = "Project#2", NamePL = "Projekt#2", DescriptionENG = description, DescriptionPL = "PL " + description, ProjectWebsiteUrl="git" },
+                new Project { Id = 3, NameENG = "Project#3", NamePL = "Projekt#3", DescriptionENG = description, DescriptionPL = "PL " + description, GitRepositoryUrl = "git", ProjectWebsiteUrl="git" }
                 );
 
             modelBuilder.Entity<Contact>().HasData(

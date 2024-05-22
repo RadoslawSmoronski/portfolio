@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace portfolio.Models
+namespace portfolio.Models.Project
 {
     public class Project
     {
@@ -14,12 +14,18 @@ namespace portfolio.Models
         public int Id { get; set; }
         [Required]
         [MaxLength(25)]
-        public string Name { get; set; }
+        public string NameENG { get; set; } = "";
+        [Required]
+        [MaxLength(25)]
+        public string NamePL { get; set; } = "";
         [Required]
         [MaxLength(150)]
-        public string Description { get; set; }
+        public string DescriptionENG { get; set; } = "";
         [Required]
-        public string GitRepositoryUrl { get; set; }
+        [MaxLength(150)]
+        public string DescriptionPL { get; set; } = "";
+        public string? GitRepositoryUrl { get; set; }
+        public string? ProjectWebsiteUrl { get; set; }
         [ValidateNever]
         public string? ImageUrl { get; set; }
 

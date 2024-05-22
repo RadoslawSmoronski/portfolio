@@ -101,10 +101,22 @@
             <tbody>
                 @foreach(var obj in Model)
                 {
+                    string name;
+                    string currentUICulture = CultureInfo.CurrentUICulture.Name;
+
+                    if (currentUICulture == "pl")
+                    {
+                        name = obj.NamePL;
+                    }
+                    else
+                    {
+                        name = obj.NameENG;
+                    }
+
                     <tr>
                         <td>@obj.Id</td>
                         <td>
-                            @obj.Name
+                            @name
                         </td>
                         <td>
                             <img class="project-img" src="../../../@(obj.ImageUrl != null ? obj.ImageUrl : @"\images\projects\default-project.png")"></img>
@@ -112,7 +124,7 @@
                         <td class="text-center">
                             @{
                                 string saTitle = Localizer["SweetAlertTitle"].Value;
-                                string saText = $"{obj.Name} (id: {obj.Id})";
+                                string saText = $"{name} (id: {obj.Id})";
                                 string saConfirmButtonText = Localizer["SweetAlertConfirmButtonText"].Value;
                                 string saCancelButtonText = Localizer["SweetAlertCancelButtonText"].Value;
                             }

@@ -1,4 +1,5 @@
-﻿using portfolio.Models;
+﻿using portfolio.Models.Project;
+using portfolio.Models.Skill;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,5 +11,6 @@ namespace portfolio.DataAccess.Repository.IRepository
     public interface IProjectRepository : IRepository<Project>
     {
         void Update(Project obj);
+        List<ProjectView> GetAllView(string languageCode);
     }
 }
