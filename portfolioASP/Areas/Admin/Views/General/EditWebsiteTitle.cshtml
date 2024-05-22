@@ -9,8 +9,12 @@
                 <h1 class="text-white text-center mb-5">@Localizer["Title"]</h1>
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Content"]</label>
-                            <input asp-for="Title" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></input>
+                            <label class="text-white">@Localizer["Content"] (ENG)</label>
+                            <input asp-for="TitleENG" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></input>
+                        </div>
+                        <div class="form-group mb-4">
+                            <label class="text-white">@Localizer["Content"] (PL)</label>
+                            <input asp-for="TitlePL" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></input>
                         </div>
                         <div class="form-group mb-3">
                             <label class="text-white">@Localizer["Image"]</label>

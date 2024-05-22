@@ -4,11 +4,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace portfolio.Models
+namespace portfolio.Models.WebsiteTitle
 {
     public class WebsiteTitle
     {
-        public string? Title { get; set; } = "Lorem Ipsum";
+        public string TitleENG { get; set; } = "Website";
+        public string TitlePL { get; set; } = "Witryna";
         public string? ImageUrl { get; set; }
     }
 }

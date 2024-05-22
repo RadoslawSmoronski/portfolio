@@ -9,6 +9,7 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models.AboutMe;
 using System.Globalization;
+using portfolio.Models.WebsiteTitle;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -40,8 +41,8 @@ namespace portfolioASP.Areas.View.Controllers
 
         public IActionResult Index()
         {
-            WebsiteTitle websiteTitle = JsonFileManager<WebsiteTitle>.Get();
-            ViewData["WebsiteTitle"] = websiteTitle;
+            WebsiteTitleView websiteTitleView = new WebsiteTitleView(JsonFileManager<WebsiteTitle>.Get(), currentUICulture);
+            ViewData["WebsiteTitleView"] = websiteTitleView;
 
             NavbarLogo navbarLogo = JsonFileManager<NavbarLogo>.Get();
             ViewData["NavbarLogo"] = navbarLogo;

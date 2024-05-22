@@ -9,14 +9,14 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
     @{
-        WebsiteTitle? websiteTitle = ViewData["WebsiteTitle"] as WebsiteTitle;
+        WebsiteTitleView? websiteTitleView = ViewData["WebsiteTitleView"] as WebsiteTitleView;
 
-        @if (websiteTitle != null)
+        @if (websiteTitleView != null)
         {
-            <title>@websiteTitle.Title</title>
-            if(websiteTitle.ImageUrl != null)
+            <title>@websiteTitleView.Title</title>
+            if (websiteTitleView.ImageUrl != null)
             {
-                <link rel="icon" href="@websiteTitle.ImageUrl">
+                <link rel="icon" href="@websiteTitleView.ImageUrl">
             }
         }
     }
