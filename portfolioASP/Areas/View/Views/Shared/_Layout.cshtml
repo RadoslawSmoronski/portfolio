@@ -18,6 +18,10 @@
             {
                 <link rel="icon" href="@websiteTitleView.ImageUrl">
             }
+            else
+            {
+                <link rel="icon" href="~/images/websiteTitle/website-default-icon.png">
+            }
         }
     }
 
@@ -87,10 +91,6 @@
     </div>
 
     <footer class="footer d-flex align-items-center justify-content-center">
-@*         <div>
-            2024 &copy; Radosław Smoroński <a asp-area="Admin" asp-controller="Home" asp-action="Index">Admin</a>
-        </div> *@
-
         @{
             FooterView? footerView = ViewData["FooterView"] as FooterView;
 
@@ -102,11 +102,12 @@
 
     </footer>
 
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
-    <script src="~/js/view/view.js"></script>
+    <script src="~/js/view/layout.js"></script>
 
     @await RenderSectionAsync("Scripts", required: false)
 

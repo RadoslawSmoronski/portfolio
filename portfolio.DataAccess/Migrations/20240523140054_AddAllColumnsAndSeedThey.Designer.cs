@@ -12,8 +12,8 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240522114116_AddEngAndPLNameColumnsToSkills")]
-    partial class AddEngAndPLNameColumnsToSkills
+    [Migration("20240523140054_AddAllColumnsAndSeedThey")]
+    partial class AddAllColumnsAndSeedThey
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -141,7 +141,7 @@ namespace portfolio.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("portfolio.Models.Project", b =>
+            modelBuilder.Entity("portfolio.Models.Project.Project", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -149,22 +149,34 @@ namespace portfolio.DataAccess.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Description")
+                    b.Property<string>("DescriptionENG")
+                        .IsRequired()
+                        .HasMaxLength(150)
+                        .HasColumnType("nvarchar(150)");
+
+                    b.Property<string>("DescriptionPL")
                         .IsRequired()
                         .HasMaxLength(150)
                         .HasColumnType("nvarchar(150)");
 
                     b.Property<string>("GitRepositoryUrl")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Name")
+                    b.Property<string>("NameENG")
                         .IsRequired()
                         .HasMaxLength(25)
                         .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("NamePL")
+                        .IsRequired()
+                        .HasMaxLength(25)
+                        .HasColumnType("nvarchar(25)");
+
+                    b.Property<string>("ProjectWebsiteUrl")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
@@ -174,23 +186,30 @@ namespace portfolio.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            DescriptionENG = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            DescriptionPL = "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
                             GitRepositoryUrl = "git",
-                            Name = "Project#1"
+                            NameENG = "Project#1",
+                            NamePL = "Projekt#1"
                         },
                         new
                         {
                             Id = 2,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
-                            GitRepositoryUrl = "git",
-                            Name = "Project#2"
+                            DescriptionENG = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            DescriptionPL = "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            NameENG = "Project#2",
+                            NamePL = "Projekt#2",
+                            ProjectWebsiteUrl = "git"
                         },
                         new
                         {
                             Id = 3,
-                            Description = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            DescriptionENG = "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
+                            DescriptionPL = "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.",
                             GitRepositoryUrl = "git",
-                            Name = "Project#3"
+                            NameENG = "Project#3",
+                            NamePL = "Projekt#3",
+                            ProjectWebsiteUrl = "git"
                         });
                 });
 

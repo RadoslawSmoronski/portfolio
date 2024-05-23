@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
+﻿using System;
+using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
@@ -7,7 +8,7 @@
 namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class AddTablesToDbAndSeedThey : Migration
+    public partial class AddAllColumnsAndSeedThey : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -34,6 +35,8 @@ namespace portfolio.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    IsReaded = table.Column<bool>(type: "bit", nullable: false),
+                    SentAt = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -50,9 +53,12 @@ namespace portfolio.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
-                    GitRepositoryUrl = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    NameENG = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    NamePL = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    DescriptionENG = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    DescriptionPL = table.Column<string>(type: "nvarchar(150)", maxLength: 150, nullable: false),
+                    GitRepositoryUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    ProjectWebsiteUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -66,7 +72,8 @@ namespace portfolio.DataAccess.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    NameENG = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
+                    NamePL = table.Column<string>(type: "nvarchar(25)", maxLength: 25, nullable: false),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
@@ -86,34 +93,34 @@ namespace portfolio.DataAccess.Migrations
 
             migrationBuilder.InsertData(
                 table: "EmailMessages",
-                columns: new[] { "Id", "Content", "Email", "Name", "Subject" },
+                columns: new[] { "Id", "Content", "Email", "IsReaded", "Name", "SentAt", "Subject" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test@email.com", "John", "Test Subject" },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test2@email.com", "Mark", "Test Subject 2" },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test3@email.com", "Jeniffer", "Test Subject 3" }
+                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test@email.com", false, "John", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test Subject" },
+                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test2@email.com", false, "Mark", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test Subject 2" },
+                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "test3@email.com", false, "Jeniffer", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), "Test Subject 3" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Projects",
-                columns: new[] { "Id", "Description", "GitRepositoryUrl", "ImageUrl", "Name" },
+                columns: new[] { "Id", "DescriptionENG", "DescriptionPL", "GitRepositoryUrl", "ImageUrl", "NameENG", "NamePL", "ProjectWebsiteUrl" },
                 values: new object[,]
                 {
-                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "git", null, "Project#1" },
-                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "git", null, "Project#2" },
-                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "git", null, "Project#3" }
+                    { 1, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "git", null, "Project#1", "Projekt#1", null },
+                    { 2, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", null, null, "Project#2", "Projekt#2", "git" },
+                    { 3, "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "PL Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer gravida felis in ultrices molestie.", "git", null, "Project#3", "Projekt#3", "git" }
                 });
 
             migrationBuilder.InsertData(
                 table: "Skills",
-                columns: new[] { "Id", "ImageUrl", "Name" },
+                columns: new[] { "Id", "ImageUrl", "NameENG", "NamePL" },
                 values: new object[,]
                 {
-                    { 1, null, "C#" },
-                    { 2, null, "C#2" },
-                    { 3, null, "C#3" },
-                    { 4, null, "C#4" },
-                    { 5, null, "C#5" }
+                    { 1, null, "C#", "PL C#" },
+                    { 2, null, "C#2", "PL C#2" },
+                    { 3, null, "C#3", "PL C#3" },
+                    { 4, null, "C#4", "PL C#4" },
+                    { 5, null, "C#5", "PL C#5" }
                 });
         }
 
