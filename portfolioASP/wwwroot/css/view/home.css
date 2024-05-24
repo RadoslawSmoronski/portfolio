@@ -18,7 +18,7 @@
     right: 0;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 768px) {
     #welcome {
         margin-top: 75px;
         height: 90vh;
@@ -44,7 +44,7 @@
 
     .socrates-img {
         height: 100%;
-        width: 100%;
+        width: auto;
     }
 
     .socrates-col {
@@ -76,7 +76,7 @@
     border-radius: 50%;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 768px) {
     .about-image {
         width: 200px;
         height: 200px;
@@ -140,7 +140,7 @@
     width: 100%;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 768px) {
     .project-img {
         height: 250px;
     }
@@ -197,7 +197,7 @@
     font-size: 35px;
 }
 
-@media (max-width: 575.98px) {
+@media (max-width: 768px) {
     .section-header {
         width: 100%;
         padding: 20px;
