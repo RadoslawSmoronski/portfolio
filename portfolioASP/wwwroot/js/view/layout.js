@@ -12,7 +12,7 @@
     function updateNavbarClass() {
         var windowWidth = $(window).width();
         var minWidth = 768;
-        if (windowWidth >= minWidth) return;
+        if (windowWidth <= minWidth) return;
 
 
         var scrollTop = $(this).scrollTop();
