@@ -1,34 +1,36 @@
 ﻿@model ViewHomePageViewModel
 <link rel="stylesheet" href="~/css/view/home.css" asp-append-version="true" />
 
-<section id="welcome" class="mu-5" style="min-height: 400px;">
-    <div class="row" style="height: 100vh;">
-        <div class="col-lg-6 col-md-6 col-5 d-flex align-items-center justify-content-center">
+<section id="welcome" class="mu-5">
+    <div class="row welcome-row">
+        <div class="header-col col-lg-6 col-md-6 col-12 d-flex align-items-center justify-content-center">
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-3"></div>
-                <div class="col-lg-9 col-md-9 col-9">
-                    <h1 class="text-white header-socrates">
-                        @{
-                            if (Model.WelcomeView.Header != null)
-                            {
-                                string title = Model.WelcomeView.Header.Replace("\r\n", "<br />");
-                                @Html.Raw(title)
+                <div class="col-lg-3 col-md-3 col-0" style="height: 0px;"></div>
+                <div class="col-lg-9 col-md-9 col-12">
+                    <div class="welcome-text">
+                        <h1 class="text-white header-socrates">
+                            @{
+                                if (Model.WelcomeView.Header != null)
+                                {
+                                    string title = Model.WelcomeView.Header.Replace("\r\n", "<br />");
+                                    @Html.Raw(title)
+                                }
                             }
-                        }
                         </h1>
-                    <div class="text-white">
-                        @{
-                            if (Model.WelcomeView.Description != null)
-                            {
-                                string title = Model.WelcomeView.Description.Replace("\r\n", "<br />");
-                                @Html.Raw(title)
+                        <div class="description-socrates">
+                            @{
+                                if (Model.WelcomeView.Description != null)
+                                {
+                                    string title = Model.WelcomeView.Description.Replace("\r\n", "<br />");
+                                    @Html.Raw(title)
+                                }
                             }
-                        }
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-lg-6 col-md-6 col-7 d-flex justify-content-end position-relative">
+        <div class="socrates-col col-lg-6 col-md-6 col-12 d-flex justify-content-end position-relative">
             <img src="~/images/socrates.png" class="img-fluid socrates-img" />
         </div>
     </div> 
@@ -36,9 +38,7 @@
 
 <section id="about">
     <div class="section-header">
-        <h1 class="text-white">
-            @Localizer["AboutMe"]
-        </h1>
+        @Localizer["AboutMe"]
     </div>
     <div class="container about-box">
         <div class="row pb-5 pt-5 d-flex align-items-center justify-content-center">
@@ -65,9 +65,7 @@
 
 <section id="skills">
     <div class="section-header">
-        <h1 class="text-white">
-            @Localizer["Skills"]
-        </h1>
+        @Localizer["Skills"]
     </div>
     <div class="container skills-box">
         <div class="row pb-5 pt-5 d-flex align-items-center justify-content-center">
@@ -86,9 +84,7 @@
 
 <section id="portfolio">
     <div class="section-header">
-        <h1 class="text-white">
-            @Localizer["Portfolio"]
-        </h1>
+        @Localizer["Portfolio"]
     </div>
     <div class="portfolio container">
         <div class="container">
@@ -137,9 +133,7 @@
 
 <section id="contact">
     <div class="section-header">
-        <h1 class="text-white">
-            @Localizer["Contact"]
-        </h1>
+    @Localizer["Contact"]
     </div>
     <div class="container contact-box">
         <div class="row pb-5 pt-5">

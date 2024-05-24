@@ -3,6 +3,11 @@
 #welcome {
     background-image: url("../../images/background.jpg");
     background-position: center;
+    height: 100vh;
+}
+
+.welcome-row {
+    height: 100vh;
 }
 
 .socrates-img {
@@ -14,12 +19,40 @@
 }
 
 @media (max-width: 575.98px) {
+    #welcome {
+        margin-top: 75px;
+        height: 90vh;
+        background-size: cover;
+    }
+
+    .welcome-row {
+        height: 90vh;
+    }
+
+    .welcome-text {
+        text-align: center;
+        padding: 30px;
+    }
+
     .header-socrates {
-        font-size: 22px;
+        font-size: 30px;
+    }
+
+    .description-socrates {
+        font-size: 20px;
     }
 
     .socrates-img {
-        height: 75%;
+        height: 100%;
+        width: 100%;
+    }
+
+    .socrates-col {
+        height: 60vh;
+    }
+
+    .header-col {
+        height: 30vh;
     }
 }
 
@@ -41,6 +74,20 @@
     height: 250px;
     object-fit: cover;
     border-radius: 50%;
+}
+
+@media (max-width: 575.98px) {
+    .about-image {
+        width: 200px;
+        height: 200px;
+        object-fit: cover;
+        border-radius: 50%;
+    }
+
+    .about-box {
+        padding-right: 10%;
+        padding-left: 10%;
+    }
 }
 
 
@@ -95,7 +142,7 @@
 
 @media (max-width: 575.98px) {
     .project-img {
-        height: 350px;
+        height: 250px;
     }
 }
 
@@ -142,8 +189,21 @@
 /*Additional CSS*/
 
 .section-header {
+    font-weight: bold;
     width: 100%;
-    height: 100px;
-    padding: 30px;
+    padding: 25px;
     background-color: #1E2427;
+    color: white;
+    font-size: 35px;
+}
+
+@media (max-width: 575.98px) {
+    .section-header {
+        width: 100%;
+        padding: 20px;
+        text-align: center;
+        background-color: #1E2427;
+        color: white;
+        font-size: 25px;
+    }
 }
