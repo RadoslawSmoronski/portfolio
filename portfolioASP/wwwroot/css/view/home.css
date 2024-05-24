@@ -142,7 +142,11 @@
 
 @media (max-width: 768px) {
     .project-img {
-        height: 250px;
+        height: 275px;
+    }
+
+    .cover .description-box {
+        height: 235px;
     }
 }
 
