@@ -23,6 +23,8 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
+            HttpContext.Session.SetString("IsActiveSession", "true");
+
             var isActiveSession = HttpContext.Session.GetString("IsActiveSession");
 
             if (isActiveSession == "true")
