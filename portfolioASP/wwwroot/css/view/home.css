@@ -188,6 +188,29 @@
     margin-right: 20px;
 }
 
+@media (max-width: 768px) {
+    .form-label {
+        font-size: 20px;
+
+    }
+
+    .form-input {
+        height: 55px;
+        font-size: 18px;
+    }
+
+    .form-input-big {
+        height: 150px;
+        font-size: 18px;
+    }
+
+    .btn-form {
+        width: 100%;
+        height: 55px;
+        font-size: 18px;
+    }
+}
+
 
 
 /*Additional CSS*/

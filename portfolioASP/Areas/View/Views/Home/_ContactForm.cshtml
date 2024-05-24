@@ -3,28 +3,28 @@
 <form method="post" class="m-lg-0 m-3" style="width: 100%">
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>@Localizer["EMail"]</label>
-        <input asp-for="Email" type="email" class="form-control" placeholder="@Localizer["EMailExample"]">
+        <label class="form-label">@Localizer["EMail"]</label>
+        <input asp-for="Email" type="email" class="form-control form-input" placeholder="@Localizer["EMailExample"]">
         <span asp-validation-for="Email" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>@Localizer["Name"]</label>
-        <input asp-for="Name" class="form-control" placeholder="@Localizer["NameExample"]">
+        <label class ="form-label">@Localizer["Name"]</label>
+        <input asp-for="Name" class="form-control form-input" placeholder="@Localizer["NameExample"]">
         <span asp-validation-for="Name" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>@Localizer["Subject"]</label>
-        <input asp-for="Subject" class="form-control" placeholder="@Localizer["SubjectExample"]">
+        <label class="form-label">@Localizer["Subject"]</label>
+        <input asp-for="Subject" class="form-control form-input" placeholder="@Localizer["SubjectExample"]">
         <span asp-validation-for="Subject" class="text-danger"></span>
     </div>
 
     <div class="form-group mb-lg-3 mb-5">
-        <label>@Localizer["Content"]</label>
-        <textarea asp-for="Content" class="form-control" placeholder="@Localizer["ContentExample"]"></textarea>
+        <label class="form-label">@Localizer["Content"]</label>
+        <textarea asp-for="Content" class="form-control form-input-big" placeholder="@Localizer["ContentExample"]"></textarea>
         <span asp-validation-for="Content" class="text-danger"></span>
     </div>
 
-    <button type="submit" class="btn btn-dark">@Localizer["SendMessage"]</button>
+    <button type="submit" class="btn btn-dark btn-form">@Localizer["SendMessage"]</button>
 </form>

@@ -32,6 +32,7 @@
 
             const targetId = this.getAttribute('href').substring(1);
             const target = document.getElementById(targetId);
+            const navbarHeight = 75;
 
             let scrollHeight = 0;
             if (targetId !== '') {
