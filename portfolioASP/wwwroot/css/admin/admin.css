@@ -34,6 +34,7 @@ footer {
 
 .navbar {
     background-color: #151a1c;
+    border-bottom: 1px solid #2C3032;
 }
 
 .nav-item .nav-link {
@@ -47,7 +48,7 @@ footer {
 .navbar-home {
     text-decoration-color: none;
     color: white;
-    font-size: 30px;
+    text-decoration: none;
     padding-left: 10px;
     padding-right: 20px;
     transition: color 0.3s ease;
@@ -56,6 +57,16 @@ footer {
 .navbar-home:hover {
     color: #adadad;
     transition: color 0.3s ease;
+}
+
+.navbar-home .icon {
+    font-size: 35px;
+    float: left;
+}
+
+.navbar-home .text {
+    font-size: 10px;
+    float: left;
 }
 
 @media (max-width: 768px) {
