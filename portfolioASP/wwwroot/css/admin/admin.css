@@ -35,6 +35,7 @@ footer {
 .navbar {
     background-color: #151a1c;
     border-bottom: 1px solid #2C3032;
+    padding: 15px;
 }
 
 .nav-item .nav-link {
@@ -60,18 +61,16 @@ footer {
 }
 
 .navbar-home .icon {
-    font-size: 35px;
-    float: left;
-}
-
-.navbar-home .text {
-    font-size: 10px;
-    float: left;
+    font-size: 25px;
 }
 
 @media (max-width: 768px) {
     .logo-text {
         border-right: 0px;
         padding-right: 0px;
+    }
+
+    .content-container {
+        margin-top: 75px;
     }
 }
