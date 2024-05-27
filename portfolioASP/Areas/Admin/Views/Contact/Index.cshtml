@@ -81,15 +81,19 @@
             height: 120px;
         }
 
+        .nav-btn {
+            width: 49%;
+        }
+
 </style>
 
 <section id="box">
     <div class="container">
         <div class="contact-header mb-5 p-2">
-            <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-dark text-white">
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-dark text-white nav-btn">
                 @Localizer["MessagesButton"]
             </a>
-            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark">
+            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-outline-dark text-white nav-btn">
                 @Localizer["ContactsButton"]
             </a>
         </div>
