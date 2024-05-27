@@ -129,11 +129,14 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="EmailButton" xml:space="preserve">
-    <value>Email</value>
-  </data>
   <data name="Messages" xml:space="preserve">
     <value>Messages</value>
+  </data>
+  <data name="MessagesButton" xml:space="preserve">
+    <value>Messages</value>
+  </data>
+  <data name="SettingsButton" xml:space="preserve">
+    <value>Settings</value>
   </data>
   <data name="Subject" xml:space="preserve">
     <value>Subject</value>

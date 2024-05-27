@@ -45,11 +45,16 @@
         height: 50px;
     }
 
+    .contact-header {
+        background-color: #1E2427;
+    }
+
 
     @@media (max-width: 768px) {
 
         .add-btn {
             width: 100px;
+            font-size: 10px;
         }
 
         .details-btn {
@@ -80,6 +85,14 @@
 
 <section id="box">
     <div class="container">
+        <div class="contact-header mb-5 p-2">
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-dark text-white">
+                @Localizer["MessagesButton"]
+            </a>
+            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark">
+                @Localizer["ContactsButton"]
+            </a>
+        </div>
         <div class="header text-center mb-5">
             <h1 class="text-white">@Localizer["Messages"] (@Model.UnreadEmailMessages / @Model.EmailMessages.Count())</h1>
         </div>
@@ -92,11 +105,7 @@
                 <th scope="col">
                     <a asp-controller="Contact" asp-action="EmailConfigure" class="btn btn-dark add-btn">
                         <i class="bi bi-gear"></i>
-                        @Localizer["EmailButton"]
-                    </a>
-                    <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark add-btn">
-                        <i class="bi bi-gear"></i>
-                        @Localizer["ContactsButton"]
+                        @Localizer["SettingsButton"]
                     </a>
                 </th>
             </thead>

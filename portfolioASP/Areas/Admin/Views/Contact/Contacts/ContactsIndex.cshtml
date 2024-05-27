@@ -45,6 +45,10 @@
         font-size: 30px;
     }
 
+    .contact-header {
+        background-color: #1E2427;
+    }
+
 
     @@media (max-width: 768px) {
 
@@ -79,6 +83,14 @@
 
 <section id="box">
     <div class="container">
+        <div class="contact-header mb-5 p-2">
+            <a asp-controller="Contact" asp-action="Index" class="btn btn-dark">
+                @Localizer["MessagesButton"]
+            </a>
+            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-outline-dark text-white">
+                @Localizer["ContactsButton"]
+            </a>
+        </div>
         <div class="header text-center mb-5">
             <h1 class="text-white">@Localizer["Contacts"]</h1>
         </div>
@@ -93,9 +105,6 @@
                         <a asp-controller="Contact" asp-action="ContactsUpsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             @Localizer["AddButton"]
-                        </a>
-                        <a asp-controller="Contact" asp-action="Index" class="btn btn-dark add-btn">
-                            @Localizer["BackButton"]
                         </a>
                     </th>
                 </tr>
