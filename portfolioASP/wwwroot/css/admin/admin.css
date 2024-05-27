@@ -23,13 +23,9 @@ body {
 }
 
 
-footer {
-    height: 100px;
-    text-align: center;
-}
-
 .content-container {
     margin-top: 75px;
+    margin-bottom: 50px;
 }
 
 .navbar {
@@ -73,4 +69,5 @@ footer {
     .content-container {
         margin-top: 75px;
     }
+
 }
