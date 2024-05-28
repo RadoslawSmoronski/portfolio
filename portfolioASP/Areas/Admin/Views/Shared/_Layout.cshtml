@@ -46,6 +46,15 @@
                             <a asp-area="Admin" asp-controller="Home" asp-action="LogOut" class="nav-link" style="color: #ab0d02;">@Localizer["Logout"]</a>
                         </li>
                     </ul>
+                        <hr>
+                        <div class="language-imgs">
+                            <a class="language-btn mb-2" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en-GB">
+                                <img class="language-img" src="~/images/british-flag.png" /></img>
+                            </a>
+                            <a class="language-btn" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="pl">
+                                <img class="language-img" src="~/images/polish-flag.png" /></img>
+                            </a>
+                        </div>
                 </div>
             </div>
         </nav>

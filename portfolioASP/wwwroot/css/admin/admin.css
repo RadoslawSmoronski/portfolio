@@ -60,6 +60,23 @@ body {
     font-size: 25px;
 }
 
+.language-btn {
+    height: 18px;
+    width: 30px;
+    display: block;
+    margin-right: 10px;
+}
+
+    .language-btn img {
+        height: 18px;
+        width: 30px;
+        transition: opacity 0.3s ease;
+    }
+
+        .language-btn img:hover {
+            opacity: 0.5;
+        }
+
 @media (max-width: 768px) {
     .logo-text {
         border-right: 0px;
@@ -70,4 +87,19 @@ body {
         margin-top: 75px;
     }
 
+    .language-btn {
+        height: 25px;
+        width: 40px;
+        float: left;
+    }
+
+        .language-btn img {
+            height: 25px;
+            width: 40px;
+            transition: opacity 0.3s ease;
+        }
+
+    .language-imgs {
+        margin-top: 20px;
+    }
 }
