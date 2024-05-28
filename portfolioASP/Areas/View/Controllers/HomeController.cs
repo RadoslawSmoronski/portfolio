@@ -13,6 +13,7 @@ using portfolio.Models.WebsiteTitle;
 using portfolio.Models.NavbarLogo;
 using portfolio.Models.Footer;
 using portfolio.Models.Welcome;
+using Microsoft.AspNetCore.Localization;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -88,6 +89,21 @@ namespace portfolioASP.Areas.View.Controllers
             {
                 TempData["error"] = _localizer["MessageSendError"].Value;
                 return RedirectToAction("Index");
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public IActionResult ChangeLanguage(string lang)
+        {
+            if (!string.IsNullOrEmpty(lang))
+            {
+                var culture = new CultureInfo(lang);
+                Response.Cookies.Append(
+                    CookieRequestCultureProvider.DefaultCookieName,
+                    CookieRequestCultureProvider.MakeCookieValue(new RequestCulture(culture)),
+                    new CookieOptions { Expires = DateTimeOffset.UtcNow.AddYears(1) }
+                );
             }
 
             return RedirectToAction("Index");
