@@ -12,18 +12,10 @@ namespace portfolio.Models.WebsiteTitle
         public string? Title { get; set; }
         public string? ImageUrl { get; set; }
 
-        public WebsiteTitleView(WebsiteTitle websiteTitle, string languageCode)
+        public WebsiteTitleView(WebsiteTitle websiteTitle, string langCode)
         {
             ImageUrl = websiteTitle.ImageUrl;
-
-            if (languageCode == "pl")
-            {
-                Title = websiteTitle.TitlePL;
-            }
-            else
-            {
-                Title = websiteTitle.TitleENG;
-            }
+            Title = langCode == "pl" ? websiteTitle.TitlePL : websiteTitle.TitleENG;
         }
     }
 }

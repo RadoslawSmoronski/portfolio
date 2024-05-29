@@ -1,8 +1,10 @@
-﻿using System;
+﻿using portfolio.Models.Skill;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace portfolio.Models.Footer
 {
@@ -10,17 +12,9 @@ namespace portfolio.Models.Footer
     {
         public string? Content { get; set; }
 
-        public FooterView(Footer footer, string languageCode)
+        public FooterView(Footer footer, string langCode)
         {
-
-            if (languageCode == "pl")
-            {
-                Content = footer.ContentPL;
-            }
-            else
-            {
-                Content = footer.ContentENG;
-            }
+            Content = langCode == "pl" ? footer.ContentPL : footer.ContentENG;
         }
     }
 }

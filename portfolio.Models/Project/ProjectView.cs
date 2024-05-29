@@ -16,13 +16,13 @@ namespace portfolio.Models.Project
         public string? ProjectWebsiteUrl { get; set; }
         public string? ImageUrl { get; set; }
 
-        public ProjectView(Project project, string languageCode)
+        public ProjectView(Project project, string langCode)
         {
             ImageUrl = project.ImageUrl;
             GitRepositoryUrl = project.GitRepositoryUrl;
             ProjectWebsiteUrl = project.ProjectWebsiteUrl;
 
-            if (languageCode == "pl")
+            if (langCode == "pl")
             {
                 Name = project.NamePL;
                 Description = project.DescriptionPL;

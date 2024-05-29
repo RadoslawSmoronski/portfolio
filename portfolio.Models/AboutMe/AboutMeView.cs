@@ -9,11 +9,11 @@ namespace portfolio.Models.AboutMe
         public string? Description { get; set; }
         public string? ImageUrl { get; set; }
 
-        public AboutMeView(AboutMe aboutMe, string languageCode)
+        public AboutMeView(AboutMe aboutMe, string langCode)
         {
             ImageUrl = aboutMe.ImageUrl;
 
-            if (languageCode == "pl")
+            if (langCode == "pl")
             {
                 Description = aboutMe.DescriptionPL;
                 Title = aboutMe.TitlePL;

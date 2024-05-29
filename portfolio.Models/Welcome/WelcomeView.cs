@@ -11,9 +11,9 @@ namespace portfolio.Models.Welcome
         public string Header { get; set; }
         public string Description { get; set; }
 
-        public WelcomeView(Welcome welcome, string languageCode)
+        public WelcomeView(Welcome welcome, string langCode)
         {
-            if(languageCode == "pl")
+            if(langCode == "pl")
             {
                 Header = welcome.HeaderPL;
                 Description = welcome.DescriptionPL;

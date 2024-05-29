@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
+using portfolio.Models.WebsiteTitle;
 using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.Models.Skill
@@ -8,18 +9,10 @@ namespace portfolio.Models.Skill
         public string Name { get; set; }
         public string? ImageUrl { get; set; }
 
-        public SkillView(Skill skill, string languageCode)
+        public SkillView(Skill skill, string langCode)
         {
             ImageUrl = skill.ImageUrl;
-
-            if (languageCode == "pl")
-            {
-                Name = skill.NamePL;
-            }
-            else
-            {
-                Name = skill.NameENG;
-            }
+            Name = langCode == "pl" ? skill.NamePL : skill.NameENG;
         }
     }
 }

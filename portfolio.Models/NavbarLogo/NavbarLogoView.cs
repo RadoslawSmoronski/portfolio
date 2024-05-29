@@ -1,4 +1,5 @@
-﻿using System;
+﻿using portfolio.Models.Skill;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,18 +13,10 @@ namespace portfolio.Models.NavbarLogo
         public string? Title { get; set; }
         public string? ImageUrl { get; set; } = null;
 
-        public NavbarLogoView(NavbarLogo navbarLogo, string languageCode)
+        public NavbarLogoView(NavbarLogo navbarLogo, string langCode)
         {
             ImageUrl = navbarLogo.ImageUrl;
-
-            if (languageCode == "pl")
-            {
-                Title = navbarLogo.TitlePL;
-            }
-            else
-            {
-                Title = navbarLogo.TitleENG;
-            }
+            Title = langCode == "pl" ? navbarLogo.TitlePL : navbarLogo.TitleENG;
         }
     }
 }
