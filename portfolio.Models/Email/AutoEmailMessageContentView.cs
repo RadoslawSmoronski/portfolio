@@ -13,9 +13,9 @@ namespace portfolio.Models.Email
         public string? Subject { get; set; }
         public string? Content { get; set; }
 
-        public AutoEmailMessageContentView(AutoEmailMessageContent autoEmailMessageContent, string languageCode)
+        public AutoEmailMessageContentView(AutoEmailMessageContent autoEmailMessageContent, string langCode)
         {
-            if (languageCode == "pl")
+            if (langCode == "pl")
             {
                 Subject = autoEmailMessageContent.SubjectPL;
                 Content = autoEmailMessageContent.ContentPL;
