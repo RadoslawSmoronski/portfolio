@@ -1,4 +1,4 @@
-﻿@model WebsiteTitle
+﻿@model WebsiteTab
 <link rel="stylesheet" href="~/css/admin/datails.css" />
 
 <section id="box">
@@ -9,19 +9,19 @@
                 <h1 class="text-white text-center mb-5">@Localizer["Title"]</h1>
                     <form method="post" enctype="multipart/form-data">
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Content"] (ENG)</label>
-                            <input asp-for="TitleENG" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></input>
+                            <label class="text-white">@Localizer["TitleContent"] (ENG)</label>
+                            <input asp-for="TitleENG" class="form-control" placeholder="@Localizer["TitleContentPlaceholder"]"></input>
                         </div>
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Content"] (PL)</label>
-                            <input asp-for="TitlePL" class="form-control" placeholder="@Localizer["ContentPlaceholder"]"></input>
+                            <label class="text-white">@Localizer["TitleContent"] (PL)</label>
+                            <input asp-for="TitlePL" class="form-control" placeholder="@Localizer["TitleContentPlaceholder"]"></input>
                         </div>
                         <div class="form-group mb-3">
                             <label class="text-white">@Localizer["Image"]</label>
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
                             @if (Model.ImageUrl != null)
                             {
-                                <a asp-controller="General" asp-action="DeleteWebsiteTitleImage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
+                                <a asp-controller="General" asp-action="DeleteWebsiteTabImage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
                             }
                         </div>
                         <div class="row">

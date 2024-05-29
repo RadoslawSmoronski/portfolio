@@ -118,24 +118,24 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="BackButton" xml:space="preserve">
-    <value>Wróc</value>
-  </data>
-  <data name="Content" xml:space="preserve">
-    <value>Zawartość</value>
-  </data>
-  <data name="ContentPlaceholder" xml:space="preserve">
-    <value>Wpisz zawartość...</value>
+    <value>Back</value>
   </data>
   <data name="EditButton" xml:space="preserve">
-    <value>Edytuj</value>
+    <value>Edit</value>
   </data>
   <data name="Image" xml:space="preserve">
-    <value>Obrazek</value>
+    <value>Image</value>
   </data>
   <data name="RemoveImageButton" xml:space="preserve">
-    <value>Usuń obrazek</value>
+    <value>Remove image</value>
   </data>
   <data name="Title" xml:space="preserve">
-    <value>Edytowanie - zakładki</value>
+    <value>Edit - Tab</value>
+  </data>
+  <data name="TitleContent" xml:space="preserve">
+    <value>Title</value>
+  </data>
+  <data name="TitleContentPlaceholder" xml:space="preserve">
+    <value>Enter title...</value>
   </data>
 </root>

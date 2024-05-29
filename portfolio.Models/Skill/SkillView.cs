@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using portfolio.Models.WebsiteTitle;
+using portfolio.Models.WebsiteTab;
 using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.Models.Skill

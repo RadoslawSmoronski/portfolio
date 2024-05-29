@@ -9,18 +9,18 @@
     <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" />
 
     @{
-        WebsiteTitleView? websiteTitleView = ViewData["WebsiteTitleView"] as WebsiteTitleView;
+        WebsiteTabView? websiteTabView = ViewData["WebsiteTabView"] as WebsiteTabView;
 
-        @if (websiteTitleView != null)
+        @if (websiteTabView != null)
         {
-            <title>@websiteTitleView.Title</title>
-            if (websiteTitleView.ImageUrl != null)
+            <title>@websiteTabView.Title</title>
+            if (websiteTabView.ImageUrl != null)
             {
-                <link rel="icon" href="@websiteTitleView.ImageUrl">
+                <link rel="icon" href="@websiteTabView.ImageUrl">
             }
             else
             {
-                <link rel="icon" href="~/images/websiteTitle/website-default-icon.png">
+                <link rel="icon" href="~/images/websiteTab/website-default-icon.png">
             }
         }
     }

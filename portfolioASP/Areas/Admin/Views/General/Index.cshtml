@@ -11,20 +11,20 @@
                 <h1 class="text-white text-center mb-5">@Localizer["TabTitle"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["TabHeader"] (ENG)</h5>
-                    @Model.WebsiteTitle.TitleENG
+                    <h5>@Localizer["TabTitleContent"] (ENG)</h5>
+                    @Model.WebsiteTab.TitleENG
                 </div>
                 <div class="detail-box">
-                    <h5>@Localizer["TabHeader"] (PL)</h5>
-                    @Model.WebsiteTitle.TitlePL
+                    <h5>@Localizer["TabTitleContent"] (PL)</h5>
+                    @Model.WebsiteTab.TitlePL
                 </div>
 
                 <div class="detail-box">
                     <h5>@Localizer["TabImage"]</h5>
                     @{
-                        if (Model.WebsiteTitle.ImageUrl != null)
+                        if (Model.WebsiteTab.ImageUrl != null)
                         {
-                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.WebsiteTitle.ImageUrl"></img>
+                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.WebsiteTab.ImageUrl"></img>
                         }
                         else
                         {
@@ -33,7 +33,7 @@
                     }
                 </div>
 
-                <a asp-controller="General" asp-action="EditWebsiteTitle" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["TabEditButton"]</a>
+                <a asp-controller="General" asp-action="EditWebsiteTab" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["TabEditButton"]</a>
             </div>
             <div class="col-0 col-lg-3 col-md-2"></div>
         </div>

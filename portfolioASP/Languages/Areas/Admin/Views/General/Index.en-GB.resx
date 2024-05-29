@@ -147,14 +147,14 @@
   <data name="TabEditButton" xml:space="preserve">
     <value>Edit</value>
   </data>
-  <data name="TabHeader" xml:space="preserve">
-    <value>Content</value>
-  </data>
   <data name="TabImage" xml:space="preserve">
     <value>Image</value>
   </data>
   <data name="TabTitle" xml:space="preserve">
     <value>Tab</value>
+  </data>
+  <data name="TabTitleContent" xml:space="preserve">
+    <value>Title</value>
   </data>
   <data name="WelcomeDescription" xml:space="preserve">
     <value>Description</value>

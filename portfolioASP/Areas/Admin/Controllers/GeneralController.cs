@@ -6,7 +6,7 @@ using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
 using portfolio.Utility;
 using Microsoft.AspNetCore.Mvc.Localization;
-using portfolio.Models.WebsiteTitle;
+using portfolio.Models.WebsiteTab;
 using portfolio.Models.Navbar;
 using portfolio.Models.Footer;
 using portfolio.Models.Welcome;
@@ -26,14 +26,14 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             _webHostEnvironment = webHostEnvironment;
 
-            WebsiteTitle websiteTitle = JsonFileManager<WebsiteTitle>.Get();
+            WebsiteTab websiteTab = JsonFileManager<WebsiteTab>.Get();
             Navbar navbar = JsonFileManager<Navbar>.Get();
             Welcome welcome = JsonFileManager<Welcome>.Get();
             Footer footer = JsonFileManager<Footer>.Get();
 
             _viewModel = new AdminGeneralViewModel
             {
-                WebsiteTitle = websiteTitle,
+                WebsiteTab = websiteTab,
                 Navbar = navbar,
                 Welcome = welcome,
                 Footer = footer,
@@ -49,47 +49,47 @@ namespace portfolioASP.Areas.Admin.Controllers
             return View(_viewModel);
         }
 
-        //WebsiteTitle
+        //WebsiteTab
 
-        public IActionResult EditWebsiteTitle()
+        public IActionResult EditWebsiteTab()
         {
-            return View(_viewModel.WebsiteTitle);
+            return View(_viewModel.WebsiteTab);
         }
 
         [HttpPost]
-        public IActionResult EditWebsiteTitle(WebsiteTitle websiteTitle, IFormFile? file)
+        public IActionResult EditWebsiteTab(WebsiteTab websiteTab, IFormFile? file)
         {
             string wwwRootPath = _webHostEnvironment.WebRootPath;
             if (file != null)
             {
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                string productPath = Path.Combine(wwwRootPath, @"images\websiteTitle");
+                string productPath = Path.Combine(wwwRootPath, @"images\websiteTab");
 
-                DeleteImageFile(websiteTitle.ImageUrl);
+                DeleteImageFile(websiteTab.ImageUrl);
 
                 using (var fileStream = new FileStream(Path.Combine(productPath, fileName), FileMode.Create))
                 {
                     file.CopyTo(fileStream);
                 }
 
-                websiteTitle.ImageUrl = @"\images\websiteTitle\" + fileName;
+                websiteTab.ImageUrl = @"\images\websiteTab\" + fileName;
             }
 
-            JsonFileManager<WebsiteTitle>.Save(websiteTitle);
+            JsonFileManager<WebsiteTab>.Save(websiteTab);
 
-            TempData["success"] = _localizer["EditedWebsiteTitle"].Value;
+            TempData["success"] = _localizer["EditedWebsiteTab"].Value;
             return RedirectToAction("Index");
         }
 
-        public IActionResult DeleteWebsiteTitleImage()
+        public IActionResult DeleteWebsiteTabImage()
         {
-            WebsiteTitle obj = JsonFileManager<WebsiteTitle>.Get();
+            WebsiteTab obj = JsonFileManager<WebsiteTab>.Get();
 
             DeleteImageFile(obj.ImageUrl);
 
             obj.ImageUrl = null;
 
-            JsonFileManager<WebsiteTitle>.Save(obj);
+            JsonFileManager<WebsiteTab>.Save(obj);
 
             TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
