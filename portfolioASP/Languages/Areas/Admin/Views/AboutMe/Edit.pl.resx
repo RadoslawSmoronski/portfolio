@@ -120,10 +120,10 @@
   <data name="BackButton" xml:space="preserve">
     <value>Wróc</value>
   </data>
-  <data name="Description" xml:space="preserve">
+  <data name="Content" xml:space="preserve">
     <value>Opis</value>
   </data>
-  <data name="DescriptionPlaceHolder" xml:space="preserve">
+  <data name="ContentPlaceHolder" xml:space="preserve">
     <value>Napisz opis...</value>
   </data>
   <data name="EditAboutMe" xml:space="preserve">
@@ -132,13 +132,13 @@
   <data name="EditButton" xml:space="preserve">
     <value>Edytuj</value>
   </data>
-  <data name="Image" xml:space="preserve">
-    <value>Obrazek</value>
-  </data>
-  <data name="Title" xml:space="preserve">
+  <data name="Header" xml:space="preserve">
     <value>Nagłówek</value>
   </data>
-  <data name="TitlePlaceHolder" xml:space="preserve">
+  <data name="HeaderPlaceHolder" xml:space="preserve">
     <value>Napisz nagłowek...</value>
+  </data>
+  <data name="Image" xml:space="preserve">
+    <value>Obrazek</value>
   </data>
 </root>

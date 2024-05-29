@@ -10,32 +10,32 @@
                 <h1 class="text-white text-center mb-5">@Localizer["AboutMe"]</h1>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Title"] (ENG)</h5>
-                    @Model.TitleENG
+                    <h5>@Localizer["Header"] (ENG)</h5>
+                    @Model.HeaderENG
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Title"] (PL)</h5>
-                    @Model.TitlePL
+                    <h5>@Localizer["Header"] (PL)</h5>
+                    @Model.HeaderPL
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Description"] (ENG)</h5>
+                    <h5>@Localizer["Content"] (ENG)</h5>
                     @{
-                        if (Model.DescriptionENG != null)
+                        if (Model.ContentENG != null)
                         {
-                            string title = Model.DescriptionENG.Replace("\r\n", "<br />");
+                            string title = Model.ContentENG.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }
                 </div>
 
                 <div class="detail-box">
-                    <h5>@Localizer["Description"] (PL)</h5>
+                    <h5>@Localizer["Content"] (PL)</h5>
                     @{
-                        if (Model.DescriptionPL != null)
+                        if (Model.ContentPL != null)
                         {
-                            string title = Model.DescriptionPL.Replace("\r\n", "<br />");
+                            string title = Model.ContentPL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }

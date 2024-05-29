@@ -11,24 +11,24 @@
                     <form method="post" enctype="multipart/form-data">
                         <input asp-for="ImageUrl" hidden />
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Title"] (ENG)</label>
-                            <input asp-for="TitleENG" class="form-control" placeholder="@Localizer["TitlePlaceHolder"]">
-                            <span asp-validation-for="TitleENG" class="text-danger"></span>
+                            <label class="text-white">@Localizer["Header"] (ENG)</label>
+                            <input asp-for="HeaderENG" class="form-control" placeholder="@Localizer["HeaderPlaceHolder"]">
+                            <span asp-validation-for="HeaderENG" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                            <label class="text-white">@Localizer["Title"] (PL)</label>
-                            <input asp-for="TitlePL" class="form-control" placeholder="@Localizer["TitlePlaceHolder"]">
-                            <span asp-validation-for="TitlePL" class="text-danger"></span>
+                            <label class="text-white">@Localizer["Header"] (PL)</label>
+                            <input asp-for="HeaderPL" class="form-control" placeholder="@Localizer["HeaderPlaceHolder"]">
+                            <span asp-validation-for="HeaderPL" class="text-danger"></span>
                         </div>
                         <div class="form-group mb-4">
-                        <label class="text-white">@Localizer["Description"] (ENG)</label>
-                            <textarea asp-for="DescriptionENG" class="form-control" placeholder="@Localizer["DescriptionPlaceHolder"]"></textarea>
-                            <span asp-validation-for="DescriptionENG" class="text-danger"></span>
+                        <label class="text-white">@Localizer["Content"] (ENG)</label>
+                            <textarea asp-for="ContentENG" class="form-control" placeholder="@Localizer["ContentPlaceHolder"]"></textarea>
+                            <span asp-validation-for="ContentENG" class="text-danger"></span>
                         </div>
                     <div class="form-group mb-4">
-                        <label class="text-white">@Localizer["Description"] (PL)</label>
-                        <textarea asp-for="DescriptionPL" class="form-control" placeholder="@Localizer["DescriptionPlaceHolder"]"></textarea>
-                        <span asp-validation-for="DescriptionPL" class="text-danger"></span>
+                        <label class="text-white">@Localizer["Content"] (PL)</label>
+                        <textarea asp-for="ContentPL" class="form-control" placeholder="@Localizer["ContentPlaceHolder"]"></textarea>
+                        <span asp-validation-for="ContentPL" class="text-danger"></span>
                     </div>
                         <div class="form-group mb-3">
                             <label class="text-white">@Localizer["Image"]</label>

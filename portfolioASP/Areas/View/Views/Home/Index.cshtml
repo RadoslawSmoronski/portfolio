@@ -47,12 +47,12 @@
             </div>
             <div class="col-lg-7 order-lg-1 col-md-12 d-flex align-items-center justify-content-center pb-2 pt-2">
                 <div>
-                    <h3 class="text-center text-white">@Model.AboutMeView.Title</h3>
+                    <h3 class="text-center text-white">@Model.AboutMeView.Header</h3>
                     <p class="text-center">
                         @{
-                            if (Model.AboutMeView.Description != null)
+                            if (Model.AboutMeView.Content != null)
                             {
-                                string title = Model.AboutMeView.Description.Replace("\r\n", "<br />");
+                                string title = Model.AboutMeView.Content.Replace("\r\n", "<br />");
                                 @Html.Raw(title)
                             }
                         }

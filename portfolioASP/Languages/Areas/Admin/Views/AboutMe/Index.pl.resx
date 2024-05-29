@@ -120,16 +120,16 @@
   <data name="AboutMe" xml:space="preserve">
     <value>Sekcja - O mnie</value>
   </data>
-  <data name="Description" xml:space="preserve">
+  <data name="Content" xml:space="preserve">
     <value>Opis</value>
   </data>
   <data name="EditButton" xml:space="preserve">
     <value>Edytuj</value>
   </data>
+  <data name="Header" xml:space="preserve">
+    <value>Nagłówek</value>
+  </data>
   <data name="Image" xml:space="preserve">
     <value>Obrazek</value>
-  </data>
-  <data name="Title" xml:space="preserve">
-    <value>Nagłówek</value>
   </data>
 </root>
