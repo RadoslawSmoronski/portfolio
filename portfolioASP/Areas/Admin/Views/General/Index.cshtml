@@ -46,9 +46,9 @@
                 <div class="detail-box">
                     <h5>@Localizer["NavbarHeader"] (ENG)</h5>
                     @{
-                        if (Model.NavbarLogo.TitleENG != null)
+                        if (Model.Navbar.HeaderENG != null)
                         {
-                            string title = Model.NavbarLogo.TitleENG.Replace("\r\n", "<br />");
+                            string title = Model.Navbar.HeaderENG.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }
@@ -57,9 +57,9 @@
                 <div class="detail-box">
                     <h5>@Localizer["NavbarHeader"] (PL)</h5>
                     @{
-                        if (Model.NavbarLogo.TitlePL != null)
+                        if (Model.Navbar.HeaderPL != null)
                         {
-                            string title = Model.NavbarLogo.TitlePL.Replace("\r\n", "<br />");
+                            string title = Model.Navbar.HeaderPL.Replace("\r\n", "<br />");
                             @Html.Raw(title)
                         }
                     }
@@ -68,9 +68,9 @@
                 <div class="detail-box">
                     <h5>@Localizer["NavbarImage"]</h5>
                     @{
-                        if (Model.NavbarLogo.ImageUrl != null)
+                        if (Model.Navbar.ImageUrl != null)
                         {
-                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.NavbarLogo.ImageUrl"></img>
+                            <img style="height: 50px; width: 50px;" class="project-img" src="../../../@Model.Navbar.ImageUrl"></img>
                         }
                         else
                         {

@@ -33,20 +33,20 @@
                 <div style="display:flex; align-items:center;">
                     <a class="navbar-brand text-white" style="font-size: 10px; display:flex; align-items:center;" href="#">
                         @{
-                            NavbarLogoView? navbarLogoView = ViewData["NavbarLogoView"] as NavbarLogoView;
+                            NavbarView? navbarView = ViewData["NavbarView"] as NavbarView;
 
-                            @if (navbarLogoView != null)
+                            @if (navbarView != null)
                             {
-                                @if (navbarLogoView.ImageUrl != null)
+                                @if (navbarView.ImageUrl != null)
                                 {
-                                    <img src="@navbarLogoView.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
+                                    <img src="@navbarView.ImageUrl" style="height: 40px; margin-right: 10px;" alt="Logo" />
                                 }
 
                                 <div class="logo-text">
                                     @{
-                                        if (navbarLogoView.Title != null)
+                                        if (navbarView.Header != null)
                                         {
-                                            string title = navbarLogoView.Title.Replace("\r\n", "<br />");
+                                            string title = navbarView.Header.Replace("\r\n", "<br />");
                                             @Html.Raw(title)
                                         }
                                     }
