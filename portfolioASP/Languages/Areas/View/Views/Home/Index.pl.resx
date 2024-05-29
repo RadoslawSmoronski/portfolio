@@ -123,8 +123,8 @@
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+  <data name="Projects" xml:space="preserve">
+    <value>Projekty</value>
   </data>
   <data name="Repository" xml:space="preserve">
     <value>Repozytorium</value>

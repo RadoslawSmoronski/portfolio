@@ -132,8 +132,8 @@
   <data name="Logout" xml:space="preserve">
     <value>Logout</value>
   </data>
-  <data name="Portfolio" xml:space="preserve">
-    <value>Portfolio</value>
+  <data name="Projects" xml:space="preserve">
+    <value>Projects</value>
   </data>
   <data name="Skills" xml:space="preserve">
     <value>Skills</value>
