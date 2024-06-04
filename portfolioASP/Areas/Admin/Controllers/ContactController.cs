@@ -17,12 +17,17 @@ namespace portfolioASP.Areas.Admin.Controllers
         private readonly IUnitOfWork _unitOfWork;
         private readonly EmailSettings _emailSettings;
         private readonly IHtmlLocalizer<ContactController> _localizer;
+        private readonly IJsonFileManager _jsonFileManager;
 
-        public ContactController(IUnitOfWork unitOfWork, IOptions<EmailSettings> emailSettings, IHtmlLocalizer<ContactController> localizer)
+        public ContactController(IUnitOfWork unitOfWork,
+            IOptions<EmailSettings> emailSettings,
+            IHtmlLocalizer<ContactController> localizer,
+            IJsonFileManager jsonFileManager)
         {
             _unitOfWork = unitOfWork;
             _emailSettings = emailSettings.Value;
             _localizer = localizer;
+            _jsonFileManager = jsonFileManager;
         }
 
         public IActionResult Index()
@@ -82,7 +87,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
             {
-                EmailMessageContent = JsonFileManager2<AutoEmailMessageContent>.Get(),
+                EmailMessageContent = _jsonFileManager.Get<AutoEmailMessageContent>(),
                 EmailSettings = _emailSettings
             };
 
@@ -125,7 +130,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult MessageEdit()
         {
-            AutoEmailMessageContent? message = JsonFileManager2<AutoEmailMessageContent>.Get();
+            AutoEmailMessageContent? message = _jsonFileManager.Get<AutoEmailMessageContent>();
 
             if (message == null) return NotFound();
 
@@ -138,7 +143,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                JsonFileManager2<AutoEmailMessageContent>.Save(message);
+                _jsonFileManager.Save<AutoEmailMessageContent>(message);
 
                 TempData["success"] = _localizer["AutoEmailMessageHasBeenEdited"].Value;
                 return RedirectToAction("EmailConfigure");

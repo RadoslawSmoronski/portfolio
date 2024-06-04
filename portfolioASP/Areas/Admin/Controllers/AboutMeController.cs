@@ -14,21 +14,25 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHtmlLocalizer<AboutMeController> _localizer;
+        private readonly IJsonFileManager _jsonFileManager;
 
-        public AboutMeController(IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<AboutMeController> localizer)
+        public AboutMeController(IWebHostEnvironment webHostEnvironment,
+            IHtmlLocalizer<AboutMeController> localizer,
+            IJsonFileManager jsonFileManager)
         {
             _webHostEnvironment = webHostEnvironment;
             _localizer = localizer;
+            _jsonFileManager = jsonFileManager;
         }
 
         public IActionResult Index()
         {
-            return View(JsonFileManager2<AboutMe>.Get());
+            return View(_jsonFileManager.Get<AboutMe>());
         }
 
         public IActionResult Edit()
         {
-            return View(JsonFileManager2<AboutMe>.Get());
+            return View(_jsonFileManager.Get<AboutMe>());
         }
 
         [HttpPost]
@@ -61,7 +65,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                     aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
                 }
 
-                JsonFileManager2<AboutMe>.Save(aboutMe);
+                _jsonFileManager.Save<AboutMe>(aboutMe);
 
                 TempData["success"] = _localizer["AboutMeWasEdited"].Value;
                 return RedirectToAction("Index");

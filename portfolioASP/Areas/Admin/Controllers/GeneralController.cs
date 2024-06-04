@@ -21,15 +21,22 @@ namespace portfolioASP.Areas.Admin.Controllers
         AdminGeneralViewModel _viewModel;
         private readonly AdminLogin _adminLogin;
         private readonly IHtmlLocalizer<GeneralController> _localizer;
+        private readonly IJsonFileManager _jsonFileManager;
 
-        public GeneralController(IWebHostEnvironment webHostEnvironment, IOptionsSnapshot<AdminLogin> adminLogin, IHtmlLocalizer<GeneralController> localizer)
+        public GeneralController(IWebHostEnvironment webHostEnvironment,
+            IOptionsSnapshot<AdminLogin> adminLogin,
+            IHtmlLocalizer<GeneralController> localizer,
+            IJsonFileManager jsonFileManager)
         {
             _webHostEnvironment = webHostEnvironment;
+            _adminLogin = adminLogin.Value;
+            _localizer = localizer;
+            _jsonFileManager = jsonFileManager;
 
-            WebsiteTab websiteTab = JsonFileManager2<WebsiteTab>.Get();
-            Navbar navbar = JsonFileManager2<Navbar>.Get();
-            Welcome welcome = JsonFileManager2<Welcome>.Get();
-            Footer footer = JsonFileManager2<Footer>.Get();
+            WebsiteTab websiteTab = _jsonFileManager.Get<WebsiteTab>();
+            Navbar navbar = _jsonFileManager.Get<Navbar>();
+            Welcome welcome = _jsonFileManager.Get<Welcome>();
+            Footer footer = _jsonFileManager.Get<Footer>();
 
             _viewModel = new AdminGeneralViewModel
             {
@@ -39,9 +46,6 @@ namespace portfolioASP.Areas.Admin.Controllers
                 Footer = footer,
                 EditAdminLogin = new EditAdminLogin()
             };
-
-            _adminLogin = adminLogin.Value;
-            _localizer = localizer;
         }
 
         public IActionResult Index()
@@ -75,7 +79,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 websiteTab.ImageUrl = @"\images\websiteTab\" + fileName;
             }
 
-            JsonFileManager2<WebsiteTab>.Save(websiteTab);
+            _jsonFileManager.Save<WebsiteTab>(websiteTab);
 
             TempData["success"] = _localizer["EditedWebsiteTab"].Value;
             return RedirectToAction("Index");
@@ -83,13 +87,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult DeleteWebsiteTabImage()
         {
-            WebsiteTab obj = JsonFileManager2<WebsiteTab>.Get();
+            WebsiteTab obj = _jsonFileManager.Get<WebsiteTab>();
 
             DeleteImageFile(obj.ImageUrl);
 
             obj.ImageUrl = null;
 
-            JsonFileManager2<WebsiteTab>.Save(obj);
+            _jsonFileManager.Save<WebsiteTab>(obj);
 
             TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
@@ -121,7 +125,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 navbar.ImageUrl = @"\images\navbar\" + fileName;
             }
 
-            JsonFileManager2<Navbar>.Save(navbar);
+            _jsonFileManager.Save<Navbar>(navbar);
 
             TempData["success"] = _localizer["MenuWasEdited"].Value;
             return RedirectToAction("Index");
@@ -129,13 +133,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult DeleteNavbarImage()
         {
-            Navbar navbar = JsonFileManager2<Navbar>.Get();
+            Navbar navbar = _jsonFileManager.Get<Navbar>();
 
             DeleteImageFile(navbar.ImageUrl);
 
             navbar.ImageUrl = null;
 
-            JsonFileManager2<Navbar>.Save(navbar);
+            _jsonFileManager.Save<Navbar>(navbar);
 
             TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
@@ -167,7 +171,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditWelcome(Welcome welcome)
         {
-            JsonFileManager2<Welcome>.Save(welcome);
+            _jsonFileManager.Save<Welcome>(welcome);
 
             TempData["success"] = _localizer["WelcomeSectionWasEdited"].Value;
             return RedirectToAction("Index");
@@ -183,7 +187,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditFooter(Footer footer)
         {
-            JsonFileManager2<Footer>.Save(footer);
+            _jsonFileManager.Save<Footer>(footer);
 
             TempData["success"] = _localizer["FooterWasEdited"].Value;
             return RedirectToAction("Index");
