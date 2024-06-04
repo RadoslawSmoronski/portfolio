@@ -82,7 +82,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
             {
-                EmailMessageContent = JsonFileManager<AutoEmailMessageContent>.Get(),
+                EmailMessageContent = JsonFileManager2<AutoEmailMessageContent>.Get(),
                 EmailSettings = _emailSettings
             };
 
@@ -125,7 +125,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult MessageEdit()
         {
-            AutoEmailMessageContent? message = JsonFileManager<AutoEmailMessageContent>.Get();
+            AutoEmailMessageContent? message = JsonFileManager2<AutoEmailMessageContent>.Get();
 
             if (message == null) return NotFound();
 
@@ -138,7 +138,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             try
             {
-                JsonFileManager<AutoEmailMessageContent>.Save(message);
+                JsonFileManager2<AutoEmailMessageContent>.Save(message);
 
                 TempData["success"] = _localizer["AutoEmailMessageHasBeenEdited"].Value;
                 return RedirectToAction("EmailConfigure");

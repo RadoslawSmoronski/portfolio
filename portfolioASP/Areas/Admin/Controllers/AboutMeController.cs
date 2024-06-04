@@ -23,12 +23,12 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            return View(JsonFileManager<AboutMe>.Get());
+            return View(JsonFileManager2<AboutMe>.Get());
         }
 
         public IActionResult Edit()
         {
-            return View(JsonFileManager<AboutMe>.Get());
+            return View(JsonFileManager2<AboutMe>.Get());
         }
 
         [HttpPost]
@@ -61,7 +61,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                     aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
                 }
 
-                JsonFileManager<AboutMe>.Save(aboutMe);
+                JsonFileManager2<AboutMe>.Save(aboutMe);
 
                 TempData["success"] = _localizer["AboutMeWasEdited"].Value;
                 return RedirectToAction("Index");

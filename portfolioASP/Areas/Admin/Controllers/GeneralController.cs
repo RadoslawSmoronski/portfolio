@@ -26,10 +26,10 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             _webHostEnvironment = webHostEnvironment;
 
-            WebsiteTab websiteTab = JsonFileManager<WebsiteTab>.Get();
-            Navbar navbar = JsonFileManager<Navbar>.Get();
-            Welcome welcome = JsonFileManager<Welcome>.Get();
-            Footer footer = JsonFileManager<Footer>.Get();
+            WebsiteTab websiteTab = JsonFileManager2<WebsiteTab>.Get();
+            Navbar navbar = JsonFileManager2<Navbar>.Get();
+            Welcome welcome = JsonFileManager2<Welcome>.Get();
+            Footer footer = JsonFileManager2<Footer>.Get();
 
             _viewModel = new AdminGeneralViewModel
             {
@@ -75,7 +75,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 websiteTab.ImageUrl = @"\images\websiteTab\" + fileName;
             }
 
-            JsonFileManager<WebsiteTab>.Save(websiteTab);
+            JsonFileManager2<WebsiteTab>.Save(websiteTab);
 
             TempData["success"] = _localizer["EditedWebsiteTab"].Value;
             return RedirectToAction("Index");
@@ -83,13 +83,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult DeleteWebsiteTabImage()
         {
-            WebsiteTab obj = JsonFileManager<WebsiteTab>.Get();
+            WebsiteTab obj = JsonFileManager2<WebsiteTab>.Get();
 
             DeleteImageFile(obj.ImageUrl);
 
             obj.ImageUrl = null;
 
-            JsonFileManager<WebsiteTab>.Save(obj);
+            JsonFileManager2<WebsiteTab>.Save(obj);
 
             TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
@@ -121,7 +121,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 navbar.ImageUrl = @"\images\navbar\" + fileName;
             }
 
-            JsonFileManager<Navbar>.Save(navbar);
+            JsonFileManager2<Navbar>.Save(navbar);
 
             TempData["success"] = _localizer["MenuWasEdited"].Value;
             return RedirectToAction("Index");
@@ -129,13 +129,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult DeleteNavbarImage()
         {
-            Navbar navbar = JsonFileManager<Navbar>.Get();
+            Navbar navbar = JsonFileManager2<Navbar>.Get();
 
             DeleteImageFile(navbar.ImageUrl);
 
             navbar.ImageUrl = null;
 
-            JsonFileManager<Navbar>.Save(navbar);
+            JsonFileManager2<Navbar>.Save(navbar);
 
             TempData["success"] = _localizer["ImageWasRemoved"].Value;
             return RedirectToAction("Index");
@@ -167,7 +167,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditWelcome(Welcome welcome)
         {
-            JsonFileManager<Welcome>.Save(welcome);
+            JsonFileManager2<Welcome>.Save(welcome);
 
             TempData["success"] = _localizer["WelcomeSectionWasEdited"].Value;
             return RedirectToAction("Index");
@@ -183,7 +183,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         [HttpPost]
         public IActionResult EditFooter(Footer footer)
         {
-            JsonFileManager<Footer>.Save(footer);
+            JsonFileManager2<Footer>.Save(footer);
 
             TempData["success"] = _localizer["FooterWasEdited"].Value;
             return RedirectToAction("Index");

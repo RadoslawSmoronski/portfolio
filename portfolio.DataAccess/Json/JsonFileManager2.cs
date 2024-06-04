@@ -1,26 +1,22 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.Extensions.Configuration;
+using Newtonsoft.Json;
+using portfolio.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace portfolio.DataAccess.Json
 {
-    public class JsonFileManager : IJsonFileManager
+    public static class JsonFileManager2<T>
     {
-        public string RootDirectoryPath { get; }
-
-        public JsonFileManager(string rootDirectoryPath)
-        {
-            RootDirectoryPath = rootDirectoryPath;
-        }
-
-        public T Get<T>()
+        public static T Get()
         {
             Type typ = typeof(T);
             string fileName = typ.Name;
-            string filePath = Path.Combine(RootDirectoryPath, "json", $"{fileName}.json");
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "json", $"{fileName}.json");
 
             if (File.Exists(filePath))
             {
@@ -35,13 +31,13 @@ namespace portfolio.DataAccess.Json
             return newObject;
         }
 
-        public void Save<T>(T entity)
+        public static void Save(T entity)
         {
             if (entity == null) return;
 
             Type typ = entity.GetType();
             string fileName = typ.Name;
-            string filePath = Path.Combine(RootDirectoryPath, "json", $"{fileName}.json"); ;
+            string filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "json", $"{fileName}.json");
 
             string newJson = JsonConvert.SerializeObject(entity);
             File.WriteAllText(filePath, newJson);

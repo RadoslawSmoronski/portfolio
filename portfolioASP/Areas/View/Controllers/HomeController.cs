@@ -25,33 +25,37 @@ namespace portfolioASP.Areas.View.Controllers
         private readonly ViewHomePageViewModel _model;
         private readonly IHtmlLocalizer<HomeController> _localizer;
         private readonly string currentUICulture = CultureInfo.CurrentUICulture.Name;
+        private readonly IJsonFileManager _jsonFileManager;
 
-        public HomeController(IUnitOfWork unitOfWork, IEmailService emailService, IHtmlLocalizer<HomeController> localizer)
+        public HomeController(IUnitOfWork unitOfWork,
+            IEmailService emailService,
+            IHtmlLocalizer<HomeController> localizer,
+            IJsonFileManager jsonFileManager)
         {
             _unitOfWork = unitOfWork;
             _emailService = emailService;
+            _localizer = localizer;
+            _jsonFileManager = jsonFileManager;
 
             _model = new ViewHomePageViewModel
             {
-                WelcomeView = new WelcomeView(JsonFileManager<Welcome>.Get(), currentUICulture),
-                AboutMeView = new AboutMeView(JsonFileManager<AboutMe>.Get(), currentUICulture),
+                WelcomeView = new WelcomeView(_jsonFileManager.Get<Welcome>(), currentUICulture),
+                AboutMeView = new AboutMeView(_jsonFileManager.Get<AboutMe>(), currentUICulture),
                 SkillViews = _unitOfWork.SkillRepository.GetAllView(currentUICulture),
                 ProjectViews = _unitOfWork.ProjectRepository.GetAllView(currentUICulture),
                 Contacts = _unitOfWork.ContactRepository.GetAll().ToList()
             };
-
-            _localizer = localizer;
         }
 
         public IActionResult Index()
         {
-            WebsiteTabView websiteTabView = new WebsiteTabView(JsonFileManager<WebsiteTab>.Get(), currentUICulture);
+            WebsiteTabView websiteTabView = new WebsiteTabView(_jsonFileManager.Get<WebsiteTab>(), currentUICulture);
             ViewData["WebsiteTabView"] = websiteTabView;
 
-            NavbarView navbarView = new NavbarView(JsonFileManager<Navbar>.Get(), currentUICulture);
+            NavbarView navbarView = new NavbarView(_jsonFileManager.Get<Navbar>(), currentUICulture);
             ViewData["NavbarView"] = navbarView;
 
-            FooterView footerView = new FooterView(JsonFileManager<Footer>.Get(), currentUICulture);
+            FooterView footerView = new FooterView(_jsonFileManager.Get<Footer>(), currentUICulture);
             ViewData["FooterView"] = footerView;
 
             return View(_model);
@@ -69,7 +73,7 @@ namespace portfolioASP.Areas.View.Controllers
             {
 
 
-                AutoEmailMessageContentView autoMessage = new AutoEmailMessageContentView(JsonFileManager<AutoEmailMessageContent>.Get(), currentUICulture);
+                AutoEmailMessageContentView autoMessage = new AutoEmailMessageContentView(_jsonFileManager.Get<AutoEmailMessageContent>(), currentUICulture);
                 await _emailService.SendEmailAsync(contactForm.Email, autoMessage.Subject, autoMessage.Content);
 
                 var message = new EmailMessage
