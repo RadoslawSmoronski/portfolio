@@ -8,18 +8,22 @@ using portfolio.Utility;
 using Microsoft.AspNetCore.Mvc.Localization;
 using Microsoft.AspNetCore.Localization;
 using System.Globalization;
+using portfolio.DataAccess.Data;
+using portfolio.Models.ConfigureData;
+using Newtonsoft.Json;
+using System;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
     [Area("Admin")]
     public class HomeController : Controller
     {
-        private readonly AdminLogin _adminLogin;
+        private readonly ApplicationDbContext _dbContext;
         private readonly IHtmlLocalizer<HomeController> _localizer;
 
-        public HomeController(IOptionsSnapshot<AdminLogin> adminLogin, IHtmlLocalizer<HomeController> localizer)
+        public HomeController(ApplicationDbContext dbContext, IHtmlLocalizer<HomeController> localizer)
         {
-            _adminLogin = adminLogin.Value;
+            _dbContext = dbContext;
             _localizer = localizer;
         }
 
@@ -66,7 +70,11 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                if (BCrypt.Net.BCrypt.Verify(adminLogin.Password, _adminLogin.Password))
+                ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
+
+                AdminPanelAccessPassword? adminPanelAccessPassword = configureData.Convert<AdminPanelAccessPassword>();
+                
+                if (adminPanelAccessPassword != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminPanelAccessPassword.HashedPassword))
                 {
                     AdminLoginFailedBanned.RemoveFailderLoginAttempts(ipAddress);
                     HttpContext.Session.SetString("IsActiveSession", "true");
