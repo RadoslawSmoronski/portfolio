@@ -10,6 +10,8 @@ using portfolio.Models.WebsiteTab;
 using portfolio.Models.Navbar;
 using portfolio.Models.Footer;
 using portfolio.Models.Welcome;
+using portfolio.DataAccess.Data;
+using portfolio.Models.ConfigureData;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -22,16 +24,19 @@ namespace portfolioASP.Areas.Admin.Controllers
         private readonly AdminLogin _adminLogin;
         private readonly IHtmlLocalizer<GeneralController> _localizer;
         private readonly IJsonFileManager _jsonFileManager;
+        private readonly ApplicationDbContext _dbContext;
 
         public GeneralController(IWebHostEnvironment webHostEnvironment,
             IOptionsSnapshot<AdminLogin> adminLogin,
             IHtmlLocalizer<GeneralController> localizer,
-            IJsonFileManager jsonFileManager)
+            IJsonFileManager jsonFileManager,
+            ApplicationDbContext dbContext)
         {
             _webHostEnvironment = webHostEnvironment;
             _adminLogin = adminLogin.Value;
             _localizer = localizer;
             _jsonFileManager = jsonFileManager;
+            _dbContext = dbContext;
 
             WebsiteTab websiteTab = _jsonFileManager.Get<WebsiteTab>();
             Navbar navbar = _jsonFileManager.Get<Navbar>();
@@ -205,11 +210,18 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, _adminLogin.Password))
+                ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
+                AdminPanelAccessPassword? adminPanelAccessPassword = configureData.Convert<AdminPanelAccessPassword>();
+
+                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, adminPanelAccessPassword.HashedPassword))
                 {
                     string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(editAdminLogin.NewPassword);
 
-                    EditAppSettings.AddOrUpdateAppSetting<String>("AdminLogin:Password", newHashedPassword);
+                    //EditAppSettings.AddOrUpdateAppSetting<String>("AdminLogin:Password", newHashedPassword);
+                    adminPanelAccessPassword.HashedPassword = newHashedPassword;
+                    configureData.JSON = adminPanelAccessPassword.GetJson();
+                    _dbContext.SaveChanges();
+                   
                     TempData["success"] = _localizer["PasswordWasChanged"].Value;
                     return RedirectToAction("Index");
 

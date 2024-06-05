@@ -71,7 +71,6 @@ namespace portfolioASP.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
-
                 AdminPanelAccessPassword? adminPanelAccessPassword = configureData.Convert<AdminPanelAccessPassword>();
                 
                 if (adminPanelAccessPassword != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminPanelAccessPassword.HashedPassword))
