@@ -18,20 +18,20 @@ namespace portfolio.DataAccess.Json
 
         public T Get<T>()
         {
-            Type typ = typeof(T);
-            string fileName = typ.Name;
-            string filePath = Path.Combine(RootDirectoryPath, "json", $"{fileName}.json");
+            //Type typ = typeof(T);
+            //string fileName = typ.Name;
+            //string filePath = Path.Combine(RootDirectoryPath, "json", $"{fileName}.json");
 
-            if (File.Exists(filePath))
-            {
-                string json = File.ReadAllText(filePath);
-                return JsonConvert.DeserializeObject<T>(json);
-            }
+            //if (File.Exists(filePath))
+            //{
+            //    string json = File.ReadAllText(filePath);
+            //    return JsonConvert.DeserializeObject<T>(json);
+            //}
 
 
             T newObject = Activator.CreateInstance<T>();
-            string newJson = JsonConvert.SerializeObject(newObject);
-            File.WriteAllText(filePath, newJson);
+            //string newJson = JsonConvert.SerializeObject(newObject);
+            //File.WriteAllText(filePath, newJson);
             return newObject;
         }
 

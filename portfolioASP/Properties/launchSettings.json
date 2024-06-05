@@ -33,6 +33,13 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
+    },
+    "Kestrel": {
+      "Endpoints": {
+        "Http": {
+          "Url": "https://localhost:5000"
+        }
+      }
     }
   }
 }
