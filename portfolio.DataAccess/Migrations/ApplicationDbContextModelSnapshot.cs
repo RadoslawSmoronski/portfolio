@@ -42,7 +42,7 @@ namespace portfolio.DataAccess.Migrations
                         new
                         {
                             Id = 1,
-                            JSON = "{\"HashedPassword\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}"
+                            JSON = "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}"
                         });
                 });
 

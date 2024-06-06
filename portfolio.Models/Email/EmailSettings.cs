@@ -1,6 +1,8 @@
 ﻿using System.Net.Mail;
 using System.Net;
 using System.ComponentModel.DataAnnotations;
+using portfolio.Models.ConfigureData;
+using Newtonsoft.Json;
 
 namespace portfolio.Models.Email
 {

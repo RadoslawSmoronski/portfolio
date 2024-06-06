@@ -21,19 +21,16 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         IWebHostEnvironment _webHostEnvironment;
         AdminGeneralViewModel _viewModel;
-        private readonly AdminLogin _adminLogin;
         private readonly IHtmlLocalizer<GeneralController> _localizer;
         private readonly IJsonFileManager _jsonFileManager;
         private readonly ApplicationDbContext _dbContext;
 
         public GeneralController(IWebHostEnvironment webHostEnvironment,
-            IOptionsSnapshot<AdminLogin> adminLogin,
             IHtmlLocalizer<GeneralController> localizer,
             IJsonFileManager jsonFileManager,
             ApplicationDbContext dbContext)
         {
             _webHostEnvironment = webHostEnvironment;
-            _adminLogin = adminLogin.Value;
             _localizer = localizer;
             _jsonFileManager = jsonFileManager;
             _dbContext = dbContext;
@@ -211,15 +208,14 @@ namespace portfolioASP.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
-                AdminPanelAccessPassword? adminPanelAccessPassword = configureData.Convert<AdminPanelAccessPassword>();
+                AdminLogin? adminLogin = configureData.Convert<AdminLogin>();
 
-                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, adminPanelAccessPassword.HashedPassword))
+                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, adminLogin.Password))
                 {
                     string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(editAdminLogin.NewPassword);
 
-                    //EditAppSettings.AddOrUpdateAppSetting<String>("AdminLogin:Password", newHashedPassword);
-                    adminPanelAccessPassword.HashedPassword = newHashedPassword;
-                    configureData.JSON = adminPanelAccessPassword.GetJson();
+                    adminLogin.Password = newHashedPassword;
+                    configureData.JSON = adminLogin.GetJson();
                     _dbContext.SaveChanges();
                    
                     TempData["success"] = _localizer["PasswordWasChanged"].Value;

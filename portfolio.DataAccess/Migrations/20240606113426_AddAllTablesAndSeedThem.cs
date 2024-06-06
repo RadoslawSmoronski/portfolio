@@ -9,11 +9,24 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace portfolio.DataAccess.Migrations
 {
     /// <inheritdoc />
-    public partial class init : Migration
+    public partial class AddAllTablesAndSeedThem : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "ConfigureDatas",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "integer", nullable: false)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    JSON = table.Column<string>(type: "text", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_ConfigureDatas", x => x.Id);
+                });
+
             migrationBuilder.CreateTable(
                 name: "Contacts",
                 columns: table => new
@@ -83,6 +96,11 @@ namespace portfolio.DataAccess.Migrations
                 });
 
             migrationBuilder.InsertData(
+                table: "ConfigureDatas",
+                columns: new[] { "Id", "JSON" },
+                values: new object[] { 1, "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}" });
+
+            migrationBuilder.InsertData(
                 table: "Contacts",
                 columns: new[] { "Id", "Content", "Icon", "Name", "UrlAddress" },
                 values: new object[,]
@@ -128,6 +146,9 @@ namespace portfolio.DataAccess.Migrations
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "ConfigureDatas");
+
             migrationBuilder.DropTable(
                 name: "Contacts");
 

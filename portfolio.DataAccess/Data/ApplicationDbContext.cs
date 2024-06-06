@@ -50,13 +50,13 @@ namespace portfolio.DataAccess.Data
                 new EmailMessage { Id = 3, Email = "test3@email.com", Name = "Jeniffer", Subject = "Test Subject 3", Content = description }
                 );
 
-            AdminPanelAccessPassword adminPanelAccessPassword = new AdminPanelAccessPassword
+            AdminLogin adminLogin = new AdminLogin
             {
-                HashedPassword = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS"
+                Password = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS"
             };
 
             modelBuilder.Entity<ConfigureData>().HasData(
-                new ConfigureData { Id = 1, JSON = adminPanelAccessPassword.GetJson()}
+                new ConfigureData { Id = 1, JSON = adminLogin.GetJson()}
                 );
         }
 

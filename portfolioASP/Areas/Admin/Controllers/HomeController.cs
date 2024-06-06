@@ -71,9 +71,9 @@ namespace portfolioASP.Areas.Admin.Controllers
             if (ModelState.IsValid)
             {
                 ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
-                AdminPanelAccessPassword? adminPanelAccessPassword = configureData.Convert<AdminPanelAccessPassword>();
+                AdminLogin? adminLoginDB = configureData.Convert<AdminLogin>();
                 
-                if (adminPanelAccessPassword != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminPanelAccessPassword.HashedPassword))
+                if (adminLoginDB != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminLoginDB.Password))
                 {
                     AdminLoginFailedBanned.RemoveFailderLoginAttempts(ipAddress);
                     HttpContext.Session.SetString("IsActiveSession", "true");

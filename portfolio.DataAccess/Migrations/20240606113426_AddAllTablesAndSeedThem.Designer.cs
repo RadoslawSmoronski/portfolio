@@ -12,8 +12,8 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240523173144_init")]
-    partial class init
+    [Migration("20240606113426_AddAllTablesAndSeedThem")]
+    partial class AddAllTablesAndSeedThem
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,30 @@ namespace portfolio.DataAccess.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
+
+            modelBuilder.Entity("portfolio.Models.ConfigureData.ConfigureData", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("JSON")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ConfigureDatas");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            JSON = "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}"
+                        });
+                });
 
             modelBuilder.Entity("portfolio.Models.Contact", b =>
                 {

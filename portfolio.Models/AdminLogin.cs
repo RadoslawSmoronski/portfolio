@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using portfolio.Models.ConfigureData;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -7,9 +9,14 @@ using System.Threading.Tasks;
 
 namespace portfolio.Models
 {
-    public class AdminLogin
+    public class AdminLogin : IConfigureDataClass
     {
         [Required]
         public string Password { get; set; }
+
+        public string GetJson()
+        {
+            return JsonConvert.SerializeObject(this);
+        }
     }
 }
