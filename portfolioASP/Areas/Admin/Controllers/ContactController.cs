@@ -7,6 +7,8 @@ using portfolio.Models.ViewModels;
 using portfolio.Utility;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models;
+using portfolio.DataAccess.Data;
+using portfolio.Models.ConfigureData;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -15,19 +17,19 @@ namespace portfolioASP.Areas.Admin.Controllers
     public class ContactController : Controller
     {
         private readonly IUnitOfWork _unitOfWork;
-        private readonly EmailSettings _emailSettings;
         private readonly IHtmlLocalizer<ContactController> _localizer;
         private readonly IJsonFileManager _jsonFileManager;
+        private readonly ApplicationDbContext _dbContext;
 
         public ContactController(IUnitOfWork unitOfWork,
-            IOptions<EmailSettings> emailSettings,
             IHtmlLocalizer<ContactController> localizer,
-            IJsonFileManager jsonFileManager)
+            IJsonFileManager jsonFileManager,
+            ApplicationDbContext dbContext)
         {
             _unitOfWork = unitOfWork;
-            _emailSettings = emailSettings.Value;
             _localizer = localizer;
             _jsonFileManager = jsonFileManager;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()
@@ -85,47 +87,92 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult EmailConfigure()
         {
-            var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
+            ConfigureData? configureData = _dbContext.ConfigureDatas.Find(2);
+            EmailSettings? emailSettingsDB = null;
+
+            if (configureData != null)
             {
-                EmailMessageContent = _jsonFileManager.Get<AutoEmailMessageContent>(),
-                EmailSettings = _emailSettings
-            };
+                emailSettingsDB = configureData.Convert<EmailSettings>();
+            }
 
-            viewModel.EmailSettings.Password = null;
+            if(emailSettingsDB != null)
+            {
+                var viewModel = new AdminEmailsEmailConfigureDetailsPageViewModel
+                {
+                    EmailMessageContent = _jsonFileManager.Get<AutoEmailMessageContent>(),
+                    EmailSettings = emailSettingsDB
+                };
 
-            return View("EmailConfigure/Details", viewModel);
+                viewModel.EmailSettings.Password = null;
+
+                return View("EmailConfigure/Details", viewModel);
+            }
+
+            TempData["error"] = _localizer["EmailSettingsError"].Value; ;
+            return RedirectToAction("Index");
         }
 
         public IActionResult EmailEdit()
         {
-            EmailSettings emailSettings = _emailSettings;
-            emailSettings.Password = null;
+            ConfigureData? configureData = _dbContext.ConfigureDatas.Find(2);
+            EmailSettings? emailSettingsDB = null;
 
-            return View("EmailConfigure/EmailEdit", emailSettings);
+            if (configureData != null)
+            {
+                emailSettingsDB = configureData.Convert<EmailSettings>();
+            }
+
+            if (emailSettingsDB != null)
+            {
+                EmailSettings emailSettingsObj = emailSettingsDB;
+                emailSettingsObj.Password = null;
+
+                return View("EmailConfigure/EmailEdit", emailSettingsObj);
+            }
+
+            TempData["error"] = _localizer["EmailSettingsError"].Value; ;
+            return RedirectToAction("Index");
         }
 
         [HttpPost]
         public IActionResult EmailEdit(EmailSettings emailSettings)
         {
+            ConfigureData? configureData = _dbContext.ConfigureDatas.Find(2);
+            EmailSettings? emailSettingsDB = null;
 
-            try
+            if (configureData != null)
             {
-                emailSettings.CheckConnection();
-
-                EditAppSettings.AddOrUpdateAppSetting<String>("EmailSettings:Password", emailSettings.Password);
-
-                TempData["success"] = _localizer["EmailSettingsHasBeenEdited"].Value;
-                return RedirectToAction("EmailConfigure");
+                emailSettingsDB = configureData.Convert<EmailSettings>();
             }
-            catch (Exception ex)
+
+            if (emailSettingsDB != null && configureData != null)
             {
-                TempData["error"] = ex.Message;
+                try
+                {
+                    emailSettings.CheckConnection();
 
-                EmailSettings emailSettingsObj = _emailSettings;
-                emailSettingsObj.Password = null;
+                    emailSettingsDB = emailSettings;
+                    configureData.JSON = emailSettingsDB.GetJson();
+                    _dbContext.SaveChanges();
 
-                return View("EmailConfigure/EmailEdit", emailSettingsObj);
+                    TempData["success"] = _localizer["EmailSettingsHasBeenEdited"].Value;
+                    return RedirectToAction("EmailConfigure");
+                }
+                catch (Exception ex)
+                {
+                    TempData["error"] = ex.Message;
+
+                    EmailSettings emailSettingsObj = emailSettingsDB;
+                    emailSettingsObj.Password = null;
+
+                    return View("EmailConfigure/EmailEdit", emailSettingsObj);
+
+                }
             }
+
+
+            TempData["error"] = _localizer["EmailSettingsError"].Value; ;
+            return RedirectToAction("Index");
         }
 
         public IActionResult MessageEdit()

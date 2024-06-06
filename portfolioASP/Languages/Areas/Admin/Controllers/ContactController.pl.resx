@@ -126,6 +126,9 @@
   <data name="ContactHasBeenEdited" xml:space="preserve">
     <value>Kontakt został edytowany.</value>
   </data>
+  <data name="EmailSettingsError" xml:space="preserve">
+    <value>Bład ustawień email</value>
+  </data>
   <data name="EmailSettingsHasBeenEdited" xml:space="preserve">
     <value>Automatyczny email został edytowany.</value>
   </data>
