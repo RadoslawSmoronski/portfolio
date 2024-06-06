@@ -14,6 +14,7 @@ using portfolio.Models.Navbar;
 using portfolio.Models.Footer;
 using portfolio.Models.Welcome;
 using Microsoft.AspNetCore.Localization;
+using Microsoft.EntityFrameworkCore;
 
 namespace portfolioASP.Areas.View.Controllers
 {
@@ -76,20 +77,28 @@ namespace portfolioASP.Areas.View.Controllers
                 AutoEmailMessageContentView autoMessage = new AutoEmailMessageContentView(_jsonFileManager.Get<AutoEmailMessageContent>(), currentUICulture);
                 await _emailService.SendEmailAsync(contactForm.Email, autoMessage.Subject, autoMessage.Content);
 
+                DateTime localDateTime = DateTime.Now;
+                DateTime utcDateTime = localDateTime.ToUniversalTime();
+
                 var message = new EmailMessage
                 {
                     Email = contactForm.Email,
                     Subject = contactForm.Subject,
                     Name = contactForm.Name,
                     Content = contactForm.Content,
-                    SentAt = DateTime.Now
+                    SentAt = utcDateTime
                 };
 
                 _unitOfWork.EmailMessageRepository.Add(message);
                 _unitOfWork.Save();
                 TempData["success"] = _localizer["MessageWasSent"].Value;
             }
-            catch(Exception ex)
+            catch (DbUpdateException ex)
+            {
+                TempData["error"] = ex.InnerException?.Message;
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
             {
                 TempData["error"] = _localizer["MessageSendError"].Value;
                 return RedirectToAction("Index");
