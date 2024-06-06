@@ -70,8 +70,13 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             if (ModelState.IsValid)
             {
-                ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
-                AdminLogin? adminLoginDB = configureData.Convert<AdminLogin>();
+                ConfigureData? configureData = _dbContext.ConfigureDatas.Find(1);
+                AdminLogin? adminLoginDB = null;
+
+                if (configureData != null)
+                {
+                    adminLoginDB = configureData.Convert<AdminLogin>();
+                }
                 
                 if (adminLoginDB != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminLoginDB.Password))
                 {

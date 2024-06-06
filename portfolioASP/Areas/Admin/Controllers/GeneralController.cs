@@ -207,15 +207,20 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (ModelState.IsValid)
             {
-                ConfigureData configureData = _dbContext.ConfigureDatas.Find(1);
-                AdminLogin? adminLogin = configureData.Convert<AdminLogin>();
+                ConfigureData? configureData = _dbContext.ConfigureDatas.Find(1);
+                AdminLogin? adminLoginDB = null;
 
-                if (BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, adminLogin.Password))
+                if (configureData != null)
+                {
+                    adminLoginDB = configureData.Convert<AdminLogin>();
+                }
+
+                if (configureData != null && adminLoginDB != null && BCrypt.Net.BCrypt.Verify(editAdminLogin.Password, adminLoginDB.Password))
                 {
                     string newHashedPassword = BCrypt.Net.BCrypt.HashPassword(editAdminLogin.NewPassword);
 
-                    adminLogin.Password = newHashedPassword;
-                    configureData.JSON = adminLogin.GetJson();
+                    adminLoginDB.Password = newHashedPassword;
+                    configureData.JSON = adminLoginDB.GetJson();
                     _dbContext.SaveChanges();
                    
                     TempData["success"] = _localizer["PasswordWasChanged"].Value;
