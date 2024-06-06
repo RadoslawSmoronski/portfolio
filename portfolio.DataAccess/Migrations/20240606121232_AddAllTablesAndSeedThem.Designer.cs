@@ -12,7 +12,7 @@ using portfolio.DataAccess.Data;
 namespace portfolio.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240606113426_AddAllTablesAndSeedThem")]
+    [Migration("20240606121232_AddAllTablesAndSeedThem")]
     partial class AddAllTablesAndSeedThem
     {
         /// <inheritdoc />
@@ -46,6 +46,11 @@ namespace portfolio.DataAccess.Migrations
                         {
                             Id = 1,
                             JSON = "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            JSON = "{\"Email\":\"portfolio.asp.test.email@gmail.com\",\"Password\":\"lexmlhvkvyjognkf\",\"SmtpServer\":\"smtp.gmail.com\",\"SmtpPort\":587,\"Encryption\":true}"
                         });
                 });
 

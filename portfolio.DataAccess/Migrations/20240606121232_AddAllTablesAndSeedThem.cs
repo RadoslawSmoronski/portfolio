@@ -98,7 +98,11 @@ namespace portfolio.DataAccess.Migrations
             migrationBuilder.InsertData(
                 table: "ConfigureDatas",
                 columns: new[] { "Id", "JSON" },
-                values: new object[] { 1, "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}" });
+                values: new object[,]
+                {
+                    { 1, "{\"Password\":\"$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS\"}" },
+                    { 2, "{\"Email\":\"portfolio.asp.test.email@gmail.com\",\"Password\":\"lexmlhvkvyjognkf\",\"SmtpServer\":\"smtp.gmail.com\",\"SmtpPort\":587,\"Encryption\":true}" }
+                });
 
             migrationBuilder.InsertData(
                 table: "Contacts",

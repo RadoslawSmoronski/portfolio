@@ -4,6 +4,7 @@ using portfolio.Models.ConfigureData;
 using portfolio.Models.Email;
 using portfolio.Models.Project;
 using portfolio.Models.Skill;
+using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.DataAccess.Data
 {
@@ -55,8 +56,18 @@ namespace portfolio.DataAccess.Data
                 Password = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS"
             };
 
+            EmailSettings emailSettings = new EmailSettings
+            {
+                Email = "portfolio.asp.test.email@gmail.com",
+                Password = "lexmlhvkvyjognkf",
+                SmtpServer = "smtp.gmail.com",
+                SmtpPort = 587,
+                Encryption = true
+            };
+
             modelBuilder.Entity<ConfigureData>().HasData(
-                new ConfigureData { Id = 1, JSON = adminLogin.GetJson()}
+                new ConfigureData { Id = 1, JSON = adminLogin.GetJson()},
+                new ConfigureData { Id = 2, JSON = emailSettings.GetJson()}
                 );
         }
 
