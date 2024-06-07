@@ -11,20 +11,22 @@ namespace portfolioASP.Areas.Admin.Controllers
     [SessionAuthorization]
     public class SkillsController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationDbContext _dbcontext;
         private readonly IWebHostEnvironment _webHostEnvironment;
         private readonly IHtmlLocalizer<SkillsController> _localizer;
 
-        public SkillsController(IUnitOfWork unitOfWork, IWebHostEnvironment webHostEnvironment, IHtmlLocalizer<SkillsController> localizer)
+        public SkillsController(ApplicationDbContext dbContext,
+            IWebHostEnvironment webHostEnvironment,
+            IHtmlLocalizer<SkillsController> localizer)
         {
-            _unitOfWork = unitOfWork;
+            _dbcontext = dbContext;
             _webHostEnvironment = webHostEnvironment;
             _localizer = localizer;
         }
 
         public IActionResult Index()
         {
-            List<Skill> objSkillsList = _unitOfWork.SkillRepository.GetAll().ToList();
+            List<Skill> objSkillsList = _dbcontext.Skills.ToList();
             return View(objSkillsList);
         }
 
@@ -37,7 +39,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             }
             else
             {
-                Skill? skillFromDb = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+                Skill? skillFromDb = _dbcontext.Skills.Find(id);
 
                 if (skillFromDb == null)
                 {
@@ -81,16 +83,16 @@ namespace portfolioASP.Areas.Admin.Controllers
 
                 if(skill.Id == 0)
                 {
-                    _unitOfWork.SkillRepository.Add(skill);
+                    _dbcontext.Skills.Add(skill);
                     TempData["success"] = _localizer["SkillWasAdded"].Value;
                 }
                 else
                 {
-                    _unitOfWork.SkillRepository.Update(skill);
+                    _dbcontext.Skills.Update(skill);
                     TempData["success"] = _localizer["SkillWasEdited"].Value;
                 }
 
-                _unitOfWork.Save();
+                _dbcontext.SaveChanges();
                 return RedirectToAction("Index");
                 
             }
@@ -106,7 +108,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
-            Skill? skill = _unitOfWork.SkillRepository.Get(u => u.Id == id);
+            Skill? skill = _dbcontext.Skills.Find(id);
 
             if (skill == null)
             {
@@ -127,8 +129,8 @@ namespace portfolioASP.Areas.Admin.Controllers
                 }
             }
 
-            _unitOfWork.SkillRepository.Remove(skill);
-            _unitOfWork.Save();
+            _dbcontext.Skills.Remove(skill);
+            _dbcontext.SaveChanges();
             return Json(new { success = true, message = _localizer["SkillWasRemoved"].Value });
         }
     }
