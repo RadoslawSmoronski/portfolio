@@ -55,6 +55,7 @@ namespace portfolioASP
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.Configure<AdminLogin>(builder.Configuration.GetSection("AdminLogin"));
             builder.Services.AddTransient<IEmailService, EmailService>();
+            builder.Services.AddScoped<IAdminLoginFailedBanned, AdminLoginFailedBanned>();
             builder.Services.AddSession(options =>
             {
                 options.IdleTimeout = TimeSpan.FromMinutes(30);

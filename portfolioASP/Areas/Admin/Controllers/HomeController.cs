@@ -20,11 +20,15 @@ namespace portfolioASP.Areas.Admin.Controllers
     {
         private readonly ApplicationDbContext _dbContext;
         private readonly IHtmlLocalizer<HomeController> _localizer;
+        private readonly IAdminLoginFailedBanned _adminLoginFailedBanned;
 
-        public HomeController(ApplicationDbContext dbContext, IHtmlLocalizer<HomeController> localizer)
+        public HomeController(ApplicationDbContext dbContext,
+            IHtmlLocalizer<HomeController> localizer,
+            IAdminLoginFailedBanned adminLoginFailedBanned)
         {
             _dbContext = dbContext;
             _localizer = localizer;
+            _adminLoginFailedBanned = adminLoginFailedBanned;
         }
 
         public IActionResult Index()
@@ -62,7 +66,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             var ipAddress = HttpContext.Connection.RemoteIpAddress.ToString();
 
-            if(AdminLoginFailedBanned.IsUserBanned(ipAddress))
+            if(_adminLoginFailedBanned.IsUserBanned(ipAddress))
             {
                 TempData["error"] = _localizer["ToMuchFailedLoginAttempt"].Value;
                 return View();
@@ -80,7 +84,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 
                 if (adminLoginDB != null && BCrypt.Net.BCrypt.Verify(adminLogin.Password, adminLoginDB.Password))
                 {
-                    AdminLoginFailedBanned.RemoveFailderLoginAttempts(ipAddress);
+                    _adminLoginFailedBanned.RemoveFailedLoginAttempt(ipAddress);
                     HttpContext.Session.SetString("IsActiveSession", "true");
                     TempData["success"] = _localizer["SuccessfullyLoggedIn"].Value;
                     return View("Index");
@@ -88,9 +92,8 @@ namespace portfolioASP.Areas.Admin.Controllers
                 }
             }
 
-            AdminLoginFailedBanned.AddFailedLoginAttempts(ipAddress);
+            _adminLoginFailedBanned.AddFailedLoginAttempt(ipAddress);
 
-            Task.Delay(1000).Wait();
             TempData["error"] = _localizer["PasswordIsNotCorrect"].Value;
             return View();
         }

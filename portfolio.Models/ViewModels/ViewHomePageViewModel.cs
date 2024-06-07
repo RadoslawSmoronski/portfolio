@@ -15,7 +15,6 @@ namespace portfolio.Models.ViewModels
         public WelcomeView WelcomeView { get; set; }
         public List<SkillView> SkillViews { get; set; }
         public List<ProjectView> ProjectViews { get; set; }
-
         public List<Contact> Contacts { get; set; }
         public AboutMeView AboutMeView { get; set; }
 

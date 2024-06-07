@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Extensions.Caching.Memory;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -7,49 +8,58 @@ using System.Threading.Tasks;
 
 namespace portfolio.Utility
 {
-    public static class AdminLoginFailedBanned
+    public class AdminLoginFailedBanned : IAdminLoginFailedBanned
     {
-        static private Dictionary<string, int> failedLoginAttempts = new Dictionary<string, int>();
+        public IMemoryCache Cache { get; set; }
 
-        static private List<string> bannedIps = new List<string>();
-
-        public static void AddFailedLoginAttempts(string ip)
+        public AdminLoginFailedBanned(IMemoryCache memoryCache)
         {
-            if(!failedLoginAttempts.ContainsKey(ip))
+            Cache = memoryCache;
+        }
+
+        public void AddFailedLoginAttempt(string ip)
+        {
+            var attempts = Cache.GetOrCreate("FailedLoginAttempts", entry => new Dictionary<string, int>());
+
+            if (attempts == null) return;
+
+            if (!attempts.ContainsKey(ip))
             {
-                failedLoginAttempts[ip] = 0;
+                attempts[ip] = 0;
             }
 
-            failedLoginAttempts[ip]++;
+            attempts[ip]++;
 
-
-            if (failedLoginAttempts[ip] >= 4)
+            if (attempts[ip] >= 4)
             {
                 BanUser(ip);
             }
         }
 
-        public static void RemoveFailderLoginAttempts(string ip)
+        public void RemoveFailedLoginAttempt(string ip)
         {
-            failedLoginAttempts.Remove(ip);
+            var attempts = Cache.GetOrCreate("FailedLoginAttempts", entry => new Dictionary<string, int>());
+            if (attempts == null) return;
+            attempts.Remove(ip);
         }
 
-        public static bool IsUserBanned(string ip)
+        public bool IsUserBanned(string ip)
         {
+            var bannedIps = Cache.GetOrCreate("BannedIps", entry => new HashSet<string>());
+            if (bannedIps == null) return false;
             return bannedIps.Contains(ip);
         }
 
-        private static void BanUser(string ipAddress)
+        private void BanUser(string ipAddress)
         {
+            var bannedIps = Cache.GetOrCreate("BannedIps", entry => new HashSet<string>());
+            if (bannedIps == null) return;
             if (!bannedIps.Contains(ipAddress))
             {
-                Timer timer = new Timer(state =>
-                {
-                    failedLoginAttempts.Remove(ipAddress);
-                    bannedIps.Remove(ipAddress);
-                }, null, 5 * 60 * 1000, Timeout.Infinite);
-
                 bannedIps.Add(ipAddress);
+                Cache.Set("BannedIps", bannedIps);
+
+                Cache.Remove("FailedLoginAttempts");
             }
         }
     }
