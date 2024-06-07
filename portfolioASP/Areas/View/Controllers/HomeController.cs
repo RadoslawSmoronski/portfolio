@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using portfolio.DataAccess.Json;
-using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;

@@ -1,5 +1,4 @@
 ﻿using portfolio.DataAccess;
-using portfolio.DataAccess.Repository.IRepository;
 using portfolio.Models;
 using System;
 using System.Collections.Generic;

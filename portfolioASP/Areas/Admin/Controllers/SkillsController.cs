@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using portfolio.DataAccess.Data;
-using portfolio.DataAccess.Repository.IRepository;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.Models.Skill;

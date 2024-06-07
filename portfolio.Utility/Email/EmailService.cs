@@ -8,7 +8,6 @@ using System.Net;
 using System.Net.Mail;
 using System.Text;
 using System.Threading.Tasks;
-using portfolio.DataAccess.Repository.IRepository;
 using portfolio.DataAccess.Data;
 using Microsoft.EntityFrameworkCore;
 using portfolio.Models.ConfigureData;
