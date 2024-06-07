@@ -40,7 +40,7 @@ In the ApplicationDbContext file, you can change the default admin panel access 
 ```c#
 AdminLogin adminLogin = new AdminLogin
 {
-    Password = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS"
+    Password = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS" // (NCRYPT) Default password -> admin
 };
 
 EmailSettings emailSettings = new EmailSettings
