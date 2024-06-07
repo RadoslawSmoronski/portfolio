@@ -45,11 +45,11 @@ AdminLogin adminLogin = new AdminLogin
 
 EmailSettings emailSettings = new EmailSettings
 {
-    Email = "portfolio.asp.test.email@gmail.com",
-    Password = "lexmlhvkvyjognkf",
-    SmtpServer = "smtp.gmail.com",
-    SmtpPort = 587,
-    Encryption = true
+    Email = "email",
+    Password = "password",
+    SmtpServer = "smtp server"",
+    SmtpPort = 000,
+    Encryption = false
 };
 
 modelBuilder.Entity<ConfigureData>().HasData(
