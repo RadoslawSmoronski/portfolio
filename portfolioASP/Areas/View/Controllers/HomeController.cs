@@ -15,25 +15,28 @@ using portfolio.Models.Footer;
 using portfolio.Models.Welcome;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using portfolio.DataAccess.Data;
+using portfolio.Models.Skill;
+using portfolio.Models.Project;
 
 namespace portfolioASP.Areas.View.Controllers
 {
     [Area("View")]
     public class HomeController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly ApplicationDbContext _dbContext;
         private readonly IEmailService _emailService;
         private readonly ViewHomePageViewModel _model;
         private readonly IHtmlLocalizer<HomeController> _localizer;
         private readonly string currentUICulture = CultureInfo.CurrentUICulture.Name;
         private readonly IJsonFileManager _jsonFileManager;
 
-        public HomeController(IUnitOfWork unitOfWork,
+        public HomeController(ApplicationDbContext dbContext,
             IEmailService emailService,
             IHtmlLocalizer<HomeController> localizer,
             IJsonFileManager jsonFileManager)
         {
-            _unitOfWork = unitOfWork;
+            _dbContext = dbContext;
             _emailService = emailService;
             _localizer = localizer;
             _jsonFileManager = jsonFileManager;
@@ -42,9 +45,9 @@ namespace portfolioASP.Areas.View.Controllers
             {
                 WelcomeView = new WelcomeView(_jsonFileManager.Get<Welcome>(), currentUICulture),
                 AboutMeView = new AboutMeView(_jsonFileManager.Get<AboutMe>(), currentUICulture),
-                SkillViews = _unitOfWork.SkillRepository.GetAllView(currentUICulture),
-                ProjectViews = _unitOfWork.ProjectRepository.GetAllView(currentUICulture),
-                Contacts = _unitOfWork.ContactRepository.GetAll().ToList()
+                SkillViews = _dbContext.GetListView<Skill, SkillView>(obj => new SkillView(obj, currentUICulture)),
+                ProjectViews = _dbContext.GetListView<Project, ProjectView>(obj => new ProjectView(obj, currentUICulture)),
+                Contacts = _dbContext.Contacts.ToList()
             };
         }
 
@@ -89,8 +92,8 @@ namespace portfolioASP.Areas.View.Controllers
                     SentAt = utcDateTime
                 };
 
-                _unitOfWork.EmailMessageRepository.Add(message);
-                _unitOfWork.Save();
+                _dbContext.EmailMessages.Add(message);
+                _dbContext.SaveChanges();
                 TempData["success"] = _localizer["MessageWasSent"].Value;
             }
             catch (DbUpdateException ex)

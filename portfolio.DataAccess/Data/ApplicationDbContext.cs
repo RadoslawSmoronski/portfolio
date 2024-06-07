@@ -37,6 +37,33 @@ namespace portfolio.DataAccess.Data
             return i;
         }
 
+        public List<TView> GetListView<T, TView>(Func<T, TView> transform) where T : class
+        {
+            List<TView> viewList = new List<TView>();
+            List<T> objList = GetDbSet<T>().ToList();
+
+            foreach (T obj in objList)
+            {
+                TView viewObj = transform(obj);
+                viewList.Add(viewObj);
+            }
+
+            return viewList;
+        }
+
+        private DbSet<T> GetDbSet<T>() where T : class
+        {
+            var property = typeof(ApplicationDbContext).GetProperties()
+                .FirstOrDefault(p => p.PropertyType == typeof(DbSet<T>));
+
+            if (property != null)
+            {
+                return (DbSet<T>)property.GetValue(this)!;
+            }
+
+            throw new InvalidOperationException($"DbSet<{typeof(T).Name}> not found in ApplicationContext.");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Skill>().HasData(
