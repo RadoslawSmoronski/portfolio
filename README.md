@@ -19,24 +19,41 @@ The website features an admin panel accessible at /admin, requiring a password f
 - Additionally, there's a "Contacts" section for editing icons and content.
 
 # Website configuration
-The site configuration is done through the appsettings file, where parameters such as allowed hosts, database connection, email settings, and admin login data can be set.
+Configuration is done through the appsettings file and ApplicationDbContext in portfolio.DataAccess/Data.
 
-This project enables easy management of website content and configuration, making it an ideal tool for individuals looking to showcase their skills and projects professionally.
+### appsettings
+
+The appsettings.json file is used to configure the database connection.
 
 ```json
   "ConnectionStrings": {
     "DefaultConnection": "Host=host;Database=database;Port=port;Username=username;Password=password"
-  },
-  "EmailSettings": {
-    "Email": "email",
-    "Password": "password",
-    "SmtpServer": "smtpServer",
-    "SmtpPort": "smtpPort",
-    "Encryption": "EncryptionBool"
-  },
-  "AdminLogin": {
-    "Password": "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS" //default password - admin
   }
+```
+
+### portfolio.DataAccess/Data/ApplicationDbContext
+
+In the ApplicationDbContext file, you can change the default admin panel access password and SMTP email settings.
+
+```c#
+AdminLogin adminLogin = new AdminLogin
+{
+    Password = "$2a$11$8WGPCFiXVzavlpu6KaqakO738nLjnUrvioepPN0VwnQ3SD6SZZKUS"
+};
+
+EmailSettings emailSettings = new EmailSettings
+{
+    Email = "portfolio.asp.test.email@gmail.com",
+    Password = "lexmlhvkvyjognkf",
+    SmtpServer = "smtp.gmail.com",
+    SmtpPort = 587,
+    Encryption = true
+};
+
+modelBuilder.Entity<ConfigureData>().HasData(
+    new ConfigureData { Id = 1, JSON = adminLogin.GetJson()},
+    new ConfigureData { Id = 2, JSON = emailSettings.GetJson()}
+);
 ```
 
 ## Author
