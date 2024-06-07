@@ -16,17 +16,15 @@ namespace portfolioASP.Areas.Admin.Controllers
     [SessionAuthorization]
     public class ContactController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
         private readonly IHtmlLocalizer<ContactController> _localizer;
         private readonly IJsonFileManager _jsonFileManager;
         private readonly ApplicationDbContext _dbContext;
 
-        public ContactController(IUnitOfWork unitOfWork,
+        public ContactController(
             IHtmlLocalizer<ContactController> localizer,
             IJsonFileManager jsonFileManager,
             ApplicationDbContext dbContext)
         {
-            _unitOfWork = unitOfWork;
             _localizer = localizer;
             _jsonFileManager = jsonFileManager;
             _dbContext = dbContext;
@@ -34,7 +32,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Index()
         {
-            List<EmailMessage>? emailMessages = _unitOfWork.EmailMessageRepository.GetAll().ToList();
+            List<EmailMessage>? emailMessages = _dbContext.EmailMessages.ToList();
 
             if (emailMessages == null) return NotFound();
 
@@ -43,7 +41,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             var viewModel = new AdminEmailsViewModel
             {
                 EmailMessages = emailMessages,
-                UnreadEmailMessages = _unitOfWork.EmailMessageRepository.GetUnreadAmount()
+                UnreadEmailMessages = _dbContext.GetUnreadEmailMessagesAmount()
             };
 
             return View(viewModel);
@@ -51,14 +49,14 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult Details(int? id)
         {
-            EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get(u => u.Id == id);
+            EmailMessage? emailMessage = _dbContext.EmailMessages.Find(id);
 
             if (emailMessage == null) return NotFound();
 
             emailMessage.IsReaded = true;
 
-            _unitOfWork.EmailMessageRepository.Update(emailMessage);
-            _unitOfWork.Save();
+            _dbContext.EmailMessages.Update(emailMessage);
+            _dbContext.SaveChanges();
 
             return View(emailMessage);
         }
@@ -71,15 +69,15 @@ namespace portfolioASP.Areas.Admin.Controllers
                 return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
-            EmailMessage? emailMessage = _unitOfWork.EmailMessageRepository.Get(u => u.Id == id);
+            EmailMessage? emailMessage = _dbContext.EmailMessages.Find(id);
 
             if (emailMessage == null)
             {
                 return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
-            _unitOfWork.EmailMessageRepository.Remove(emailMessage);
-            _unitOfWork.Save();
+            _dbContext.EmailMessages.Remove(emailMessage);
+            _dbContext.SaveChanges();
             return Json(new { success = true, message = _localizer["MessageHasBeenDeleted"].Value });
         }
 
@@ -207,7 +205,7 @@ namespace portfolioASP.Areas.Admin.Controllers
 
         public IActionResult ContactsIndex()
         {
-            List<Contact> objContactsList = _unitOfWork.ContactRepository.GetAll().ToList();
+            List<Contact> objContactsList = _dbContext.Contacts.ToList();
             return View("Contacts/ContactsIndex", objContactsList);
         }
 
@@ -215,7 +213,7 @@ namespace portfolioASP.Areas.Admin.Controllers
         {
             if (id != null || id != 0)
             {
-                Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
+                Contact? contactFromDb = _dbContext.Contacts.Find(id);
 
                 if (contactFromDb == null)
                 {
@@ -240,7 +238,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             }
             else
             {
-                Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
+                Contact? contactFromDb = _dbContext.Contacts.Find(id);
 
                 if (contactFromDb == null)
                 {
@@ -260,16 +258,16 @@ namespace portfolioASP.Areas.Admin.Controllers
 
                 if (contact.Id == 0)
                 {
-                    _unitOfWork.ContactRepository.Add(contact);
+                    _dbContext.Contacts.Add(contact);
                     TempData["success"] = _localizer["ContactHasBeenCreated"].Value;
                 }
                 else
                 {
-                    _unitOfWork.ContactRepository.Update(contact);
+                    _dbContext.Contacts.Update(contact);
                     TempData["success"] = _localizer["ContactHasBeenEdited"].Value;
                 }
 
-                _unitOfWork.Save();
+                _dbContext.SaveChanges();
                 return RedirectToAction("ContactsIndex");
             }
             else
@@ -286,15 +284,15 @@ namespace portfolioASP.Areas.Admin.Controllers
                 return Json(new { success = false, message = _localizer["IdNotProvided"].Value });
             }
 
-            Contact? contactFromDb = _unitOfWork.ContactRepository.Get(u => u.Id == id);
+            Contact? contactFromDb = _dbContext.Contacts.Find(id);
 
             if (contactFromDb == null)
             {
                 return Json(new { success = false, message = _localizer["IdNotFound"].Value });
             }
 
-            _unitOfWork.ContactRepository.Remove(contactFromDb);
-            _unitOfWork.Save();
+            _dbContext.Contacts.Remove(contactFromDb);
+            _dbContext.SaveChanges();
             return Json(new { success = true, message = _localizer["MessageHasBeenDeleted"].Value });
         }
     }

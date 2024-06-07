@@ -4,6 +4,7 @@ using portfolio.Models.ConfigureData;
 using portfolio.Models.Email;
 using portfolio.Models.Project;
 using portfolio.Models.Skill;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.DataAccess.Data
@@ -20,6 +21,21 @@ namespace portfolio.DataAccess.Data
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<EmailMessage> EmailMessages { get; set; }
         public DbSet<ConfigureData> ConfigureDatas { get; set; }
+
+        public int GetUnreadEmailMessagesAmount()
+        {
+            int i = 0;
+
+            foreach (EmailMessage message in EmailMessages)
+            {
+                if (message.IsReaded == false)
+                {
+                    i++;
+                }
+            }
+
+            return i;
+        }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
