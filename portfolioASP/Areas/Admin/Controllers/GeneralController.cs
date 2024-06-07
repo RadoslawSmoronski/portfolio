@@ -69,7 +69,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             if (file != null)
             {
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                string productPath = Path.Combine(wwwRootPath, @"images\websiteTab");
+                string productPath = Path.Combine(wwwRootPath, "images", "websiteTab");
 
                 DeleteImageFile(websiteTab.ImageUrl);
 
@@ -78,7 +78,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                     file.CopyTo(fileStream);
                 }
 
-                websiteTab.ImageUrl = @"\images\websiteTab\" + fileName;
+                websiteTab.ImageUrl = Path.Combine("images", "websiteTab", fileName);
             }
 
             _jsonFileManager.Save<WebsiteTab>(websiteTab);
@@ -115,7 +115,7 @@ namespace portfolioASP.Areas.Admin.Controllers
             if (file != null)
             {
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                string productPath = Path.Combine(wwwRootPath, @"images\navbar");
+                string productPath = Path.Combine(wwwRootPath, "images", "navbar");
 
                 DeleteImageFile(navbar.ImageUrl);
 
@@ -124,7 +124,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                     file.CopyTo(fileStream);
                 }
 
-                navbar.ImageUrl = @"\images\navbar\" + fileName;
+                navbar.ImageUrl = Path.Combine("images", "navbar", fileName);
             }
 
             _jsonFileManager.Save<Navbar>(navbar);

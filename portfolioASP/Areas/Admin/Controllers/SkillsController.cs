@@ -59,9 +59,9 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if(file != null)
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"images\skills");
+                    string productPath = Path.Combine(wwwRootPath, "images", "skills");
 
-                    if(string.IsNullOrEmpty(skill.ImageUrl) == false)
+                    if (string.IsNullOrEmpty(skill.ImageUrl) == false)
                     {
                         var oldImagePath = 
                             Path.Combine(wwwRootPath,skill.ImageUrl.TrimStart('\\'));
@@ -77,7 +77,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                         file.CopyTo(fileStream);
                     }
 
-                    skill.ImageUrl = @"\images\skills\" + fileName;
+                    skill.ImageUrl = Path.Combine("images", "skills", fileName);
                 }
 
                 if(skill.Id == 0)

@@ -43,7 +43,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if (file != null)
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"images\aboutme");
+                    string productPath = Path.Combine(wwwRootPath, "images", "aboutme");
 
                     if (string.IsNullOrEmpty(aboutMe.ImageUrl) == false)
                     {
@@ -61,7 +61,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                         file.CopyTo(fileStream);
                     }
 
-                    aboutMe.ImageUrl = @"\images\aboutme\" + fileName;
+                    aboutMe.ImageUrl = Path.Combine("images", "aboutme", fileName);
                 }
 
                 _jsonFileManager.Save<AboutMe>(aboutMe);

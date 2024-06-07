@@ -80,9 +80,9 @@ namespace portfolioASP.Areas.Admin.Controllers
                 if(file != null)
                 {
                     string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
-                    string productPath = Path.Combine(wwwRootPath, @"images\projects");
+                    string productPath = Path.Combine(wwwRootPath, "images", "projects");
 
-                    if(string.IsNullOrEmpty(project.ImageUrl) == false)
+                    if (string.IsNullOrEmpty(project.ImageUrl) == false)
                     {
                         var oldImagePath = 
                             Path.Combine(wwwRootPath,project.ImageUrl.TrimStart('\\'));
@@ -98,7 +98,7 @@ namespace portfolioASP.Areas.Admin.Controllers
                         file.CopyTo(fileStream);
                     }
 
-                    project.ImageUrl = @"\images\projects\" + fileName;
+                    project.ImageUrl = Path.Combine("images", "projects", fileName);
                 }
 
                 if(project.Id == 0)
