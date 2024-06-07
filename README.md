@@ -21,6 +21,7 @@ The website features an admin panel accessible at /admin, requiring a password f
 # Website configuration
 Configuration is done through the appsettings file and ApplicationDbContext in portfolio.DataAccess/Data.
 
+
 ### appsettings
 
 The appsettings.json file is used to configure the database connection.
@@ -30,6 +31,7 @@ The appsettings.json file is used to configure the database connection.
     "DefaultConnection": "Host=host;Database=database;Port=port;Username=username;Password=password"
   }
 ```
+
 
 ### portfolio.DataAccess/Data/ApplicationDbContext
 
