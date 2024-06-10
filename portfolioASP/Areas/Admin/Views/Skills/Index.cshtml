@@ -77,7 +77,7 @@
                     <th scope="col">@Localizer["Name"]</th>
                     <th scope="col">@Localizer["Image"]</th>
                     <th scope="col">
-                        <a asp-controller="Skills" asp-action="Upsert" class="btn btn-dark add-btn">
+                        <a asp-controller="skills" asp-action="upsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             @Localizer["AddButton"]
                         </a>
@@ -122,7 +122,7 @@
                                 <i class="bi bi-trash-fill"></i>
                                 @Localizer["Delete"]
                             </a>
-                            <a asp-controller="Skills" asp-action="Upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                            <a asp-controller="skills" asp-action="upsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 @Localizer["Edit"]
                             </a>

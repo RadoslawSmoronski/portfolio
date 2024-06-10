@@ -90,10 +90,10 @@
 <section id="box">
     <div class="container">
         <div class="contact-header mb-5 p-2">
-            <a asp-controller="Contact" asp-action="Index" class="btn btn-dark text-white nav-btn">
+            <a asp-controller="contact" asp-action="index" class="btn btn-dark text-white nav-btn">
                 @Localizer["MessagesButton"]
             </a>
-            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-outline-dark text-white nav-btn">
+            <a asp-controller="contact" asp-action="contactsindex" class="btn btn-outline-dark text-white nav-btn">
                 @Localizer["ContactsButton"]
             </a>
         </div>
@@ -107,7 +107,7 @@
                 <th scope="col">@Localizer["Email"]</th>
                 <th scope="col">@Localizer["Subject"]</th>
                 <th scope="col">
-                    <a asp-controller="Contact" asp-action="EmailConfigure" class="btn btn-dark add-btn">
+                    <a asp-controller="contact" asp-action="emailconfigure" class="btn btn-dark add-btn">
                         <i class="bi bi-gear"></i>
                         @Localizer["SettingsButton"]
                     </a>
@@ -153,7 +153,7 @@
                                 <i class="bi bi-trash-fill"></i>
                                 <span>@Localizer["DeleteButton"]</span>
                             </a>
-                            <a asp-controller="Contact" asp-action="Details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                            <a asp-controller="contact" asp-action="details" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
                                 <span>@Localizer["DetailsButton"]</span>
                             </a>

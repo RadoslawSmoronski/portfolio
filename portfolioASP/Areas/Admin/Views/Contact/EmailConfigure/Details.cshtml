@@ -40,7 +40,7 @@
                     }
                 </div>
 
-                <a asp-controller="Contact" asp-action="MessageEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton1"]</a>
+                <a asp-controller="contact" asp-action="messageedit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton1"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>
@@ -70,7 +70,7 @@
                     @Localizer[@Model.EmailSettings.Encryption.ToString()] (@(Model.EmailSettings.SmtpPort == 587 ? "StartTLS" : "SSL/TLS"))
                 </div>
 
-                <a asp-controller="Contact" asp-action="EmailEdit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton2"]</a>
+                <a asp-controller="contact" asp-action="emailedit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton2"]</a>
 
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
@@ -79,7 +79,7 @@
         <div class="row">
             <div class="col-1 col-lg-3 col-md-2"></div>
             <div class="col-10 col-lg-6 col-md-8 box p-5">
-                <a asp-controller="Contact" asp-action="Index" class="btn btn-dark mb-2 col-12">@Localizer["BackButton"]</a>
+                <a asp-controller="contact" asp-action="index" class="btn btn-dark mb-2 col-12">@Localizer["BackButton"]</a>
             </div>
             <div class="col-1 col-lg-3 col-md-2"></div>
         </div>

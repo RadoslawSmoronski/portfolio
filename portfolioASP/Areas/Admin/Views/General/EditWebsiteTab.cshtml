@@ -21,12 +21,12 @@
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
                             @if (Model.ImageUrl != null)
                             {
-                                <a asp-controller="General" asp-action="DeleteWebsiteTabImage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
+                                <a asp-controller="general" asp-action="deletewebsitetabimage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
                             }
                         </div>
                         <div class="row">
                             <button type="submit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton"]</button>
-                            <a asp-controller="General" asp-action="Index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["BackButton"]</a>
+                            <a asp-controller="general" asp-action="index" class="btn btn-outline-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["BackButton"]</a>
                         </div>
                     </form>
             </div>

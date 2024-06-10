@@ -88,10 +88,10 @@
 <section id="box">
     <div class="container">
         <div class="contact-header mb-5 p-2">
-            <a asp-controller="Contact" asp-action="Index" class="btn btn-outline-dark text-white nav-btn">
+            <a asp-controller="contact" asp-action="index" class="btn btn-outline-dark text-white nav-btn">
                 @Localizer["MessagesButton"]
             </a>
-            <a asp-controller="Contact" asp-action="ContactsIndex" class="btn btn-dark nav-btn">
+            <a asp-controller="contact" asp-action="contactsindex" class="btn btn-dark nav-btn">
                 @Localizer["ContactsButton"]
             </a>
         </div>
@@ -106,7 +106,7 @@
                     <th scope="col">@Localizer["Name"]</th>
                     <th scope="col">@Localizer["Icon"]</th>
                     <th scope="col">
-                        <a asp-controller="Contact" asp-action="ContactsUpsert" class="btn btn-dark add-btn">
+                        <a asp-controller="contact" asp-action="contactsupsert" class="btn btn-dark add-btn">
                             <i class="bi bi-plus-circle"></i>
                             @Localizer["AddButton"]
                         </a>
@@ -136,11 +136,11 @@
                                 <i class="bi bi-trash-fill"></i>
                                 <span>@Localizer["DeleteButton"]</span>
                             </a>
-                            <a asp-controller="Contact" asp-action="ContactsUpsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
+                            <a asp-controller="contact" asp-action="contactsupsert" asp-route-id="@obj.Id" class="btn btn-dark upsert-btn">
                                 <i class="bi bi-pen"></i>
                                 <span>@Localizer["EditButton"]</span>
                             </a>
-                            <a asp-controller="Contact" asp-action="ContactsDetails" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
+                            <a asp-controller="contact" asp-action="contactsdetails" asp-route-id="@obj.Id" class="btn btn-outline-dark details-btn">
                                 <i class="bi bi-search"></i>
                                 <span>@Localizer["DetailsButton"]</span>
                             </a>

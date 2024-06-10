@@ -15,7 +15,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm fixed-top">
             <div class="container-fluid">
-                 <a asp-area="Admin" asp-controller="Home" asp-action="Index" class="navbar-home">
+                 <a asp-area="admin" asp-controller="home" asp-action="index" class="navbar-home">
                     <i class="icon bi bi-house"></i>
                     </a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
@@ -25,33 +25,33 @@
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="General" asp-action="Index" class="nav-link">@Localizer["General"]</a>
+                            <a asp-area="admin" asp-controller="general" asp-action="index" class="nav-link">@Localizer["General"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="AboutMe" asp-action="Index" class="nav-link">@Localizer["AboutMe"]</a>
+                            <a asp-area="admin" asp-controller="aboutMe" asp-action="index" class="nav-link">@Localizer["AboutMe"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="Skills" asp-action="Index" class="nav-link">@Localizer["Skills"]</a>
+                            <a asp-area="admin" asp-controller="skills" asp-action="index" class="nav-link">@Localizer["Skills"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="Projects" asp-action="Index" class="nav-link">@Localizer["Projects"]</a>
+                            <a asp-area="admin" asp-controller="projects" asp-action="index" class="nav-link">@Localizer["Projects"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="Contact" asp-action="Index" class="nav-link">@Localizer["Contact"]</a>
+                            <a asp-area="admin" asp-controller="contact" asp-action="index" class="nav-link">@Localizer["Contact"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="View" asp-controller="Home" asp-action="Index" class="nav-link">@Localizer["Back"]</a>
+                            <a asp-area="View" asp-controller="home" asp-action="index" class="nav-link">@Localizer["Back"]</a>
                         </li>
                         <li class="nav-item">
-                            <a asp-area="Admin" asp-controller="Home" asp-action="LogOut" class="nav-link" style="color: #ab0d02;">@Localizer["Logout"]</a>
+                            <a asp-area="admin" asp-controller="gome" asp-action="logout" class="nav-link" style="color: #ab0d02;">@Localizer["Logout"]</a>
                         </li>
                     </ul>
                         <hr>
                         <div class="language-imgs">
-                            <a class="language-btn mb-2" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="en-GB">
+                            <a class="language-btn mb-2" asp-controller="home" asp-action="changelanguage" asp-route-lang="en-GB">
                                 <img class="language-img" src="~/images/british-flag.png" /></img>
                             </a>
-                            <a class="language-btn" asp-controller="Home" asp-action="ChangeLanguage" asp-route-lang="pl">
+                            <a class="language-btn" asp-controller="home" asp-action="changelanguage" asp-route-lang="pl">
                                 <img class="language-img" src="~/images/polish-flag.png" /></img>
                             </a>
                         </div>

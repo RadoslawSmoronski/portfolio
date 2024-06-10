@@ -100,7 +100,7 @@ namespace portfolioASP.Areas.View.Controllers
                 TempData["error"] = ex.InnerException?.Message;
                 return RedirectToAction("Index");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 TempData["error"] = _localizer["MessageSendError"].Value;
                 return RedirectToAction("Index");
