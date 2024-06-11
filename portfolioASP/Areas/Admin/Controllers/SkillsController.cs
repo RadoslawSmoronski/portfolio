@@ -1,7 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using portfolio.DataAccess.Data;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Localization;
+using portfolio.DataAccess.Data;
 using portfolio.Models.Skill;
 
 namespace portfolioASP.Areas.Admin.Controllers

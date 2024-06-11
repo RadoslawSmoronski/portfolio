@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding.Validation;
-using System.ComponentModel.DataAnnotations;
-
-namespace portfolio.Models.AboutMe
+﻿namespace portfolio.Models.AboutMe
 {
     public class AboutMe
     {

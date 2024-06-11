@@ -1,9 +1,7 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.DataAccess.Json;
 using portfolio.Models.AboutMe;
-using System.Drawing.Drawing2D;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {

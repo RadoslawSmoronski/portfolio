@@ -1,16 +1,8 @@
-﻿using Microsoft.Extensions.Options;
+﻿using portfolio.DataAccess.Data;
+using portfolio.Models.ConfigureData;
 using portfolio.Models.Email;
-using portfolio.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Mail;
-using System.Text;
-using System.Threading.Tasks;
-using portfolio.DataAccess.Data;
-using Microsoft.EntityFrameworkCore;
-using portfolio.Models.ConfigureData;
 
 namespace portfolio.Utility.Email
 {

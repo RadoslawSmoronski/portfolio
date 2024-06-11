@@ -1,22 +1,22 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using portfolio.DataAccess.Json;
-using portfolio.Models;
-using portfolio.Models.Email;
-using portfolio.Models.ViewModels;
-using portfolio.Utility.Email;
-using System.Diagnostics;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
-using portfolio.Models.AboutMe;
-using System.Globalization;
-using portfolio.Models.WebsiteTab;
-using portfolio.Models.Navbar;
-using portfolio.Models.Footer;
-using portfolio.Models.Welcome;
-using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using portfolio.DataAccess.Data;
-using portfolio.Models.Skill;
+using portfolio.DataAccess.Json;
+using portfolio.Models;
+using portfolio.Models.AboutMe;
+using portfolio.Models.Email;
+using portfolio.Models.Footer;
+using portfolio.Models.Navbar;
 using portfolio.Models.Project;
+using portfolio.Models.Skill;
+using portfolio.Models.ViewModels;
+using portfolio.Models.WebsiteTab;
+using portfolio.Models.Welcome;
+using portfolio.Utility.Email;
+using System.Diagnostics;
+using System.Globalization;
 
 namespace portfolioASP.Areas.View.Controllers
 {

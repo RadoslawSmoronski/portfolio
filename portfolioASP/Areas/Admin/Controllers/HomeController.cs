@@ -1,17 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
-using portfolio.Models;
-using portfolio.Models.Email;
-using portfolio.Models.ViewModels;
-using portfolio.Utility;
+﻿using Microsoft.AspNetCore.Localization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Localization;
-using Microsoft.AspNetCore.Localization;
-using System.Globalization;
 using portfolio.DataAccess.Data;
+using portfolio.Models;
 using portfolio.Models.ConfigureData;
-using Newtonsoft.Json;
-using System;
-using System.Net;
+using portfolio.Utility;
+using System.Globalization;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {

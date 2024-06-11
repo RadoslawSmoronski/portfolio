@@ -4,8 +4,6 @@ using portfolio.Models.ConfigureData;
 using portfolio.Models.Email;
 using portfolio.Models.Project;
 using portfolio.Models.Skill;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 
 namespace portfolio.DataAccess.Data
 {

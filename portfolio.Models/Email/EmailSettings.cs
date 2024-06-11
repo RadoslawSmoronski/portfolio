@@ -1,8 +1,8 @@
-﻿using System.Net.Mail;
-using System.Net;
-using System.ComponentModel.DataAnnotations;
+﻿using Newtonsoft.Json;
 using portfolio.Models.ConfigureData;
-using Newtonsoft.Json;
+using System.ComponentModel.DataAnnotations;
+using System.Net;
+using System.Net.Mail;
 
 namespace portfolio.Models.Email
 {

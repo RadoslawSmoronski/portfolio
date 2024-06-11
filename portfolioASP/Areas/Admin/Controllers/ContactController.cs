@@ -1,13 +1,11 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Options;
+using Microsoft.AspNetCore.Mvc.Localization;
+using portfolio.DataAccess.Data;
 using portfolio.DataAccess.Json;
+using portfolio.Models;
+using portfolio.Models.ConfigureData;
 using portfolio.Models.Email;
 using portfolio.Models.ViewModels;
-using portfolio.Utility;
-using Microsoft.AspNetCore.Mvc.Localization;
-using portfolio.Models;
-using portfolio.DataAccess.Data;
-using portfolio.Models.ConfigureData;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {

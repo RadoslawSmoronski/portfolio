@@ -1,12 +1,4 @@
-﻿using portfolio.DataAccess;
-using portfolio.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace portfolio.Utility.Email
+﻿namespace portfolio.Utility.Email
 {
     public interface IEmailService
     {
