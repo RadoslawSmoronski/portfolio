@@ -98,7 +98,7 @@
             </a>
         </div>
         <div class="header text-center mb-5">
-            <h1 class="text-white">@Localizer["Messages"] (@Model.UnreadEmailMessages / @Model.EmailMessages.Count())</h1>
+            <h1 class="text-white">@Localizer["Messages"] (@Model.UnreadEmailMessages / @(Model.EmailMessages?.Count() == null ? 0 : Model.EmailMessages.Count()))</h1>
         </div>
         <div class="table-responsive">
         <table class="table">
@@ -117,7 +117,7 @@
                 @{
                     DateTime? dateTime = null;
                 }
-                @foreach(var obj in Model.EmailMessages)
+                @foreach(var obj in Model.EmailMessages!)
                 {
 
                     @if (dateTime != obj.SentAt.Date)

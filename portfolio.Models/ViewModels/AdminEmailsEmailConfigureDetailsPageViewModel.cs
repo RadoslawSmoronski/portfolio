@@ -9,7 +9,7 @@ namespace portfolio.Models.ViewModels
 {
     public class AdminEmailsEmailConfigureDetailsPageViewModel
     {
-        public AutoEmailMessageContent EmailMessageContent { get; set; }
-        public EmailSettings EmailSettings { get; set; }
+        public AutoEmailMessageContent? EmailMessageContent { get; set; }
+        public EmailSettings? EmailSettings { get; set; }
     }
 }

@@ -10,9 +10,9 @@ namespace portfolio.Models
     public class EditAdminLogin : AdminLogin
     {
         [Required]
-        public string NewPassword { get; set; }
+        public string NewPassword { get; set; } = "";
 
         [Compare("NewPassword")]
-        public string ConfrimNewPassword { get; set; }
+        public string ConfrimNewPassword { get; set; } = "";
     }
 }

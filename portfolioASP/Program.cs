@@ -88,8 +88,13 @@ namespace portfolioASP
             app.UseAuthentication();
             app.UseAuthorization();
 
-            var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>().Value;
-            app.UseRequestLocalization(localizationOptions);
+            var localizationOptions = app.Services.GetService<IOptions<RequestLocalizationOptions>>();
+
+            if (localizationOptions != null)
+            {
+                var localizationOptionsValue = localizationOptions.Value;
+                app.UseRequestLocalization(localizationOptionsValue);
+            }
 
             app.UseSession();
 
