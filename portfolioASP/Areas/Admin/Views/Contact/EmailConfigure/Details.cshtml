@@ -10,7 +10,7 @@
 
                 <div class="detail-box">
                     <h5>@Localizer["Subject"] (ENG)</h5>
-                    @Model.EmailMessageContent.SubjectENG
+                    @Model.EmailMessageContent!.SubjectENG
                 </div>
 
                 <div class="detail-box">
@@ -52,7 +52,7 @@
 
                 <div class="detail-box">
                     <h5>@Localizer["EmailAddress"]</h5>
-                    @Model.EmailSettings.Email
+                    @Model.EmailSettings!.Email
                 </div>
 
                 <div class="detail-box">

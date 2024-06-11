@@ -34,11 +34,14 @@ namespace portfolio.Utility.Email
                     Credentials = new NetworkCredential(emailSettingsDB.Email, emailSettingsDB.Password)
                 };
 
-                return client.SendMailAsync(
-                    new MailMessage(from: emailSettingsDB.Email,
-                                    to: email,
-                                    subject,
-                                    content));
+                if(emailSettingsDB.Email != null)
+                {
+                    return client.SendMailAsync(
+                        new MailMessage(from: emailSettingsDB.Email,
+                                        to: email,
+                                        subject,
+                                        content));
+                }
             }
 
             throw new Exception("EmailSettins error");

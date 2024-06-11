@@ -12,7 +12,7 @@
 
                 <div class="detail-box">
                     <h5>@Localizer["TabTitleContent"] (ENG)</h5>
-                    @Model.WebsiteTab.TitleENG
+                    @Model.WebsiteTab!.TitleENG
                 </div>
                 <div class="detail-box">
                     <h5>@Localizer["TabTitleContent"] (PL)</h5>
@@ -46,7 +46,7 @@
                 <div class="detail-box">
                     <h5>@Localizer["NavbarHeader"] (ENG)</h5>
                     @{
-                        if (Model.Navbar.HeaderENG != null)
+                        if (Model.Navbar!.HeaderENG != null)
                         {
                             string title = Model.Navbar.HeaderENG.Replace("\r\n", "<br />");
                             @Html.Raw(title)
@@ -92,7 +92,7 @@
                 <div class="detail-box">
                     <h5>@Localizer["WelcomeHeader"] (ENG)</h5>
                     @{
-                        if (Model.Welcome.HeaderENG != null)
+                        if (Model.Welcome!.HeaderENG != null)
                         {
                             string title = Model.Welcome.HeaderENG.Replace("\r\n", "<br />");
                             @Html.Raw(title)
@@ -145,7 +145,7 @@
 
                 <div class="detail-box">
                     <h5>@Localizer["FooterContant"] (ENG)</h5>
-                    @Html.Raw(Model.Footer.ContentENG)
+                    @Html.Raw(Model.Footer!.ContentENG)
                 </div>
 
                 <div class="detail-box">
