@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc.Localization;
 using portfolio.DataAccess.Json;
 using portfolio.Models.AboutMe;
+using portfolio.Models.WebsiteTab;
 
 namespace portfolioASP.Areas.Admin.Controllers
 {
@@ -71,6 +72,20 @@ namespace portfolioASP.Areas.Admin.Controllers
 
             return View(aboutMe);
         }
+
+        //public IActionResult DeleteImage()
+        //{
+        //    WebsiteTab obj = _jsonFileManager.Get<WebsiteTab>();
+
+        //    DeleteImageFile(obj.ImageUrl);
+
+        //    obj.ImageUrl = null;
+
+        //    _jsonFileManager.Save<WebsiteTab>(obj);
+
+        //    TempData["success"] = _localizer["ImageWasRemoved"].Value;
+        //    return RedirectToAction("Index");
+        //}
 
     }
 }

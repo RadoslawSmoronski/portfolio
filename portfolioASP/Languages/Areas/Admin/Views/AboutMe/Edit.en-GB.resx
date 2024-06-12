@@ -141,4 +141,7 @@
   <data name="Image" xml:space="preserve">
     <value>Image</value>
   </data>
+  <data name="RemoveImageButton" xml:space="preserve">
+    <value>Remove image</value>
+  </data>
 </root>
