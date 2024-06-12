@@ -43,7 +43,16 @@
 
                 <div class="detail-box">
                     <h5>@Localizer["Image"]</h5>
-                    <img class="project-img" src="../../../@(Model.ImageUrl != null ? Model.ImageUrl : @"\images\projects\default-project.png")"></img>
+                    @{
+                        if (Model.ImageUrl != null)
+                        {
+                            <img style="height: 200px; width: 200px;" class="project-img" src="../../../@Model.ImageUrl"></img>
+                        }
+                        else
+                        {
+                            <p>brak</p>
+                        }
+                    }
                 </div>
 
                 <a asp-controller="aboutme" asp-action="edit" class="btn btn-dark mb-2 col-12 col-md-6 col-lg-3">@Localizer["EditButton"]</a>

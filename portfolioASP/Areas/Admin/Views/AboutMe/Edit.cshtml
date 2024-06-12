@@ -35,7 +35,7 @@
                             <input type="file" name="file" asp-for="ImageUrl" class="form-control border-0 shadow" />
                             @if (Model.ImageUrl != null)
                             {
-                                <a asp-controller="general" asp-action="DeleteImage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
+                                <a asp-controller="aboutme" asp-action="DeleteImage" class="btn btn-outline-dark col-12">@Localizer["RemoveImageButton"]</a>
                             }
                         </div>
                         <div class="row">

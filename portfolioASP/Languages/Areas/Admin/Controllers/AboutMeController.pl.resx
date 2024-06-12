@@ -120,4 +120,7 @@
   <data name="AboutMeWasEdited" xml:space="preserve">
     <value>Sekcja o mnie została edytowana.</value>
   </data>
+  <data name="ImageWasRemoved" xml:space="preserve">
+    <value>Obrazek został usunięty.</value>
+  </data>
 </root>
