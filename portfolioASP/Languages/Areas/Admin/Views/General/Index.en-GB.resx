@@ -144,6 +144,9 @@
   <data name="NavbarTitle" xml:space="preserve">
     <value>Menu</value>
   </data>
+  <data name="NoPicture" xml:space="preserve">
+    <value>No picture</value>
+  </data>
   <data name="TabEditButton" xml:space="preserve">
     <value>Edit</value>
   </data>

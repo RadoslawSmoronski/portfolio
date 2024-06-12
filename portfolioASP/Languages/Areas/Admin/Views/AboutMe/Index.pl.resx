@@ -132,4 +132,7 @@
   <data name="Image" xml:space="preserve">
     <value>Obrazek</value>
   </data>
+  <data name="NoPicture" xml:space="preserve">
+    <value>Brak obrazka</value>
+  </data>
 </root>
