@@ -42,8 +42,13 @@ namespace portfolioASP
 
             });
 
-            builder.Services.AddDbContext<ApplicationDbContext>
-                (options=> options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Services.AddDbContext<ApplicationDbContext>(options =>
+                options.UseNpgsql(
+                    builder.Configuration.GetConnectionString("DefaultConnection"),
+                    x => x.MigrationsAssembly("portfolio.DataAccess")
+                )
+            );
+            
             builder.Services.Configure<EmailSettings>(builder.Configuration.GetSection("EmailSettings"));
             builder.Services.Configure<AdminLogin>(builder.Configuration.GetSection("AdminLogin"));
             builder.Services.AddTransient<IEmailService, EmailService>();
@@ -64,6 +69,12 @@ namespace portfolioASP
 
 
             var app = builder.Build();
+
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+                db.Database.Migrate();
+            }
 
             app.UseRequestLocalization();
 

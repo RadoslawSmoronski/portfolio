@@ -1,9 +1,11 @@
-﻿# Portfolio project
+﻿🌐 [English](README.md) | 🇵🇱 [Polski](README-pl.md)
+# Portfolio project
 
 Dynamic portfolio website built using .NET technology, with the frontend powered by Bootstrap. PostgreSQL database is managed through Entity Framework, while some data is stored in JSON files.
 
 Demo: soon
 Demo admin panel: soon
+Default admin panel password: admin
 
 # Technologies
 
@@ -80,6 +82,101 @@ In the ApplicationDbContext file, you can change the default admin panel access 
         new ConfigureData { Id = 2, JSON = emailSettings.GetJson()}
     );
 ```
+
+# Running the project using Docker (recommended)
+
+The project provides a complete Docker setup, including the ASP.NET Core API and PostgreSQL database.  
+You can run the entire environment using a single command.
+
+---
+
+## **Requirements**
+
+- Docker Desktop (Windows/macOS) or Docker Engine (Linux)
+- Docker Compose v2+
+
+---
+
+## ⚠️ Before running Docker — configure database credentials
+
+Make sure to update the database settings in:
+
+### 1. docker-compose.yml
+
+```yml
+POSTGRES_USER: postgres
+POSTGRES_PASSWORD: password123
+POSTGRES_DB: portfolio
+```
+
+### 2. API connection string (inside docker-compose.yml)
+
+```yml
+ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=portfolio;Username=postgres;Password=password123"
+```
+
+These values must match.
+
+If you change:
+- database name
+- username
+- password
+
+Update both sections.
+
+## Default settings
+
+Database: portfolio
+User: postgres
+Password: haslo123
+
+---
+
+## **Running the application**
+
+In the root directory of the project (where `docker-compose.yml` is located), run:
+
+```bash
+docker compose up --build
+```
+
+Docker will automatically:
+
+- build the ASP.NET Core application  
+- start the PostgreSQL database  
+- wait until the database is ready  
+- apply all Entity Framework migrations  
+- start the API on port **5001**
+
+---
+
+## **Accessing the application**
+
+Website:  
+http://localhost:5001
+
+Admin panel:  
+http://localhost:5001/admin
+
+**Default admin password:**  
+admin
+
+---
+
+## **Stopping containers**
+
+Stop the environment:
+
+```bash
+docker compose down
+```
+
+Stop and remove database data:
+
+```bash
+docker compose down -v
+```
+
 
 ## Author
 

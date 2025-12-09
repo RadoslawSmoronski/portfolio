@@ -1,0 +1,37 @@
+services:
+
+  db:
+    image: postgres:15
+    container_name: postgres_portfolio
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password123
+      POSTGRES_DB: portfolio
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 3s
+      timeout: 3s
+      retries: 10
+      start_period: 3s
+
+  api:
+    build:
+      context: .
+      dockerfile: portfolioASP/Dockerfile
+    container_name: api_portfolio
+    ports:
+      - "5001:8080"
+    environment:
+      ASPNETCORE_URLS: "http://+:8080"
+      ConnectionStrings__DefaultConnection: "Host=db;Port=5432;Database=portfolio;Username=postgres;Password=password123"
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: always
+
+volumes:
+  pgdata:
