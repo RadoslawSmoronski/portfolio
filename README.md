@@ -3,9 +3,9 @@
 
 Dynamic portfolio website built using .NET technology, with the frontend powered by Bootstrap. PostgreSQL database is managed through Entity Framework, while some data is stored in JSON files.
 
-Demo: soon
-Demo admin panel: soon
-Default admin panel password: admin
+- Demo: https://demoportfolio.rsmoronski.pl
+- Demo admin panel: https://demoportfolio.rsmoronski.pl/admin
+- Default admin panel password: admin
 
 # Technologies
 

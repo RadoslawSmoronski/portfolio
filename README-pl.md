@@ -5,9 +5,9 @@
 Dynamiczna strona portfolio stworzona w technologii .NET, z frontendem opartym o Bootstrap.  
 Baza danych PostgreSQL jest obsługiwana przez Entity Framework, a część danych przechowywana jest w plikach JSON.
 
-Demo: wkrótce  
-Demo panelu administratora: wkrótce  
-**Domyślne hasło do panelu admina:** `admin`
+- Demo: https://demoportfolio.rsmoronski.pl
+- Demo panelu administratora: https://demoportfolio.rsmoronski.pl/admin 
+- Domyślne hasło do panelu admina: admin
 
 ---
 
